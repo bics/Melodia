@@ -1,0 +1,22 @@
+:root{
+    --soft-onyx-background-color: #151515;
+    --lighter-graphite-background-color : #2C2C2C;
+    --platinum-white-color: #EDEDED;
+    --ash-white-color: #E6E6E6;
+}
+
+*{
+    color: var(--ash-white-color)
+}
+
+header{
+    background-color: var(--lighter-graphite-background-color);
+}
+
+body{
+    background-color: var(--soft-onyx-background-color);
+}
+
+nav a{
+    color: var(--platinum-white-color) !important;
+}
