@@ -20,3 +20,9 @@ body{
 nav a{
     color: var(--platinum-white-color) !important;
 }
+
+.carousel-image-container{
+    max-height: 25vh;
+    width: auto;
+    height: auto;
+}
