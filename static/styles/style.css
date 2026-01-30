@@ -29,3 +29,13 @@ nav a{
     align-items:center; 
     justify-content:center;
 }
+
+.color-platinum{
+    color: var(--platinum-white-color) !important;
+}
+
+.line-break{
+    width: 90%;
+    justify-self: center;
+    margin: 0;
+}
