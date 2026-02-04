@@ -61,3 +61,8 @@ nav a{
     justify-self: center;
     margin: 0;
 }
+
+.small-artist-card{
+    width: 8rem; 
+    height: 8rem;
+}

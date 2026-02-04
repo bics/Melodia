@@ -10,6 +10,8 @@ Navbar block taken from official bootstrap documentation https://getbootstrap.co
 
 Carousel code block taken from official bootstrap documentation https://getbootstrap.com/docs/5.3/components/carousel/
 
+Card code block copied from Bootsrap's official documentation https://getbootstrap.com/docs/5.3/components/card/
+
 * music_note.jpg by [juicy_fish](https://www.freepik.com/free-vector/three-music-notes-floating-upwards_290240060.htm#fromView=search&page=1&position=1&uuid=44844498-6808-4a2e-b6c8-5bcb8592dcd7&query=music+note)
 
 * vinyl_disc by [xadartstudio](https://www.freepik.com/free-psd/vinyl-record-timeless-classic-music_406616720.htm#fromView=search&page=1&position=1&uuid=678e9eb1-3e31-403f-a8fc-c7cd79cc72ea&query=vinyl+disc)
