@@ -1,6 +1,7 @@
 :root{
     --soft-onyx-background-color: #151515;
     --lighter-graphite-background-color : #2C2C2C;
+    --slightly-darker-graphite-color: #1F1F1F;
     --platinum-white-color: #EDEDED;
     --ash-white-color: #E6E6E6;
 }
@@ -32,6 +33,27 @@ nav a{
 
 .color-platinum{
     color: var(--platinum-white-color) !important;
+}
+
+.color-graphite{
+    color: var(--lighter-graphite-background-color) !important;
+}
+
+.graphite-background{
+    background-color: var(--lighter-graphite-background-color);
+}
+
+.slightly-darker-graphite-background{
+    background-color: var(--slightly-darker-graphite-color);
+}
+
+.suggestion-table{
+    background-color: var(--lighter-graphite-background-color);
+}
+
+.suggestion-table th,.suggestion-table td{
+    background-color: transparent;
+    color: var(--platinum-white-color);
 }
 
 .line-break{
