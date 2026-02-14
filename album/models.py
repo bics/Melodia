@@ -23,4 +23,4 @@ class Track(models.Model):
 
     # TODO implement relation/extra fields
     # artist
-    # tracks
+    # album
