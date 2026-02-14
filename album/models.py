@@ -13,3 +13,14 @@ class Album(models.Model):
     # artist
     # tracks
     # manager
+
+class Track(models.Model):
+    name = models.CharField(max_length=255)
+    position = models.IntegerField()
+    lyrics = models.TextField(blank=True, null=True)
+    length = models.IntegerField()
+    rating = models.FloatField(blank=True, null=True)
+
+    # TODO implement relation/extra fields
+    # artist
+    # tracks
