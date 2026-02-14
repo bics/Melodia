@@ -19,3 +19,13 @@ Card code block copied from Bootsrap's official documentation https://getbootstr
 * blank_user_pic by [juicy_fish](https://www.freepik.com/free-vector/blank-user-circles_134996379.htm#fromView=search&page=1&position=1&uuid=9bb78e8c-d30a-4aee-b687-d4a30d3a706a&query=blank+user+picture)
 
 * single_note_tilted generated with from music_note.jpg [ChatGPT]()
+
+* paramore-banner image from [ticketmaster](https://discover.ticketmaster.co.uk/wp-content/uploads/2022/10/paramoreplusone-738x415.jpg)
+
+* paramore-artist-image from [pinterest](https://i.pinimg.com/originals/ca/b7/ec/cab7ecfe04f79e0d8060a996d5b8b648.png)
+
+* paramore-riot from [wikipedia](https://upload.wikimedia.org/wikipedia/en/2/28/Paramore_-_Riot%21.png)
+
+* paramore-brand-new-eyes from [Spotify](https://i.scdn.co/image/ab67616d0000b273e01d7d558032457b0e4883f6)
+
+* paramore-after-laughter from [Society6 Blog -](https://blog.society6.com/app/uploads/2017/05/Paramore-After-Laughter-2017-2480x2480.jpg)
