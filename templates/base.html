@@ -28,9 +28,17 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand">Navbar</a>
+                    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                    {% if user.is_authenticated %}    
+                    <a href="">Account</a>
+                    {% else %}  
+                    <a href="{% url 'account_login' %}">Sign In</a>
+                    {% endif %}
                     <!--Extra block for nevigation bar-->
                     {% block nav %}{% endblock %}
+                    {% if user.is_authenticated %}    
+                    <a href="{% url 'account_logout' %}">Logout</a>
+                    {% endif %}
                 </div>
                 <div>
                     <form class="d-flex" role="search">
@@ -50,7 +58,7 @@
                 {% for message in messages %}
                 <!--Code snipper taken from official Bootstrap documentation https://getbootstrap.com/docs/5.3/components/alerts/-->
                 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                    <strong>{{ message }}</strong>
+                    <strong class="color-graphite">{{ message }}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}

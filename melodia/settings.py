@@ -88,8 +88,10 @@ WSGI_APPLICATION = 'melodia.wsgi.application'
 
 DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
-# Account modifications
+# Account related fields
 AUTH_USER_MODEL = 'members.MelodiaUser'
+LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_ON_GET = True
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
