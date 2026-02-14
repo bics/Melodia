@@ -92,6 +92,7 @@ DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 AUTH_USER_MODEL = 'members.MelodiaUser'
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_SESSION_REMEMBER = True
 
 ACCOUNT_FORMS = {
     "login": "members.forms.AllauthLoginForm",
