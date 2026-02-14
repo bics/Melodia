@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('landingpage.urls')),
     path('artist/', include('artist.urls')),
     path('album/', include('album.urls')),
+    path('member/', include('members.urls')),
 ]

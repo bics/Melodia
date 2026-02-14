@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'landingpage',
     'artist',
     'album',
+    'members',
 ]
 
 MIDDLEWARE = [
