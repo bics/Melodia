@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'landingpage',
     'artist',
+    'album',
 ]
 
 MIDDLEWARE = [
