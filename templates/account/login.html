@@ -1,28 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block main %}
 <div class="spacer m-3"></div>
+
 
 <!--Code block copied from previous CoffeeHouse project-->
 <div class="container d-flex justify-content-center">
     <div id="login-container" class="slightly-darker-graphite-background rounded p-3">
+        <div class="container text-center">
+            <h2>Login to Melodia</h2>
+            <div class="spacer m-3"></div>
+            <p>A place where music lives.</p>
+        </div>
+
+        <div class="spacer my-3">
+            <hr class="color-platinum line-break">
+        </div>
         <form id="login-form" method="post" action="{% url 'account_login' %}" class="w-100 text-center">
             {% csrf_token %}
-    
+
             {{ form.non_field_errors }}
             {{ form.as_p }}
-    
+
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
             {% endif %}
-    
+
             <div class="w-100">
-                <div class="spacer m-3">
+                <div class="spacer my-3">
                     <hr class="color-platinum line-break">
                 </div>
                 <a href="{% url 'account_signup' %}">Not registered yet?</a><br>
-                <div class="spacer m-3">
+                <div class="spacer my-3">
                     <hr class="color-platinum line-break">
                 </div>
                 <input class="btn btn-success" type="submit" value="Login">
