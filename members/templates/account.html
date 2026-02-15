@@ -3,7 +3,54 @@
 
 {% block main %}
 <div class="spacer m-3"></div>
+<!--Code block copied from previous CoffeeHouse project-->
+<div class="container d-flex justify-content-center">
+    <div class="middle-form slightly-darker-graphite-background rounded text-center p-3">
+        <h3>Change Details</h3>
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break full-length">
+        </div>
+        <!--Form for updating user details-->
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <!--Form fields partially generated with ChatGPT-->
+                {{form.username.label_tag}}
+                {{form.username}}
+                {{ form.email.label_tag }}
+                {{ form.email }}
+
+                <div class="spacer m-3">
+                    <hr class="color-platinum line-break full-length">
+                </div>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#PasswordResetModal"
+                    class="btn btn-warning mb-2">Reset
+                    Password</button><br>
+                <button type="submit" class="btn btn-success mb-2">Update Details</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 
+<!--Code block copied from previous CoffeeHouse project-->
+<!--Redirection to password reset page-->
+<div>
+    <div class="modal fade" id="PasswordResetModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content slightly-darker-graphite-background text-center">
+                <div class="modal-header espresso-border-color">
+                    <h5 class="modal-title color-espresso">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your password will be reset.</p>
+                    <p>Please check your emails after resetting.</p>
+                    <a href="{% url 'account_reset_password' %}" class="btn btn-warning mb-2">Reset</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

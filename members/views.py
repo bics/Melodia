@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import AccountUpdateForm
 
 # Create your views here.
 def members(request):
@@ -10,4 +12,12 @@ def favourites(request):
 
 
 def account(request):
-    return render(request, 'account.html')
+    if request.method == "POST":
+        form = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your details have been updated.")
+            return redirect("account")
+    else:
+        form = AccountUpdateForm(instance=request.user)
+    return render(request, "account.html", {"form": form})
