@@ -26,3 +26,6 @@ def account(request):
 def manage(request):
     managed_artists = Artist.objects.filter(manager=request.user)
     return render(request, 'manage.html', {'managed_artists' : managed_artists})
+
+def create_artist(request):
+    return render(request, 'create_artist.html')

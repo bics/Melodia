@@ -8,5 +8,6 @@ urlpatterns = [
     path('favourites/', views.favourites, name='favourites'),
     path('account/', views.account, name='account'),
     path('manage/', views.manage, name='manage'),
+    path('manage/create_artist', views.create_artist, name='create_artist'),
 
 ]
