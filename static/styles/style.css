@@ -67,8 +67,8 @@ nav a{
 }
 
 .small-artist-card{
-    width: 8rem; 
-    height: 8rem;
+    width: 100%; 
+    height: auto;
 }
 
 .artsit-banner-image{
