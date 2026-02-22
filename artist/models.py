@@ -12,4 +12,5 @@ class Artist(models.Model):
     manager = models.ForeignKey(MelodiaUser, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        manager = self.manager.username if self.manager else "Orphaned"
+        return manager + ": " + self.name + "/" + self.bornOn.isoformat()
