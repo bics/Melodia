@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import AccountUpdateForm
+from artist.models import Artist
 
 # Create your views here.
 def members(request):
@@ -23,4 +24,5 @@ def account(request):
     return render(request, "account.html", {"form": form})
 
 def manage(request):
-    return render(request, 'manage.html')
+    managed_artists = Artist.objects.filter(manager=request.user)
+    return render(request, 'manage.html', {'managed_artists' : managed_artists})

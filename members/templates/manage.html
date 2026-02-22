@@ -4,6 +4,27 @@
 {% block main %}
 <div class="spacer m-3"></div>
 
+<div class="container text-center">    
+    <h5>Welcome {{ user.username}}</h5>
+    
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+</div>
+
+<div class="container text text-center">
+    {% if not managed_artists %}
+    <h5>You have not added any artists to your account.</h5>
+    {% else %}
+    <h5>You have a couple</h5>
+    {% endif %}
+
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+
+    <button class="btn btn-success">Add Artist</button>
+</div>
 
 
 {% endblock %}
