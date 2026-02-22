@@ -10,10 +10,17 @@
         <hr class="color-platinum line-break">
     </div>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-    </form>
+    <div class="container one-third-width">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button class="btn btn-success">Create</button>
+        </form>
+    </div>
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
 
 </div>
 

@@ -98,4 +98,8 @@ nav a{
         width: 100%;    
         height: auto;
     }
+
+    .one-third-width{
+    width: 33%;
+}
 }

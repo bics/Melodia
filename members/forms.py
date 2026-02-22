@@ -39,4 +39,11 @@ class AccountUpdateForm(forms.ModelForm):
 class CreateArtistForm(forms.ModelForm):
     class Meta:
         model = Artist
-        fields = {"name", "image", "description", "bornOn", "socials"}
+        fields = ("name", "image", "description", "bornOn", "socials")
+
+        widgets = {
+            "name" : forms.TextInput(attrs={"class": "form-control"}),
+            "image" : forms.FileInput(attrs={"accept": "image/png, image/jpeg, image/jpg"}),
+            "description" : forms.Textarea(attrs={"class": "form-control"}),
+            "socials" : forms.Textarea(attrs={"class": "form-control"}),
+        }
