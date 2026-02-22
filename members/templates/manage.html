@@ -6,7 +6,7 @@
 
 <div class=" container slightly-darker-graphite-background rounded">
     <div class="container text-center">
-        <h5>Welcome {{ user.username}}</h5>
+        <h4 class="pt-3">Welcome {{ user.username}}</h4>
     
         <div class="spacer m-3">
             <hr class="color-platinum line-break">
@@ -41,7 +41,7 @@
             <hr class="color-platinum line-break">
         </div>
     
-        <a href="{% url 'create_artist' %}" class="btn btn-success">Add Artist</a>
+        <a href="{% url 'create_artist' %}" class="btn btn-success mb-3">Add Artist</a>
     </div>
 </div>
 
