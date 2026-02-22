@@ -1,4 +1,5 @@
 from django.db import models
+from artist.models import Artist
 
 # Create your models here.
 class Album(models.Model):
@@ -8,19 +9,14 @@ class Album(models.Model):
     released = models.DateField()
     length = models.IntegerField()
     rating = models.FloatField(blank=True, null=True)
-
-    # TODO implement relation/extra fields
-    # artist
-    # tracks
-    # manager
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="albums")
 
 class Track(models.Model):
     name = models.CharField(max_length=255)
-    position = models.IntegerField()
+    position = models.IntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
     length = models.IntegerField()
     rating = models.FloatField(blank=True, null=True)
-
-    # TODO implement relation/extra fields
-    # artist
-    # album
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="tracks")
+    featured_artist = models.ManyToManyField(Artist, blank=True, related_name="feat")

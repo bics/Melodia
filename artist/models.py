@@ -1,4 +1,5 @@
 from django.db import models
+from members.models import MelodiaUser
 
 # Create your models here.
 class Artist(models.Model):
@@ -8,9 +9,4 @@ class Artist(models.Model):
     bornOn = models.DateField()
     socials = models.TextField(blank=True, null=True)
     rating = models.FloatField(blank=True, null=True)
-
-    # TODO implement relation/extra fields
-    # albums
-    # tracks
-    # manager
-    
+    manager = models.ForeignKey(MelodiaUser, blank=True, null=True, on_delete=models.SET_NULL)
