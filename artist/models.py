@@ -4,7 +4,7 @@ from members.models import MelodiaUser
 # Create your models here.
 class Artist(models.Model):
     name = models.CharField(max_length=255)
-    image = models.CharField(max_length=255)
+    image = models.ImageField(blank=True, null=True, upload_to="melodia/artist_images/")
     description = models.TextField(blank=True, null=True)
     bornOn = models.DateField()
     socials = models.TextField(blank=True, null=True)
