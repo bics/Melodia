@@ -7,6 +7,7 @@ from allauth.account.forms import (
     ResetPasswordKeyForm,
 )
 from .models import MelodiaUser
+from artist.models import Artist
 
 # Form taken from previous CoffeeHouse project
 class AllauthLoginForm(LoginForm):
@@ -34,3 +35,8 @@ class AccountUpdateForm(forms.ModelForm):
         self.fields["email"].required = True
         # Snippet taken from ChatGPT
         self.fields["username"].help_text = ""
+
+class CreateArtistForm(forms.ModelForm):
+    class Meta:
+        model = Artist
+        fields = {"name", "image", "description", "bornOn", "socials"}

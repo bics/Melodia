@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import AccountUpdateForm
+from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
 
 # Create your views here.
@@ -28,4 +28,17 @@ def manage(request):
     return render(request, 'manage.html', {'managed_artists' : managed_artists})
 
 def create_artist(request):
-    return render(request, 'create_artist.html')
+
+    if request.method == "POST":
+        form = CreateArtistForm(request.POST, request.FILES)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.manager = request.user
+            obj.save()
+            form.save_m2m()
+            return redirect("manage")
+        else:
+            messages.success(request, ("There were some errors with some fields"))
+    else:  
+        form = CreateArtistForm()     
+        return render(request, 'create_artist.html', {'form' : form})

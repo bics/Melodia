@@ -4,6 +4,17 @@
 {% block main %}
 <div class="spacer m-3"></div>
 
+<div class="container text-center">
+    <h3>Create Artist</h3>
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
 
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+
+</div>
 
 {% endblock %}
