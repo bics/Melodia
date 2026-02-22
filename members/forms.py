@@ -43,7 +43,13 @@ class CreateArtistForm(forms.ModelForm):
 
         widgets = {
             "name" : forms.TextInput(attrs={"class": "form-control"}),
-            "image" : forms.FileInput(attrs={"accept": "image/png, image/jpeg, image/jpg"}),
-            "description" : forms.Textarea(attrs={"class": "form-control"}),
-            "socials" : forms.Textarea(attrs={"class": "form-control"}),
+            "image" : forms.FileInput(attrs={"class": "form-control", "accept": "image/png, image/jpeg, image/jpg"}),
+            "description" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
+            "socials" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
+        }
+
+        # Snippet taken from previous CoffeeHouse project
+        help_texts = {
+            "image": "Optional. Your image will be stored securely using Cloudinary to display your profile picture.",
+            "socials" : "Enter each social on a new line."
         }
