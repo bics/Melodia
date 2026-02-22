@@ -21,3 +21,6 @@ def account(request):
     else:
         form = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"form": form})
+
+def manage(request):
+    return render(request, 'manage.html')

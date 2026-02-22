@@ -32,6 +32,9 @@
                     {% if user.is_authenticated %}    
                     <a href="{% url 'account' %}">Account</a>
                     <a href="{% url 'favourites' %}">Favourites</a>
+                    {% if user.isManager %}
+                    <a href="{% url 'manage' %}">Manage</a>
+                    {% endif %}
                     {% else %}  
                     <a href="{% url 'account_login' %}">Sign In</a>
                     {% endif %}
