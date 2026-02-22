@@ -36,9 +36,21 @@ def create_artist(request):
             obj.manager = request.user
             obj.save()
             form.save_m2m()
+            messages.success(request, ("Artist created successfully"))
             return redirect("manage")
         else:
             messages.success(request, ("There were some errors with some fields"))
     else:  
         form = CreateArtistForm()     
         return render(request, 'create_artist.html', {'form' : form})
+    
+# TODO implement view to update artists records with the below access decorator
+# Code block generated using ChatGPT for safekeeping
+# from django.contrib.auth.decorators import user_passes_test
+
+# def is_manager_or_staff(user):
+#     return user.is_authenticated and (user.isManager or user.is_staff)
+
+# @user_passes_test(is_manager_or_staff)
+# def update_artist(request, pk):
+#     ...
