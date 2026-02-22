@@ -4,43 +4,45 @@
 {% block main %}
 <div class="spacer m-3"></div>
 
-<div class="container text-center">    
-    <h5>Welcome {{ user.username}}</h5>
+<div class=" container slightly-darker-graphite-background rounded">
+    <div class="container text-center">
+        <h5>Welcome {{ user.username}}</h5>
     
-    <div class="spacer m-3">
-        <hr class="color-platinum line-break">
-    </div>
-</div>
-<div class="container text text-center">
-    {% if not managed_artists %}
-    <h5>You have not added any artists to your account.</h5>
-    {% else %}
-    <div class="container">
-        <h5>Your managed artists</h5>
-        <div class="row justify-content-center">
-            {% for artist in managed_artists %}
-            <!--TODO generate cards from DB-->
-            <!--Card code block copied from Bootsrap's official documentation-->
-            <div class="mx-1 mb-3 col-6 col-md-4 col-xl-2">
-                <div class="card small-artist-card ">
-                    <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top" alt="...">
-                    <a href="">
-                        <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
-                            <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{artist.name}}</h6>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break">
         </div>
     </div>
-    {% endif %}
-
-    <div class="spacer m-3">
-        <hr class="color-platinum line-break">
+    <div class="container text text-center">
+        {% if not managed_artists %}
+        <h5>You have not added any artists to your account.</h5>
+        {% else %}
+        <div class="container">
+            <h5>Your managed artists</h5>
+            <div class="row justify-content-center">
+                {% for artist in managed_artists %}
+                <!--TODO generate cards from DB-->
+                <!--Card code block copied from Bootsrap's official documentation-->
+                <div class="mx-1 mb-3 col-6 col-md-4 col-xl-2">
+                    <div class="card small-artist-card ">
+                        <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top" alt="...">
+                        <a href="">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
+                                <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{artist.name}}</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break">
+        </div>
+    
+        <a href="{% url 'create_artist' %}" class="btn btn-success">Add Artist</a>
     </div>
-
-    <a href="{% url 'create_artist' %}" class="btn btn-success">Add Artist</a>
 </div>
 
 
