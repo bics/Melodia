@@ -83,6 +83,12 @@ nav a{
     object-fit: cover;
 }
 
+/* Snippet taken from ChatGPT*/
+label.required::after {
+    content: " *";
+    color: red;
+}
+
 /* Screens lager than a mobile matching Bootstraps breakpoint*/
 @media (min-width: 576px) {
     .artist-image{       
