@@ -8,7 +8,11 @@
     <!-- TODO update to get data from DB-->
     <!-- TODO video background?-->
     <div class="container" id="artist-banner">
+        {% if artist.image %}
+    
+        {% else %}
         <img src="{% static 'assets/images/paramore/paramore-banner.jpg' %}" class="artsit-banner-image" alt="">
+        {% endif %}
     </div>
 </div>
 

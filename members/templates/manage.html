@@ -25,7 +25,7 @@
                 <div class="mx-1 mb-3 col-6 col-md-4 col-xl-2">
                     <div class="card small-artist-card ">
                         <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top" alt="...">
-                        <a href="">
+                        <a href="{% url 'artist' artist.name artist.id %}">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
                                 <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{artist.name}}</h6>
                             </div>
