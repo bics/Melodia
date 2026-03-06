@@ -35,8 +35,16 @@ nav a{
     color: var(--platinum-white-color) !important;
 }
 
+.border-platinum{
+    border-color: var(--platinum-white-color) !important;
+}
+
 .color-graphite{
     color: var(--lighter-graphite-background-color) !important;
+}
+
+.onyx-background{
+    background-color: var(--soft-onyx-background-color);
 }
 
 .graphite-background{
