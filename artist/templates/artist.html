@@ -81,7 +81,7 @@
     </table>
 
     {% if artist.manager == user %}
-        <a href="" class="btn btn-success mb-3">Add Album</a>
+        <a href="{% url 'create_album' artist.name artist.id %}" class="btn btn-success mb-3">Add Album</a>
     {% endif %}
 </div>
 
