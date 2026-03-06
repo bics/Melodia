@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Artist
+from album.models import Album
 from .forms import AlbumCreationForm
 
 # Create your views here.
 def artist(request, name, pk):
     artist = Artist.objects.get(pk=pk)
-    return render(request, 'artist.html', { "artist": artist})
+    albums = Album.objects.filter(artist=artist)
+    return render(request, 'artist.html', { "artist": artist, 'albums': albums})
 
 def create_album(request, name, pk):
     

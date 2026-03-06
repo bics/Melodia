@@ -12,6 +12,8 @@ Carousel code block taken from official bootstrap documentation https://getboots
 
 Card code block copied from Bootsrap's official documentation https://getbootstrap.com/docs/5.3/components/card/
 
+Collapse code block copied from Bootsrap's official documentation https://getbootstrap.com/docs/5.3/components/collapse/
+
 Login form html and form from previous CoffeeHouse project
 
 Account details update modals was copied from previous CoffeeHouse project
