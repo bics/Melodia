@@ -26,6 +26,7 @@ Code:
 
 * Social urlization generated using ChatGPT for artists socials
 * GetSocial method partially generated using ChatGPT
+* Featured artist query selector generated using ChatGPT
 
 
 * music_note.jpg by [juicy_fish](https://www.freepik.com/free-vector/three-music-notes-floating-upwards_290240060.htm#fromView=search&page=1&position=1&uuid=44844498-6808-4a2e-b6c8-5bcb8592dcd7&query=music+note)

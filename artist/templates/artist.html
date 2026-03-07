@@ -116,7 +116,8 @@
                 </div>
                 {% if artist.manager == user %}
                 <div class="text-center">
-                    <a href="{% url 'edit_album' album.name album.id artist.id %}" class="btn btn-warning mt-3">Edit</a>
+                    <a href="{% url 'edit_album' album.name album.id artist.id %}" class="btn btn-warning mt-3">Edit Album</a>
+                    <a href="{% url 'create_track' album.name album.id artist.id %}" class="btn btn-warning mt-3">Add Tracks</a>
                 </div>
                 {% endif %}
             </div>
