@@ -4,6 +4,45 @@
 {% block main %}
 <div class="spacer m-3"></div>
 
+<div class="container text-center slightly-darker-graphite-background rounded">
+    <h3 class="pt-3">Edit {{album.name}}</h3>
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
 
+    <div class="container one-third-width">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ form.name.label_tag}}
+                {{ form.name}}
+            </p>
+            
+            <p>
+                {{ form.image.label_tag}}
+                {{ form.image}}
+                {{form.image.help_text}}
+            </p>
+
+            
+            <p>
+                {{ form.description.label_tag}}
+                {{ form.description}}
+            </p>
+
+            
+            <p>
+                {{ form.released.label_tag}}
+                {{ form.released}}
+            </p>
+            
+
+            <div class="d-flex justify-content-around">
+                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3">Back</a>
+                <button class="btn btn-success mb-3">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

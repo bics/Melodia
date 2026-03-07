@@ -116,7 +116,7 @@
                 </div>
                 {% if artist.manager == user %}
                 <div class="text-center">
-                    <a href="" class="btn btn-warning mt-3">Edit</a>
+                    <a href="{% url 'album' album.name album.id artist.id %}" class="btn btn-warning mt-3">Edit</a>
                 </div>
                 {% endif %}
             </div>
