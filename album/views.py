@@ -5,7 +5,7 @@ from .models import Album
 from artist.forms import AlbumCreationForm
 
 # Create your views here.
-def album(request, name, pk, artistPK):
+def edit_album(request, name, pk, artistPK):
     album = Album.objects.get(pk=pk)
     artist = Artist.objects.get(pk=artistPK)
 
@@ -21,4 +21,4 @@ def album(request, name, pk, artistPK):
         form = AlbumCreationForm(instance=album)
 
 
-    return render(request, 'album.html', {'form' : form, 'album': album, 'artist': artist})
+    return render(request, 'edit_album.html', {'form' : form, 'album': album, 'artist': artist})
