@@ -4,7 +4,7 @@ from artist.models import Artist
 # Create your models here.
 class Album(models.Model):
     name = models.CharField(max_length=255)
-    image = models.CharField(max_length=255)
+    image = models.CharField(blank=True, null=True, max_length=255)
     description = models.TextField(blank=True, null=True)
     released = models.DateField()
     length = models.IntegerField(blank=True, null=True)
