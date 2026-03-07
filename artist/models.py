@@ -14,3 +14,22 @@ class Artist(models.Model):
     def __str__(self):
         manager = self.manager.username if self.manager else "Orphaned"
         return manager + ": " + self.name + "/" + self.bornOn.isoformat()
+    
+    # Method partially genearated with ChatGPT
+    def getSocials(self):
+        if not self.socials:
+            return []
+
+        socials = []
+        for url in self.socials.splitlines():
+            url = url.strip()
+            if not url:
+                continue
+            name = url.rstrip("/").split("/")[-1]  # last part of the URL
+            socials.append({
+                "url": url,
+                "name": name
+            })
+
+        return socials
+
