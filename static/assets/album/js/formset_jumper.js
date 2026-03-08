@@ -2,53 +2,57 @@
 const startingIndex = 2;
 const finalIndex = 12; 
 
+let currentTarget = startingIndex;
+
 const plusButton = document.getElementById("add-track-form");
 const minusButton = document.getElementById("remove-track-form");
 
 plusButton.addEventListener("click", () => updateTarget(true));
 minusButton.addEventListener("click", () => updateTarget(false));
 
-
 function updateTarget(isIncrease)
 {
+    let adjustedTarget = currentTarget;
     if (isIncrease)
     {
-        const targetAttribute = plusButton.getAttribute("data-bs-target").split('-');
-        let targetCount = increaseTargetCount(parseInt(targetAttribute[1]))
-        if (isInBounds(targetCount))
-        {
-            plusButton.setAttribute("data-bs-target", "#track-"+targetCount)
-        }
+        adjustedTarget++;
     }
 
     if (!isIncrease)
     {
-        const targetAttribute = minusButton.getAttribute("data-bs-target").split('-');
-        let targetCount = increaseTargetCount(parseInt(targetAttribute[1]))
-        if (isInBounds(targetCount))
-        {
-            minusButton.setAttribute("data-bs-target", "#track-"+targetCount)
-        }
+        adjustedTarget--;
     }
-}
 
-function decreaseTargetCount(targetCount)
-{
-    targetCount--;
-    return targetCount;
-}
+    if (isInBounds(adjustedTarget))
+    {
+        currentTarget = adjustedTarget;
+        if (currentTarget > finalIndex)
+        {
+            plusButton.classList.add("disabled");
+        }
+        else
+        {
+            plusButton.classList.remove("disabled");
+        }
+        plusButton.setAttribute("data-bs-target", "#track-" + currentTarget)
 
-function increaseTargetCount(targetCount)
-{    
-    targetCount++;
-    return targetCount;
+        if ((currentTarget - 1) < startingIndex)
+        {
+            minusButton.classList.add("disabled");
+        }
+        else
+        {
+            minusButton.classList.remove("disabled");
+        }
+        minusButton.setAttribute("data-bs-target", "#track-" + (currentTarget - 1))
+    }
 }
 
 function isInBounds(targetCount)
 {
-    if (targetCount >= startingIndex && targetCount <= finalIndex)
+    if (targetCount <= startingIndex && targetCount > (finalIndex+1))
     {
-        return true
+        return false
     }
-    return false
+    return true
 }
