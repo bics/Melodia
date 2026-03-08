@@ -1,6 +1,7 @@
 from django import forms
 from .models import Track
 from artist.models import Artist
+from django.forms import modelformset_factory
 
 class TrackCreationForm(forms.ModelForm):
     required_css_class = "required"
@@ -11,7 +12,7 @@ class TrackCreationForm(forms.ModelForm):
         widgets = {
             "name" : forms.TextInput(attrs={"class": "form-control"}),
             "position" : forms.NumberInput(attrs={"class": "form-control"}),
-            "featured_artist" : forms.SelectMultiple(attrs={"class": "form-control", "rows" : "5"}),
+            "featured_artist" : forms.SelectMultiple(attrs={"class": "form-control", "rows" : "5", "multiple": True}),
             "lyrics": forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
         }
 
@@ -20,3 +21,12 @@ class TrackCreationForm(forms.ModelForm):
         self.fields["name"].required = True
         # Queryselector generated using ChatGPT
         self.fields["featured_artist"].queryset = Artist.objects.order_by("name")
+
+
+# Formset generated using ChatGPT
+TrackFormSet = modelformset_factory(
+    Track,
+    form=TrackCreationForm,
+    extra=12,
+    max_num=12
+)

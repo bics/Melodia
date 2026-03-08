@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from artist.models import Artist
 from .models import Album
-from .forms import TrackCreationForm
+from .forms import TrackCreationForm, TrackFormSet
 from artist.forms import AlbumCreationForm
 
 # Create your views here.
@@ -30,14 +30,15 @@ def create_track(request, name, pk, artistPK):
     artist = Artist.objects.get(pk=artistPK)
 
     if request.method == "POST":
-        form = TrackCreationForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        formset = TrackFormSet(request.POST, request.FILES)
+
+        if formset.is_valid():
+            formset.save()
             messages.success(request, f"Track(s) created successfully for {album.name}")
             return redirect("artist", name=artist.name, pk=artist.pk)
         else:
             messages.success(request, ("There were some errors with some fields"))
     else:  
-        form = TrackCreationForm()
+        formset = TrackFormSet()
 
-    return render(request, 'create_track.html',  {'form' : form, 'album': album, 'artist': artist})
+    return render(request, 'create_track.html',  {'formset' : formset, 'album': album, 'artist': artist})
