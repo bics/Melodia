@@ -12,7 +12,7 @@ class TrackCreationForm(forms.ModelForm):
         widgets = {
             "name" : forms.TextInput(attrs={"class": "form-control"}),
             "position" : forms.NumberInput(attrs={"class": "form-control"}),
-            "featured_artist" : forms.SelectMultiple(attrs={"class": "form-control", "rows" : "5", "multiple": True}),
+            "featured_artist" : forms.SelectMultiple(attrs={"class": "form-select featured-artist-select", "rows" : "5", "multiple": True}),
             "lyrics": forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
         }
 

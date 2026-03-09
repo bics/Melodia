@@ -10,6 +10,8 @@ const minusButton = document.getElementById("remove-track-form");
 plusButton.addEventListener("click", () => updateTarget(true));
 minusButton.addEventListener("click", () => updateTarget(false));
 
+//TODO reset form when removed
+
 function updateTarget(isIncrease)
 {
     let adjustedTarget = currentTarget;

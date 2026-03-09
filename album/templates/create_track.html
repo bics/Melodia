@@ -20,18 +20,18 @@
 
             {% for form in formset %}
             <div class="collapse {% if forloop.first %}show{% endif %}" id="track-{{ forloop.counter }}">
-                <div class="card card-body mb-3">
+                <div class="card card-body mb-3 border-platinum graphite-background">
                     {{ form.as_p }}
                 </div>
             </div>
             {% endfor %}
 
-            <button type="button" id="remove-track-form" class="btn btn-danger mb-3 disabled" data-bs-toggle="collapse" data-bs-target="#track-1">-</button>
-            <button type="button" id="add-track-form" class="btn btn-success mb-3" data-bs-toggle="collapse" data-bs-target="#track-2">+</button>
+            <button type="button" id="remove-track-form" class="btn btn-danger mb-3 disabled rounded-circle" data-bs-toggle="collapse" data-bs-target="#track-1">-</button>
+            <button type="button" id="add-track-form" class="btn btn-success mb-3 rounded-circle" data-bs-toggle="collapse" data-bs-target="#track-2">+</button>
 
             <div class="d-flex justify-content-around">
-                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3">Back</a>
-                <button type="submit" class="btn btn-success mb-3">Create</button>
+                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3 navigation-button">Back</a>
+                <button type="submit" class="btn btn-success mb-3 navigation-button">Create</button>
             </div>
         </form>
     </div>
