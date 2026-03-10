@@ -1,11 +1,13 @@
 
 const startingIndex = 2;
 const finalIndex = 12; 
+const selectDivNames = "featured_artist_collapse-";
 
 let currentTarget = startingIndex;
 
 const plusButton = document.getElementById("add-track-form");
 const minusButton = document.getElementById("remove-track-form");
+const selectedArtistList = document.getElementById("selected-artists-list");
 
 plusButton.addEventListener("click", () => updateTarget(true));
 minusButton.addEventListener("click", () => updateTarget(false));
@@ -57,4 +59,9 @@ function isInBounds(targetCount)
         return false
     }
     return true
+}
+
+function updateSelectedList()
+{
+    //const selectedOptions = selectedArtistList.
 }

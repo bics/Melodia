@@ -30,9 +30,17 @@
                     </p>            
             
                     <p>
-                        {{ form.featured_artist.label_tag}}
-                        {{ form.featured_artist}}
-                    </p>            
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#featured_artist_collapse-{{forloop.counter}}">{{ form.featured_artist.label_tag}}</button>
+                    
+                        <div class="collapse" id="featured_artist_collapse-{{forloop.counter}}">
+                            {{ form.featured_artist}}
+                        </div>
+                        <div id="selected-artists-div">
+                            <ul class="list-group list-group-flush" id="selected-artists-list"></ul>
+                            </ul>
+                        </div>
+                    </p>
             
                     <p>
                         {{ form.lyrics.label_tag}}
