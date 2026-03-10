@@ -15,7 +15,7 @@ class Track(models.Model):
     name = models.CharField(max_length=255)
     position = models.IntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
-    length = models.IntegerField()
+    length = models.IntegerField(blank=True, null=True)
     rating = models.FloatField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="tracks")
