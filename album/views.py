@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from artist.models import Artist
-from .models import Album
+from .models import Album, Track
 from .forms import TrackCreationForm, TrackFormSet
 from artist.forms import AlbumCreationForm
 
@@ -30,22 +30,29 @@ def create_track(request, name, pk, artistPK):
     artist = Artist.objects.get(pk=artistPK)
 
     if request.method == "POST":
-        formset = TrackFormSet(request.POST, request.FILES)
+        formset = TrackFormSet(request.POST, request.FILES, queryset=Track.objects.none())
 
         #Formset save partially generated using ChatGPT
         if formset.is_valid():
-            tracks = formset.save(commit=False)
+            savedTracks = 0
 
-            for track in tracks:
-                track.artist = artist
-                track.album = album
-                track.save()
+            for form in formset:
+                if form.cleaned_data.get("name"):   # skip empty forms
+                    track = form.save(commit=False)
+                    track.artist = artist
+                    track.album = album
+                    track.save()
+                    savedTracks += 1
 
-            messages.success(request, f"Track(s) created successfully for {album.name}")
-            return redirect("artist", name=artist.name, pk=artist.pk)
+            if savedTracks > 0:
+                messages.success(request, f"Track(s) created successfully for {album.name}")
+                return redirect("artist", name=artist.name, pk=artist.pk)
+            else:
+                messages.success(request, f"No Track(s) created for {album.name}")
+                return redirect("artist", name=artist.name, pk=artist.pk)
         else:
             messages.success(request, ("There were some errors with some fields"))
     else:  
-        formset = TrackFormSet()
+        formset = TrackFormSet(queryset=Track.objects.none())
 
     return render(request, 'create_track.html',  {'formset' : formset, 'album': album, 'artist': artist})
