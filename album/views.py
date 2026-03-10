@@ -32,8 +32,15 @@ def create_track(request, name, pk, artistPK):
     if request.method == "POST":
         formset = TrackFormSet(request.POST, request.FILES)
 
+        #Formset save partially generated using ChatGPT
         if formset.is_valid():
-            formset.save()
+            tracks = formset.save(commit=False)
+
+            for track in tracks:
+                track.artist = artist
+                track.album = album
+                track.save()
+
             messages.success(request, f"Track(s) created successfully for {album.name}")
             return redirect("artist", name=artist.name, pk=artist.pk)
         else:
