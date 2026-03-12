@@ -105,7 +105,10 @@ function updateSelectedList(index)
     selectedItems.forEach(item =>
     {
         let liElement = document.createElement("li");
-        const textNode = document.createTextNode(item.text);
+        const textNode = document.createTextNode("feat " + item.text);
+        liElement.classList.add("list-group-item");
+        liElement.classList.add("graphite-background");
+        liElement.classList.add("color-platinum");
         liElement.appendChild(textNode);
         selectList.appendChild(liElement);
     });
