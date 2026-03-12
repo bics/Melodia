@@ -12,11 +12,10 @@ const selectedArtistList = document.getElementById("selected-artists-list");
 plusButton.addEventListener("click", () => updateTarget(true));
 minusButton.addEventListener("click", () => updateTarget(false));
 
-//TODO reset form when removed
-
 function updateTarget(isIncrease)
 {
     let adjustedTarget = currentTarget;
+    let removing = false;
     if (isIncrease)
     {
         adjustedTarget++;
@@ -25,6 +24,7 @@ function updateTarget(isIncrease)
     if (!isIncrease)
     {
         adjustedTarget--;
+        removing = true;
     }
 
     if (isInBounds(adjustedTarget))
@@ -49,6 +49,23 @@ function updateTarget(isIncrease)
             minusButton.classList.remove("disabled");
         }
         minusButton.setAttribute("data-bs-target", "#track-" + (currentTarget - 1))
+
+        if (removing)
+        {
+            //Reset logic generated using ChatGPT
+            const track = document.querySelector("#track-" + currentTarget);
+            console.log(track);
+
+            track.querySelectorAll("input, textarea, select").forEach(el =>
+            {
+            console.log(el.value);
+                el.value = "";
+            });
+            track.querySelectorAll("select").forEach(select =>
+            {
+                Array.from(select.options).forEach(option => option.selected = false);
+            });
+        }
     }
 }
 
