@@ -31,14 +31,13 @@
             
                     <p>
                         <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#featured_artist_collapse-{{forloop.counter}}">{{ form.featured_artist.label_tag}}</button>
+                            data-bs-target="#featured_artist_collapse-{{forloop.counter0}}">{{ form.featured_artist.label_tag}}</button>
                     
-                        <div class="collapse" id="featured_artist_collapse-{{forloop.counter}}">
+                        <div class="collapse" id="featured_artist_collapse-{{forloop.counter0}}">
                             {{ form.featured_artist}}
                         </div>
-                        <div id="selected-artists-div-{{forloop.counter}}">
-                            <ul class="list-group list-group-flush" id="selected-artists-list"></ul>
-                            </ul>
+                        <div id="selected-artists-div-{{forloop.counter0}}">
+                            <ul class="list-group list-group-flush" id="selected-artists-list-{{forloop.counter0}}"></ul>
                         </div>
                     </p>
             

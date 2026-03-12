@@ -1,17 +1,25 @@
 
 const startingIndex = 2;
 const finalIndex = 12; 
-const selectDivNames = "featured_artist_collapse-";
+//Naming convention for collapse and list below
+const selectDivName = "featured_artist_collapse-";
+const selectListDivName = "selected-artists-list-";
 
 let currentTarget = startingIndex;
+//List to actual elements (might be confusing)
+let selectDivList = [];
+let selectListDivList = [];
 
 const plusButton = document.getElementById("add-track-form");
 const minusButton = document.getElementById("remove-track-form");
-const selectedArtistList = document.getElementById("selected-artists-list");
+
+//Get all select and list element
+window.onload = getAllFeaturedElements;
 
 plusButton.addEventListener("click", () => updateTarget(true));
 minusButton.addEventListener("click", () => updateTarget(false));
 
+//Logic for adding/removing forms
 function updateTarget(isIncrease)
 {
     let adjustedTarget = currentTarget;
@@ -54,11 +62,9 @@ function updateTarget(isIncrease)
         {
             //Reset logic generated using ChatGPT
             const track = document.querySelector("#track-" + currentTarget);
-            console.log(track);
 
             track.querySelectorAll("input, textarea, select").forEach(el =>
             {
-            console.log(el.value);
                 el.value = "";
             });
             track.querySelectorAll("select").forEach(select =>
@@ -78,7 +84,40 @@ function isInBounds(targetCount)
     return true
 }
 
-function updateSelectedList()
+function updateSelectedList(index)
 {
-    //const selectedOptions = selectedArtistList.
+    //Extracting selected option partially generated using ChatGPT
+    const select = selectDivList[index].querySelector("select");
+
+    let selectedItems = [];
+
+    select.querySelectorAll("option").forEach(option => {
+        if (option.selected)
+        {
+            selectedItems.push(option);
+        }
+    });
+
+    const selectList = selectListDivList[index];
+
+    selectList.innerHTML = "";
+
+    selectedItems.forEach(item =>
+    {
+        let liElement = document.createElement("li");
+        const textNode = document.createTextNode(item.text);
+        liElement.appendChild(textNode);
+        selectList.appendChild(liElement);
+    });
+}
+
+//Get all featured elements + add listeners to them
+function getAllFeaturedElements()
+{
+    for (let i = 0; i < finalIndex; i++)
+    {
+        selectDivList.push(document.getElementById(selectDivName + i));
+        selectDivList[i].querySelector("select").addEventListener("change", () => updateSelectedList(i));
+        selectListDivList.push(document.getElementById(selectListDivName + i));        
+    }
 }
