@@ -13,7 +13,33 @@
         <form method="POST">
             {% csrf_token %}
             <div>
-                {{ form.as_p }}
+                <p>
+                    {{ form.name.label_tag}}
+                    {{ form.name}}
+                </p>
+
+                <p>
+                    {{ form.image.label_tag}}
+                    {{ form.image}}
+                    {{form.image.help_text}}
+                </p>
+
+
+                <p>
+                    {{ form.description.label_tag}}
+                    {{ form.description}}
+                </p>
+
+
+                <p>
+                    {{ form.bornOn.label_tag}}
+                    {{ form.bornOn}}
+                </p>
+                <p>
+                    {{ form.socials.label_tag}}
+                    {{ form.socials}}
+                    {{form.socials.help_text}}
+                </p>
 
                 <div class="spacer m-3">
                     <hr class="color-platinum line-break full-length">
