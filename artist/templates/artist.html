@@ -94,34 +94,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="slightly-darker-graphite-background">
-                                <td>Place</td>
-                                <td>Place</td>
+                            {% for track in album.tracks.all %}
+                            <tr class="{% cycle 'slightly-darker-graphite-background' '' %}">
+                                <td>
+                                    <audio controls>
+                                        <source src="{% static 'assets/tracks/Paramore_ Hard Times OFFICIAL VIDEO.mp3' %}" type="audio/mpeg">
+                                    </audio>
+                                </td>
+                                <td>{{track.name}}</td>
                                 <td>{{album.name}}</td>
                                 <td>Place</td>
                                 <td>Place</td>
                             </tr>
-                            <tr>
-                                <td>Place</td>
-                                <td>Place</td>
-                                <td>{{album.name}}</td>
-                                <td>Place</td>
-                                <td>Place</td>
-                            </tr>
-                            <tr class="slightly-darker-graphite-background">
-                                <td>Place</td>
-                                <td>Place</td>
-                                <td>{{album.name}}</td>
-                                <td>Place</td>
-                                <td>Place</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 {% if artist.manager == user %}
                 <div class="text-center">
-                    <a href="{% url 'edit_album' album.name album.id artist.id %}" class="btn btn-warning mt-3">Edit Album</a>
-                    <a href="{% url 'create_track' album.name album.id artist.id %}" class="btn btn-warning mt-3">Add Tracks</a>
+                    <a href="{% url 'edit_album' album.name album.id artist.id %}" class="btn btn-warning mt-3">Edit
+                        Album</a>
+                    <a href="{% url 'create_track' album.name album.id artist.id %}" class="btn btn-warning mt-3">Add
+                        Tracks</a>
                 </div>
                 {% endif %}
             </div>
