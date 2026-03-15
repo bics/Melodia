@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Artist
 from album.models import Album
-from .forms import AlbumCreationForm
+from .forms import AlbumCreationForm, EditArtistForm
 
 # Create your views here.
 def artist(request, name, pk):
@@ -31,4 +31,17 @@ def create_album(request, name, pk):
     return render(request, 'create_album.html', {'form' : form, 'artist': artist})
 
 def edit_artist(request, name, pk):
-    return render(request, "edit_artist.html")
+    artist = Artist.objects.get(pk=pk)
+    if request.method == "POST":
+        form = EditArtistForm(request.POST, request.FILES, instance=artist)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Details have been updated.")
+            return redirect("edit_artist", name= artist.name, pk=artist.pk)
+        else:
+            messages.success(request, ("There were some errors with some fields"))
+    else:  
+        form = EditArtistForm(instance=artist)      
+    
+    form = EditArtistForm(instance=artist)
+    return render(request, "edit_artist.html", {"form" : form})

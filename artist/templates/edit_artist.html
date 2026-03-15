@@ -4,6 +4,30 @@
 {% block main %}
 <div class="spacer m-3"></div>
 
+<div class="container d-flex justify-content-center">
+    <div class="middle-form slightly-darker-graphite-background rounded text-center p-3">
+        <h3>Change Details</h3>
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break full-length">
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                {{ form.as_p }}
 
+                <div class="spacer m-3">
+                    <hr class="color-platinum line-break full-length">
+                </div>
+
+                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3">Back</a>
+                <button type="submit" class="btn btn-success mb-2">Update Details</button>
+
+                <div class="spacer m-3">
+                    <hr class="color-platinum line-break full-length">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
