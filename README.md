@@ -49,3 +49,9 @@ Code:
 * paramore-brand-new-eyes from [Spotify](https://i.scdn.co/image/ab67616d0000b273e01d7d558032457b0e4883f6)
 
 * paramore-after-laughter from [Society6 Blog -](https://blog.society6.com/app/uploads/2017/05/Paramore-After-Laughter-2017-2480x2480.jpg)
+
+* play-button by [Harryarts](https://www.freepik.com/free-vector/shiny-play-button_840752.htm#fromView=search&page=2&position=2&uuid=d7ab2319-57b8-48a0-8a6c-0f119212bfac&query=play)
+
+* button-set by [juicy_fish](https://www.freepik.com/free-vector/multimedia-buttons-cartoon-style_417881887.htm#fromView=search&page=1&position=22&uuid=c850db0d-cdaf-499e-b251-fc2edcdd8e09&query=pause+button)
+
+* pause-button by [rawpixel.com](https://www.freepik.com/free-vector/stop-button_2900766.htm#fromView=search&page=1&position=3&uuid=c850db0d-cdaf-499e-b251-fc2edcdd8e09&query=pause+button)
