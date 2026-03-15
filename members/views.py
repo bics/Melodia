@@ -24,7 +24,7 @@ def account(request):
     return render(request, "account.html", {"form": form})
 
 def manage(request):
-    managed_artists = Artist.objects.filter(manager=request.user)
+    managed_artists = Artist.objects.filter(manager=request.user).order_by('name')
     return render(request, 'manage.html', {'managed_artists' : managed_artists})
 
 def create_artist(request):
