@@ -44,4 +44,4 @@ def edit_artist(request, name, pk):
         form = EditArtistForm(instance=artist)      
     
     form = EditArtistForm(instance=artist)
-    return render(request, "edit_artist.html", {"form" : form})
+    return render(request, "edit_artist.html", {"form" : form, 'artist': artist})
