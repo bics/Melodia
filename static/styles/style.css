@@ -100,6 +100,13 @@ nav a{
 
 }
 
+.audio-control-button{
+    border-radius: 50%;
+    object-fit: cover;
+    height: 3vh;
+    width: 3vh;
+}
+
 /* Snippet taken from ChatGPT*/
 label.required::after {
     content: " *";

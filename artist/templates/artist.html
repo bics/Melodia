@@ -109,9 +109,9 @@
                             {% for track in album.tracks.all %}
                             <tr class="{% cycle 'slightly-darker-graphite-background' '' %}">
                                 <td>
-                                    <audio controls>
-                                        <source src="{% static 'assets/tracks/Paramore_ Hard Times OFFICIAL VIDEO.mp3' %}" type="audio/mpeg">
-                                    </audio>
+                                    <!--TODO return track url once implemented-->
+                                    <img class="audio-control-button" src="{% static 'assets/images/play-button.jpg' %}" alt="Play track button"
+                                    data-track="{{ track.name }}" data-track-position="{{ track.position }}">
                                 </td>
                                 <td>{{track.name}}</td>
                                 <td>{{album.name}}</td>
@@ -144,4 +144,8 @@
 </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/album/js/artist_audio_player.js' %}"></script>
 {% endblock %}
