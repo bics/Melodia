@@ -29,3 +29,6 @@ def create_album(request, name, pk):
         form = AlbumCreationForm()
 
     return render(request, 'create_album.html', {'form' : form, 'artist': artist})
+
+def edit_artist(request, name, pk):
+    return render(request, "edit_artist.html")
