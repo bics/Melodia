@@ -1,14 +1,18 @@
 
+const audioPlayer = document.getElementById("artist-audio-player");
 const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const currentlyPlayingHeader = document.getElementById("currently-playing-header");
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
 
 //Function partially generated using ChatGPT
+//Attach click function for each play button
 play_buttons.forEach(button =>
 {
     button.addEventListener('click', playTrack)
 });
+
+audioPlayer.addEventListener("ended", playNextTrack);
 
 //<img class="audio-control-button" 
 // id="audio-control-button-{{album.id}}-{{forloop.counter0}}" 
@@ -20,11 +24,15 @@ play_buttons.forEach(button =>
 function playTrack(event)
 {
     const element = event.currentTarget;
-
     
     mp3AudioPlayerSource.src = element.dataset.trackUrl;
     currentlyPlayingHeader.innerText = "Currently playing: " + element.dataset.track;
     nextPlayingHeader.innerHTML = "Next: " + getNextTrack(element.id);
+}
+
+function playNextTrack()
+{
+    console.log("no next yet lol");
 }
 
 function getNextTrack(currentIDString)
