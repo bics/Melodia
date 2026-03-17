@@ -1,5 +1,5 @@
 
-const audioPlayer = document.getElementById("mp3-audio-source")
+const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const play_buttons = document.querySelectorAll('.audio-control-button');
 
 //Function generated using ChatGPT
