@@ -111,7 +111,7 @@
                                 <td>
                                     <!--TODO return track url once implemented-->
                                     <img class="audio-control-button" id="audio-control-button-{{album.id}}-{{forloop.counter0}}" src="{% static 'assets/images/play_button_small.png' %}" alt="Play track button"
-                                    data-track="{{ track.name }}" data-track-position="{{ track.position }}">
+                                    data-track="{{ track.name }}" data-track-position="{{ track.position }}" data-track-url="{{ track.url }}">
                                 </td>
                                 <td>{{track.name}}</td>
                                 <td>{{album.name}}</td>

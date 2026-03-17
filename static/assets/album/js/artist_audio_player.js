@@ -19,10 +19,12 @@ play_buttons.forEach(button =>
 
 function playTrack(event)
 {
-    const el = event.currentTarget;
+    const element = event.currentTarget;
 
-    currentlyPlayingHeader.innerText = "Currently playing: " + el.dataset.track;
-    nextPlayingHeader.innerHTML = "Next: " + getNextTrack(el.id);
+    
+    mp3AudioPlayerSource.src = element.dataset.trackUrl;
+    currentlyPlayingHeader.innerText = "Currently playing: " + element.dataset.track;
+    nextPlayingHeader.innerHTML = "Next: " + getNextTrack(element.id);
 }
 
 function getNextTrack(currentIDString)
