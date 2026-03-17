@@ -110,7 +110,7 @@
                             <tr class="{% cycle 'slightly-darker-graphite-background' '' %}">
                                 <td>
                                     <!--TODO return track url once implemented-->
-                                    <img class="audio-control-button" src="{% static 'assets/images/play-button.jpg' %}" alt="Play track button"
+                                    <img class="audio-control-button" id="audio-control-button-{{album.id}}-{{forloop.counter0}}" src="{% static 'assets/images/play_button_small.png' %}" alt="Play track button"
                                     data-track="{{ track.name }}" data-track-position="{{ track.position }}">
                                 </td>
                                 <td>{{track.name}}</td>
