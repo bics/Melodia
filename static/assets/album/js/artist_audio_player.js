@@ -33,5 +33,11 @@ function getNextTrack(currentIDString)
 
     const nextTrackButton = document.getElementById("audio-control-button-" + currentAlbumIndex + "-" + (currentTrackIndex + 1));
 
+    if (!nextTrackButton)
+    {
+        const firstTrackButton = document.getElementById("audio-control-button-" + currentAlbumIndex + "-0");
+        return firstTrackButton.dataset.track;
+    }
+
     return nextTrackButton.dataset.track;
 }
