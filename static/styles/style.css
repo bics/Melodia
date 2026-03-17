@@ -105,6 +105,7 @@ nav a{
     object-fit: cover;
     height: 3vh;
     width: 3vh;
+    cursor: pointer;
 }
 
 /* Snippet taken from ChatGPT*/
