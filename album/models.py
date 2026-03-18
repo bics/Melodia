@@ -11,6 +11,9 @@ class Album(models.Model):
     rating = models.FloatField(blank=True, null=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="albums")
 
+    def __str__(self):
+        return self.name
+
 class Track(models.Model):
     name = models.CharField(max_length=255)
     position = models.IntegerField(blank=True, null=True)
@@ -20,3 +23,6 @@ class Track(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="tracks")
     featured_artist = models.ManyToManyField(Artist, blank=True, related_name="feat")
+
+    def __str__(self):
+        return self.name
