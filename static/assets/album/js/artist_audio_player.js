@@ -5,6 +5,9 @@ const currentlyPlayingHeader = document.getElementById("currently-playing-header
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
 
+let currentlyPlayingNode;
+let nextPlayingNode;
+
 //Function partially generated using ChatGPT
 //Attach click function for each play button
 play_buttons.forEach(button =>
@@ -24,15 +27,26 @@ audioPlayer.addEventListener("ended", playNextTrack);
 function playTrack(event)
 {
     const element = event.currentTarget;
+    currentlyPlayingNode = element;
+    nextPlayingNode = getNextTrack(element.id);
+    audioPlayer.load();
+    audioPlayer.play();
     
     mp3AudioPlayerSource.src = element.dataset.trackUrl;
-    currentlyPlayingHeader.innerText = "Currently playing: " + element.dataset.track;
-    nextPlayingHeader.innerHTML = "Next: " + getNextTrack(element.id);
+    updateUI(element.dataset.track, nextPlayingNode.dataset.track);
 }
 
 function playNextTrack()
 {
-    console.log("no next yet lol");
+    if (nextPlayingNode)
+    {
+        mp3AudioPlayerSource.src = nextPlayingNode.dataset.trackUrl;
+        audioPlayer.load();
+        audioPlayer.play();
+        currentlyPlayingNode = nextPlayingNode;
+        nextPlayingNode = getNextTrack(currentlyPlayingNode.id);        
+        updateUI(currentlyPlayingNode.dataset.track, nextPlayingNode.dataset.track);
+    }
 }
 
 function getNextTrack(currentIDString)
@@ -46,8 +60,14 @@ function getNextTrack(currentIDString)
     if (!nextTrackButton)
     {
         const firstTrackButton = document.getElementById("audio-control-button-" + currentAlbumIndex + "-0");
-        return firstTrackButton.dataset.track;
+        return firstTrackButton;
     }
 
-    return nextTrackButton.dataset.track;
+    return nextTrackButton;
+}
+
+function updateUI(currentlyPlayingTrack, nextPlayingTrack)
+{
+    currentlyPlayingHeader.innerText = "Currently playing: " + currentlyPlayingTrack;
+    nextPlayingHeader.innerText = "Next: " + nextPlayingTrack;
 }
