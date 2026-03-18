@@ -9,7 +9,6 @@
 <div class="spacer m-3"></div>
 
 <div class="container">
-    <!-- TODO update to get data from DB-->
     <!-- TODO video background?-->
     <div class="container" id="artist-banner">
         {% if artist.banner %}
@@ -66,18 +65,20 @@
     <hr class="color-platinum line-break">
 </div>
 
+
 <div class="text-center hidden" id="artist-audio-player-div">
-    <h5 id="currently-playing-header">Currently playing: Hard times</h5>
+    <h5 id="currently-playing-header"></h5>
     <audio id="artist-audio-player" controls>
-        <source id="mp3-audio-source" src="{% static 'assets/tracks/Paramore_ Hard Times OFFICIAL VIDEO.mp3' %}"
+        <source id="mp3-audio-source" src=""
             type="audio/mpeg">
     </audio>
-    <h6 id="next-playing-header">Next: Not hard times</h6>
+    <h6 id="next-playing-header"></h6>
     <div class="spacer m-3">
         <hr class="color-platinum line-break">
     </div>
 </div>
 
+<!--TODO finish table-->
 <div class="container">
     <h5 class="text-center">Albums</h5>
     <div class="row justify-content-center">
@@ -117,7 +118,6 @@
                             {% for track in album.tracks.all %}
                             <tr class="{% cycle 'slightly-darker-graphite-background' '' %}">
                                 <td>
-                                    <!--TODO return track url once implemented-->
                                     <img class="audio-control-button"
                                         id="audio-control-button-{{album.id}}-{{forloop.counter0}}"
                                         src="{% static 'assets/images/play_button_small.png' %}" alt="Play track button"
