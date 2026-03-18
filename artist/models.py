@@ -1,10 +1,10 @@
 from django.db import models
+from django.utils.text import slugify
 from members.models import MelodiaUser
 
 # Create your models here.
 class Artist(models.Model):
     name = models.CharField(max_length=255)
-    image = models.ImageField(blank=True, null=True, upload_to="melodia/artist_images/")
     description = models.TextField(blank=True, null=True)
     bornOn = models.DateField()
     socials = models.TextField(blank=True, null=True)
@@ -33,3 +33,11 @@ class Artist(models.Model):
 
         return socials
 
+    #File upload path partially generated using ChatGPT
+    def imageFileUpload(self, filename):
+        safe_name = slugify(self.name)
+        return f"melodia/artist_images/{safe_name}/{filename}"
+    
+    
+    image = models.ImageField(blank=True, null=True, upload_to=imageFileUpload)
+    banner = models.ImageField(blank=True, null=True, upload_to=imageFileUpload)
