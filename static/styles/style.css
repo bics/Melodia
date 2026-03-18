@@ -108,6 +108,10 @@ nav a{
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Snippet taken from ChatGPT*/
 label.required::after {
     content: " *";

@@ -4,6 +4,7 @@ const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const currentlyPlayingHeader = document.getElementById("currently-playing-header");
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
+const audioPlayerDiv = document.getElementById("artist-audio-player-div");
 
 let currentlyPlayingNode;
 let nextPlayingNode;
@@ -26,10 +27,10 @@ audioPlayer.addEventListener("ended", playNextTrack);
 
 function playTrack(event)
 {
+    audioPlayerDiv.classList.remove("hidden");
     const element = event.currentTarget;
     currentlyPlayingNode = element;
     nextPlayingNode = getNextTrack(element.id);
-    audioPlayer.load();
     audioPlayer.play();
     
     mp3AudioPlayerSource.src = element.dataset.trackUrl;
