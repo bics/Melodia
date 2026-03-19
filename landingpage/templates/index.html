@@ -21,7 +21,6 @@ Melodia
             {% endfor %}
         </div>
         <div class="carousel-inner">
-            <!--TODO refactor to get suggestions from DB-->
             {% for artist in artists|slice:":5" %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <div class="carousel-image-container">
@@ -102,7 +101,6 @@ Melodia
 <div class="container">
     <h1 class="text-center">Discover</h1>
     <div class="row justify-content-center">
-        <!--TODO generate cards from DB-->
         <!--Card code block copied from Bootsrap's official documentation-->
         {% for artist in artists %}
         <!--Card code block copied from Bootsrap's official documentation-->
