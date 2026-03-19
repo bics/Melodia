@@ -36,7 +36,9 @@
             <div class="container">
                 <div class="d-flex justify-content-between">
                     <h2 class="ps-3">{{artist.name}}</h2>
+                    {% if artist.manager == user %}
                     <a href="{% url 'edit_artist' artist.name artist.id %}" class="btn btn-warning mb-3">Edit</a>
+                    {% endif %}
                 </div>
                 <div class="spacer mb-3">
                     <hr class="color-platinum line-break full-length">
