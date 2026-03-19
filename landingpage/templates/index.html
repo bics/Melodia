@@ -113,18 +113,28 @@ Melodia
 <div class="spacer m-3">
     <hr class="color-platinum line-break">
 </div>
-
-<div class="container">    
+<div class="container">
     <h1 class="text-center">Discover</h1>
-    <!--TODO generate cards from DB-->
-    <!--Card code block copied from Bootsrap's official documentation-->
-    <div class="card small-artist-card">
-        <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top" alt="...">
-        <a href="">
-            <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
-                <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">Artist name</h6>
+    <div class="row justify-content-center">
+        <!--TODO generate cards from DB-->
+        <!--Card code block copied from Bootsrap's official documentation-->
+        {% for artist in artists %}
+        <!--Card code block copied from Bootsrap's official documentation-->
+        <div class="mx-1 mb-3 col-6 col-md-4 col-xl-2">
+            <div class="card small-artist-card ">
+                {% if artist.image %}
+                <img src="{{artist.image}}" class="card-img-top" alt="...">
+                {% else %}
+                <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top" alt="...">
+                {% endif %}
+                <a href="{% url 'artist' artist.name artist.id %}">
+                    <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
+                        <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{artist.name}}</h6>
+                    </div>
+                </a>
             </div>
-        </a>
+        </div>
+        {% endfor %}
     </div>
 </div>
 
