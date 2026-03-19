@@ -1,0 +1,1 @@
+web: gunicorn melodia.wsgi:application
