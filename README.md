@@ -22,6 +22,8 @@ Artist update view decorator was generated using ChatGPT
 
 CreateArtistForm helptext update copied from previous CoffeeHouse project
 
+Whitenoise middleware addon copied from W3Schools
+
 Code:
 
 * Social urlization generated using ChatGPT for artists socials

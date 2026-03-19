@@ -59,6 +59,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "allauth.account.middleware.AccountMiddleware",
+    # Snippet taken from W3Dschools
+    # https://www.w3schools.com/django/django_static_whitenoise.php
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'melodia.urls'
