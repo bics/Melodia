@@ -26,6 +26,12 @@ Edit Album
             
             <p>
                 {{ form.image.label_tag}}
+                {% if album.image %}
+                    <br>
+                    <img src="{{album.image.url}}" class="artist-image-update my-3" alt="">
+                    {% else %}
+                    <h5>No image uploaded yet.</h5>
+                    {% endif %}
                 {{ form.image}}
                 {{form.image.help_text}}
             </p>
