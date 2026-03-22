@@ -4,6 +4,8 @@ from artist.models import Artist
 from .models import Album, Track
 from .forms import TrackCreationForm, TrackFormSet
 from artist.forms import AlbumCreationForm
+import cloudinary.uploader
+from django.utils.text import slugify
 
 # Create your views here.
 def edit_album(request, name, pk, artistPK):
@@ -41,6 +43,18 @@ def create_track(request, name, pk, artistPK):
                     track = form.save(commit=False)
                     track.artist = artist
                     track.album = album
+
+                    # Audio upload generated using ChatGPT
+                    mp3_file = form.cleaned_data.get("track")
+                    if mp3_file:
+                        upload_result = cloudinary.uploader.upload(
+                            mp3_file,
+                            resource_type="raw",   # important!
+                            folder=f"melodia/artist_audios/{slugify(artist.name)}/{slugify(album.name)}"
+                        )
+                        # Save the Cloudinary URL in the model
+                        track.track = upload_result["secure_url"]
+
                     track.save()
                     savedTracks += 1
 

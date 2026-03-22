@@ -31,9 +31,10 @@ function playTrack(event)
     const element = event.currentTarget;
     currentlyPlayingNode = element;
     nextPlayingNode = getNextTrack(element.id);
-    audioPlayer.play();
     
     mp3AudioPlayerSource.src = element.dataset.trackUrl;
+    audioPlayer.load();    
+    audioPlayer.play();
     updateUI(element.dataset.track, nextPlayingNode.dataset.track);
 }
 

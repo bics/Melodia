@@ -7,13 +7,14 @@ class TrackCreationForm(forms.ModelForm):
     required_css_class = "required"
     class Meta:
         model = Track
-        fields = ("name", "position", "featured_artist", "lyrics")
+        fields = ("name", "position", "featured_artist", "lyrics", "track")
 
         widgets = {
             "name" : forms.TextInput(attrs={"class": "form-control"}),
             "position" : forms.NumberInput(attrs={"class": "form-control"}),
             "featured_artist" : forms.SelectMultiple(attrs={"class": "form-select featured-artist-select", "rows" : "5", "multiple": True}),
-            "lyrics": forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
+            "lyrics": forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),            
+            "track" : forms.FileInput(attrs={"class": "form-control", "accept": ".mp3,audio/mpeg"}),
         }
 
     def __init__(self, *args, **kwargs):
