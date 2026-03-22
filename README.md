@@ -24,6 +24,8 @@ CreateArtistForm helptext update copied from previous CoffeeHouse project
 
 Whitenoise middleware addon copied from W3Schools
 
+Cloudinary settings copied from previous CoffeeHouse project
+
 Code:
 
 * Social urlization generated using ChatGPT for artists socials
