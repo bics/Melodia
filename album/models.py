@@ -1,6 +1,13 @@
 from django.db import models
 from artist.models import Artist
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
+
+# Helper methods
+def audioFileUpload(self, filename):
+    safe_artist = slugify(self.artist.name)
+    safe_album = slugify(self.album.name)
+    return f"melodia/artist_audios/{safe_artist}/{safe_album}/{filename}"
 
 # Create your models here.
 class Album(models.Model):
@@ -15,14 +22,15 @@ class Album(models.Model):
         return self.name
     
     def imageFileUpload(self, filename):
-        safe_name = slugify(self.artist.name)
-        return f"melodia/artist_images/{safe_name}/{filename}"
+        safe_artist = slugify(self.artist.name)
+        return f"melodia/artist_images/{safe_artist}/{filename}"
     
     
     image = models.ImageField(blank=True, null=True, upload_to=imageFileUpload)
 
 class Track(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)    
+    track = models.FileField(blank=True, null=True, upload_to=audioFileUpload)
     position = models.IntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
     length = models.IntegerField(blank=True, null=True)
@@ -33,3 +41,4 @@ class Track(models.Model):
 
     def __str__(self):
         return self.name
+
