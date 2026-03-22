@@ -15,7 +15,7 @@ class Album(models.Model):
         return self.name
     
     def imageFileUpload(self, filename):
-        safe_name = slugify(self.name)
+        safe_name = slugify(self.artist.name)
         return f"melodia/artist_images/{safe_name}/{filename}"
     
     
