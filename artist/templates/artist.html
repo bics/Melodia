@@ -89,7 +89,7 @@
         <div class="mx-1 mb-3 col-6 col-md-4 col-xl-2">
             <div class="card small-artist-card ">
                 {% if album.image %}
-                <img src="{{album.image}}" class="card-img-top" alt="...">
+                <img src="{{album.image.url }}" class="card-img-top small-img-cover" alt="...">
                 {% else %}
                 <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="artist-image" alt="">
                 {% endif %}
