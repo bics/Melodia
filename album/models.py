@@ -1,10 +1,10 @@
 from django.db import models
 from artist.models import Artist
+from django.utils.text import slugify
 
 # Create your models here.
 class Album(models.Model):
     name = models.CharField(max_length=255)
-    image = models.CharField(blank=True, null=True, max_length=255)
     description = models.TextField(blank=True, null=True)
     released = models.DateField()
     length = models.IntegerField(blank=True, null=True)
@@ -13,6 +13,13 @@ class Album(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def imageFileUpload(self, filename):
+        safe_name = slugify(self.name)
+        return f"melodia/artist_images/{safe_name}/{filename}"
+    
+    
+    image = models.ImageField(blank=True, null=True, upload_to=imageFileUpload)
 
 class Track(models.Model):
     name = models.CharField(max_length=255)
