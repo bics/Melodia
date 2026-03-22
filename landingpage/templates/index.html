@@ -25,12 +25,12 @@ Melodia
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
                 <div class="carousel-image-container">
                     {% if artist.banner %}
-                    <img src="{{artist.banner}}" class="d-block w-100" alt="...">
+                    <img src="{{artist.banner.url}}" class="d-block w-100" alt="...">
                 {% else %}
                     <img src="{% static 'assets/images/vinyl_disc.jpg' %}" class="d-block w-100" alt="...">
                 {% endif %}
                 </div>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block slider-front-element">
                     <h5>{{artist.name}}</h5>
                     <p>{{artist.description}}</p>
                 </div>
