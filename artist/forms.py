@@ -32,7 +32,7 @@ class EditArtistForm(forms.ModelForm):
     required_css_class = "required"
     class Meta:
         model = Artist
-        fields = ("name", "image", "description", "bornOn", "socials")
+        fields = ("name", "image", "description", "bornOn", "socials", "banner")
 
         labels = {
             "bornOn": "Formed/Born"
@@ -44,12 +44,14 @@ class EditArtistForm(forms.ModelForm):
             "description" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
             "socials" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
             "bornOn": forms.DateInput(attrs={"class": "form-control","type": "date"}),
+            "banner" : forms.FileInput(attrs={"class": "form-control", "accept": "image/png, image/jpeg, image/jpg"}),
         }
 
         # Snippet taken from previous CoffeeHouse project
         help_texts = {
             "image": "Optional. Your image will be stored securely using Cloudinary to display your image.",
-            "socials" : "Enter each social on a new line."
+            "socials" : "Enter each social on a new line.",
+            "banner": "Optional. Your image will be stored securely using Cloudinary to display your image.",
         }
     
     def __init__(self, *args, **kwargs):

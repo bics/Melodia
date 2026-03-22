@@ -12,7 +12,7 @@
     <!-- TODO video background?-->
     <div class="container" id="artist-banner">
         {% if artist.banner %}
-        <img src="{{artist.banner}}" class="artist-banner-image" alt="">
+        <img src="{{artist.banner.url}}" class="artist-banner-image" alt="">
         {% else %}
         <img src="{% static 'assets/images/empty_banner_with_drums.jpg' %}" class="artist-banner-image" alt="">
         {% endif %}

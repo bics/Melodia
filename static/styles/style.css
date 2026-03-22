@@ -96,6 +96,11 @@ nav a{
     object-fit: cover;
 }
 
+.artist-image-update{
+    max-height: 25vh;
+    width: auto;
+}
+
 .navigation-button{
     width: 7vh;
 }

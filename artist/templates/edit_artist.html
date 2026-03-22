@@ -25,8 +25,26 @@ Edit Artist
 
                 <p>
                     {{ form.image.label_tag}}
+                    {% if artist.image %}
+                    <br>
+                    <img src="{{artist.image.url}}" class="artist-image-update my-3" alt="">
+                    {% else %}
+                    <h5>No image uploaded yet.</h5>
+                    {% endif %}
                     {{ form.image}}
                     {{form.image.help_text}}
+                </p>
+
+                <p>
+                    {{ form.banner.label_tag}}
+                    {% if artist.banner %}
+                    <br>
+                    <img src="{{artist.banner.url}}" class="artist-image-update my-3" alt="">
+                    {% else %}
+                    <h5>No banner uploaded yet.</h5>
+                    {% endif %}
+                    {{ form.banner}}
+                    {{form.banner.help_text}}
                 </p>
 
 
