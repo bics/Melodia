@@ -44,6 +44,9 @@ class Track(models.Model):
     
     def getTrackLength(self):
         if (self.length):
-            return round(self.length, 2)
-        return 0
-
+            # Proper length return generated using ChatGPT
+            total_seconds = int(self.length)
+            minutes = total_seconds // 60
+            seconds = total_seconds % 60
+            return f"{minutes}:{seconds:02d}"
+        return "0:00"
