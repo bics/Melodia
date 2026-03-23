@@ -43,5 +43,7 @@ class Track(models.Model):
         return self.name
     
     def getTrackLength(self):
-        return round(self.length, 2)
+        if (self.length):
+            return round(self.length, 2)
+        return 0
 
