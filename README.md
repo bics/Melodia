@@ -69,3 +69,9 @@ Code:
 * empty_banner_with_drums by [pvproductions](https://www.freepik.com/free-photo/drum-set-black-background-isolated-copy-space_174141486.htm#fromView=search&page=1&position=7&uuid=1fc10dad-c6d4-4960-bf19-cc3b5960fb87&query=empty+band+banner+template)
 
 * empty_album_cover by [luis_molinero](https://www.freepik.com/free-vector/view-texture-case-media-front_1135006.htm#fromView=search&page=1&position=6&uuid=2370de03-3a18-4e84-bd96-310043a57c84&query=empty+album+cover)
+
+* rating_star_full by [mamewmy](https://www.freepik.com/free-psd/star-winner-rating-review-icon-sign-symbol-3d-background-illustration_71291981.htm#fromView=search&page=1&position=1&uuid=2f9670c6-78f3-4fd5-9fc4-1902548287df&query=rating+star)
+
+* rating_star_gray was generated using [ChatGPT](https://chatgpt.com)
+
+* rating_star_full_transbg modified using [removebg](https://www.remove.bg/hu/upload)
