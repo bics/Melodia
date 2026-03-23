@@ -143,6 +143,24 @@ label.required::after {
     cursor: pointer;
 }
 
+.fill-adjust{
+    transform: scale(1.1);
+}
+
+.rating-row{
+    position: relative;
+    width: 100%
+}
+
+.rating-gold, .rating-gray{
+    position: absolute;
+    width: 100%;
+}
+
+.rating-row:hover .rating-gold{
+    z-index: 1;
+}
+
 /* Screens lager than a mobile matching Bootstraps breakpoint*/
 @media (min-width: 576px) {
     .artist-image{       

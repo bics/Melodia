@@ -130,11 +130,24 @@
                                 <td>{{album.name}}</td>
                                 <td>{{track.getTrackLength}}</td>
                                 <td>
-                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
-                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
-                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
-                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
-                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                    <div class="rating-row">
+                                        <div class="rating-gold">
+                                            <div class="hidden-until-hovered">
+                                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust" alt="">
+                                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust" alt="">
+                                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust" alt="">
+                                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust" alt="">
+                                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="rating-gray">
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             {% endfor %}
