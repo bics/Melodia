@@ -14,7 +14,7 @@ class Album(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     released = models.DateField()
-    length = models.IntegerField(blank=True, null=True)
+    length = models.FloatField(blank=True, null=True)
     rating = models.FloatField(blank=True, null=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="albums")
 
@@ -33,7 +33,7 @@ class Track(models.Model):
     track = models.FileField(blank=True, null=True, upload_to=audioFileUpload, max_length=600)
     position = models.IntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
-    length = models.IntegerField(blank=True, null=True)
+    length = models.FloatField(blank=True, null=True)
     rating = models.FloatField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="tracks")
@@ -41,4 +41,12 @@ class Track(models.Model):
 
     def __str__(self):
         return self.name
-
+    
+    def getTrackLength(self):
+        if (self.length):
+            # Proper length return generated using ChatGPT
+            total_seconds = int(self.length)
+            minutes = total_seconds // 60
+            seconds = total_seconds % 60
+            return f"{minutes}:{seconds:02d}"
+        return "0:00"
