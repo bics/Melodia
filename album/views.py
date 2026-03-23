@@ -6,6 +6,7 @@ from .forms import TrackCreationForm, TrackFormSet
 from artist.forms import AlbumCreationForm
 import cloudinary.uploader
 from django.utils.text import slugify
+from mutagen.mp3 import MP3
 
 # Create your views here.
 def edit_album(request, name, pk, artistPK):
@@ -44,9 +45,11 @@ def create_track(request, name, pk, artistPK):
                     track.artist = artist
                     track.album = album
 
-                    # Audio upload generated using ChatGPT
+                    # Audio upload and length retrieval generated using ChatGPT
                     mp3_file = form.cleaned_data.get("track")
                     if mp3_file:
+                        audio = MP3(mp3_file)
+                        track.length = audio.info.length
                         upload_result = cloudinary.uploader.upload(
                             mp3_file,
                             resource_type="raw",   # important!
