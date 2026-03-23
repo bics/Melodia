@@ -50,6 +50,9 @@ def create_track(request, name, pk, artistPK):
                     if mp3_file:
                         audio = MP3(mp3_file)
                         track.length = audio.info.length
+
+                        mp3_file.seek(0)  
+                        
                         upload_result = cloudinary.uploader.upload(
                             mp3_file,
                             resource_type="raw",   # important!
