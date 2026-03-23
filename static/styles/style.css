@@ -136,6 +136,13 @@ label.required::after {
     color: red;
 }
 
+.rating-star{
+    object-fit: cover;
+    height: 2vh;
+    width: 2vh;
+    cursor: pointer;
+}
+
 /* Screens lager than a mobile matching Bootstraps breakpoint*/
 @media (min-width: 576px) {
     .artist-image{       
