@@ -31,19 +31,16 @@ function getAllTrackStars(currentID)
     return stars;
 }
 
+// Light up stars, first make all gray, then gold up until the one hovered
 function lightUpStars(stars, upUntil)
 {
     for (let i = 0; i < starCount; i++)
-    {
-        console.log("Original src: " + stars[i].src);    
+    { 
         stars[i].src = emptyStarImage;
-        console.log("Updated src: "  + stars[i].src);  
     }
 
     for (let i = 0; i < upUntil; i++)
     {
-        console.log("Original src: " + stars[i].src);  
         stars[i].src = fullStarImage;
-        console.log("Updated src: "  + stars[i].src);  
     }
 }
