@@ -6,11 +6,35 @@ from .forms import AlbumCreationForm, EditArtistForm
 import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.db.models import Avg, Prefetch, Count, Case, When, FloatField
 
 # Create your views here.
 def artist(request, name, pk):
     artist = Artist.objects.get(pk=pk)
-    albums = Album.objects.filter(artist=artist)
+
+    # Rating retrieval partially generated using Claude
+    albums = Album.objects.filter(artist=artist).prefetch_related(
+        Prefetch(
+            "tracks",
+            queryset=Track.objects.annotate(
+                rating_count=Count("rating"),
+                avg_rating=Case(
+                    When(rating_count__gte=3, then=Avg("rating__ratingValue")),
+                    default=None,
+                    output_field=FloatField()
+                )
+            )
+        )
+    )
+
+    for album in albums:
+        for track in album.tracks.all():
+            if track.avg_rating:
+                filled = int(track.avg_rating)
+                track.stars = [True] * filled + [False] * (5 - filled)
+            else:
+                track.stars = [False] * 5
+
     return render(request, 'artist.html', { "artist": artist, 'albums': albums})
 
 def create_album(request, name, pk):

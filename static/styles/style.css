@@ -157,8 +157,15 @@ label.required::after {
     width: 100%;
 }
 
+.rating-gold{
+    z-index: -1;
+}
+
 .rating-row:hover .rating-gold{
     z-index: 1;
+}
+.rating-row:hover .rating-gray{
+    z-index: -1;
 }
 
 /* Screens lager than a mobile matching Bootstraps breakpoint*/
