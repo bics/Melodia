@@ -106,14 +106,14 @@
             <!--Collapse code block copied from Bootsrap's official documentation-->
             <div class="collapse mb-3" id="collapse-{{album.id}}" data-bs-parent="#albumAccordion">
                 <div class="card card-body onyx-background border-platinum">
-                    <table class="table suggestion-table">
+                    <table class="table suggestion-table text-center">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Track</th>
-                                <th>Album</th>
-                                <th>Length</th>
-                                <th>Rating</th>
+                                <th class="w-10"></th>
+                                <th class="w-25">Track</th>
+                                <th class="w-25">Album</th>
+                                <th class="w-25">Length</th>
+                                <th class="w-25">Rating</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,7 +129,33 @@
                                 <td>{{track.name}}</td>
                                 <td>{{album.name}}</td>
                                 <td>{{track.getTrackLength}}</td>
-                                <td>Place</td>
+                                <td>
+                                    <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                                        {% if user.is_authenticated %}
+                                        <div class="rating-gold">
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="1" alt="">
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="2" alt="">
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="3" alt="">
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="4" alt="">
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="5" alt="">
+                                        </div>
+                                        {% endif %}
+                                        <div class="rating-gray">
+                                            {% if track.avg_rating %}
+                                                {% for filled in track.stars %}
+                                                    {% if filled %}
+                                                        <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust"
+                                                            data-track-id="{{track.id}}" data-rating-value="2" alt="">
+                                                    {% else %}
+                                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>Not enough rating yet!</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -161,4 +187,5 @@
 
 {% block scripts %}
 <script src="{% static 'assets/album/js/artist_audio_player.js' %}"></script>
+<script src="{% static 'assets/album/js/rating.js' %}"></script>
 {% endblock %}

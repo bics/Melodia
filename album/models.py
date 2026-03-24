@@ -2,6 +2,7 @@ from django.db import models
 from artist.models import Artist
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from members.models import MelodiaUser
 
 # Helper methods
 def audioFileUpload(self, filename):
@@ -34,7 +35,6 @@ class Track(models.Model):
     position = models.IntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
     length = models.FloatField(blank=True, null=True)
-    rating = models.FloatField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="tracks")
     featured_artist = models.ManyToManyField(Artist, blank=True, related_name="feat")
@@ -50,3 +50,16 @@ class Track(models.Model):
             seconds = total_seconds % 60
             return f"{minutes}:{seconds:02d}"
         return "0:00"
+    
+
+class Rating(models.Model):
+    ratingTrack = models.ForeignKey(Track, on_delete=models.CASCADE)
+    ratingUser = models.ForeignKey(MelodiaUser, on_delete=models.CASCADE)
+    ratingValue = models.IntegerField()
+
+    def getRating(self):
+        return self.ratingValue
+    
+    def __str__(self):
+        return f"{self.ratingTrack.name} rating by user, {self.ratingUser.username} is {self.ratingValue}"
+
