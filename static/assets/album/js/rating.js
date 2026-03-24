@@ -1,4 +1,4 @@
-const goldStars = document.querySelectorAll('.gold-star');
+const goldStars = document.querySelectorAll('.gold-star-rater');
 const starCount = 5;
 const emptyStarImage = "/static/assets/images/rating_star_gray.png";
 const fullStarImage = "/static/assets/images/rating_star_full_transbg.png";
