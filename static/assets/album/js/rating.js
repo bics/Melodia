@@ -11,7 +11,7 @@ function highlightRating(event)
 {
     const element = event.currentTarget;
     const currentTrack = element.dataset.trackId;
-    const currentIndex = element.dataset.ratingValue;
+    const currentIndex = parseInt(element.dataset.ratingValue);
     const currentStars = getAllTrackStars(currentTrack)
     if (currentStars)
     {
