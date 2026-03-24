@@ -3,6 +3,10 @@ const starCount = 5;
 const emptyStarImage = "/static/assets/images/rating_star_gray.png";
 const fullStarImage = "/static/assets/images/rating_star_full_transbg.png";
 
+// Tooltip retrieval generated using ChatGPT
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+[...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
+
 goldStars.forEach(star => {
     star.addEventListener('mouseover', highlightRating);
     star.addEventListener('click', submitRating);
@@ -49,7 +53,8 @@ function lightUpStars(stars, upUntil)
 // Below 2 methods generated using ChatGPT
 function submitRating(event) {
     const element = event.currentTarget;
-
+    const row = element.closest('.rating-row');
+    const tooltip = bootstrap.Tooltip.getInstance(row);    
     const trackId = element.dataset.trackId;
     const ratingValue = parseInt(element.dataset.ratingValue);
 
@@ -67,6 +72,13 @@ function submitRating(event) {
     .then(response => response.json())
     .then(data => {
         console.log('Saved:', data);
+        row.setAttribute('data-bs-original-title', 'Rating saved!');
+        tooltip.show();    
+        setTimeout(() =>
+        {
+            tooltip.hide();
+            row.setAttribute('data-bs-original-title', '');
+        }, 1500);        
     })
     .catch(error => {
         console.error('Error:', error);

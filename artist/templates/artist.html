@@ -130,7 +130,7 @@
                                 <td>{{album.name}}</td>
                                 <td>{{track.getTrackLength}}</td>
                                 <td>
-                                    <div class="rating-row">
+                                    <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
                                         <div class="rating-gold">
                                             <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star" data-track-id="{{track.id}}" data-rating-value="1" alt="">
                                             <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star" data-track-id="{{track.id}}" data-rating-value="2" alt="">
