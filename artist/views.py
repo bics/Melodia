@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Artist
-from album.models import Album
+from album.models import Album, Track, Rating
 from .forms import AlbumCreationForm, EditArtistForm
+import json
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 def artist(request, name, pk):
@@ -45,3 +48,27 @@ def edit_artist(request, name, pk):
     
     form = EditArtistForm(instance=artist)
     return render(request, "edit_artist.html", {"form" : form, 'artist': artist})
+
+# View generated using ChatGPT
+@require_POST
+def rate_track(request):
+    data = json.loads(request.body)
+
+    track_id = data.get('track_id')
+    rating_value = data.get('rating')
+
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'Not logged in'}, status=403)
+
+    track = Track.objects.get(id=track_id)
+
+    rating, created = Rating.objects.update_or_create(
+        ratingTrack=track,
+        ratingUser=request.user,
+        defaults={'ratingValue': rating_value}
+    )
+
+    return JsonResponse({
+        'success': True,
+        'rating': rating.ratingValue
+    })

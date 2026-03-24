@@ -5,6 +5,7 @@ const fullStarImage = "/static/assets/images/rating_star_full_transbg.png";
 
 goldStars.forEach(star => {
     star.addEventListener('mouseover', highlightRating);
+    star.addEventListener('click', submitRating);
 });
 
 function highlightRating(event)
@@ -43,4 +44,38 @@ function lightUpStars(stars, upUntil)
     {
         stars[i].src = fullStarImage;
     }
+}
+
+// Below 2 methods generated using ChatGPT
+function submitRating(event) {
+    const element = event.currentTarget;
+
+    const trackId = element.dataset.trackId;
+    const ratingValue = parseInt(element.dataset.ratingValue);
+
+    fetch('/artist/rate-track/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: JSON.stringify({
+            track_id: trackId,
+            rating: ratingValue
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Saved:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function getCSRFToken() {
+    return document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken='))
+        ?.split('=')[1];
 }
