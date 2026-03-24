@@ -42,11 +42,13 @@ function lightUpStars(stars, upUntil)
     for (let i = 0; i < starCount; i++)
     { 
         stars[i].src = emptyStarImage;
+        stars[i].classList.remove("fill-adjust");
     }
 
     for (let i = 0; i < upUntil; i++)
     {
         stars[i].src = fullStarImage;
+        stars[i].classList.add("fill-adjust");
     }
 }
 
