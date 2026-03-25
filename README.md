@@ -35,7 +35,7 @@ Code:
 * Form reset logic generated using ChatGPT
 * Extracting selected option partially generated using ChatGPT
 * File upload path partially generated using ChatGPT
-* Landing page random object retrieval generated using ChatGPT
+* Landing page random object retrieval and sorting generated using ChatGPT
 * Audio upload and length retrieval generated using ChatGPT
 * Proper length return generated using ChatGPT
 * AJAX submission and helper method generated using ChatGPT
