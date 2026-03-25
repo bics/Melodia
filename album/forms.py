@@ -1,7 +1,7 @@
 from django import forms
 from .models import Track
 from artist.models import Artist
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, CheckboxInput
 
 class TrackCreationForm(forms.ModelForm):
     required_css_class = "required"
@@ -46,11 +46,11 @@ class UpdateTrackForm(forms.ModelForm):
             "track" : forms.FileInput(attrs={"class": "form-control", "accept": ".mp3,audio/mpeg"}),
         }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.fields["name"].required = True
-            # Queryselector generated using ChatGPT
-            self.fields["featured_artist"].queryset = Artist.objects.order_by("name")
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["name"].required = True
+        # Queryselector generated using ChatGPT
+        self.fields["featured_artist"].queryset = Artist.objects.order_by("name")
 
 UpdateTrackFormSet = modelformset_factory(
     Track,
