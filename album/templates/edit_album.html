@@ -20,32 +20,32 @@ Edit Album
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <p>
-                {{ form.name.label_tag}}
-                {{ form.name}}
+                {{ edit_album_form.name.label_tag}}
+                {{ edit_album_form.name}}
             </p>
             
             <p>
-                {{ form.image.label_tag}}
+                {{ edit_album_form.image.label_tag}}
                 {% if album.image %}
                     <br>
                     <img src="{{album.image.url}}" class="artist-image-update my-3" alt="">
                     {% else %}
                     <h5>No image uploaded yet.</h5>
                     {% endif %}
-                {{ form.image}}
-                {{form.image.help_text}}
+                {{ edit_album_form.image}}
+                {{edit_album_form.image.help_text}}
             </p>
 
             
             <p>
-                {{ form.description.label_tag}}
-                {{ form.description}}
+                {{ edit_album_form.description.label_tag}}
+                {{ edit_album_form.description}}
             </p>
 
             
             <p>
-                {{ form.released.label_tag}}
-                {{ form.released}}
+                {{ edit_album_form.released.label_tag}}
+                {{ edit_album_form.released}}
             </p>
             
 

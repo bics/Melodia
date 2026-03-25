@@ -13,19 +13,19 @@ def edit_album(request, name, pk, artistPK):
     album = Album.objects.get(pk=pk)
     artist = Artist.objects.get(pk=artistPK)
 
+    edit_album_form = AlbumCreationForm(instance=album)
+
     if request.method == "POST":
-        form = AlbumCreationForm(request.POST, request.FILES, instance=album)
-        if form.is_valid():
-            form.save()
+        edit_album_form = AlbumCreationForm(request.POST, request.FILES, instance=album)
+        if edit_album_form.is_valid():
+            edit_album_form.save()
             messages.success(request, f"Album edited successfully for {artist.name}")
             return redirect("artist", name=artist.name, pk=artist.pk)
         else:
             messages.success(request, ("There were some errors with some fields"))
-    else:  
-        form = AlbumCreationForm(instance=album)
 
 
-    return render(request, 'edit_album.html', {'form' : form, 'album': album, 'artist': artist})
+    return render(request, 'edit_album.html', {'edit_album_form' : edit_album_form, 'album': album, 'artist': artist})
 
 
 def create_track(request, name, pk, artistPK):
