@@ -30,7 +30,7 @@ def edit_album(request, name, pk, artistPK):
             edit_tracks_formset = UpdateTrackFormSet(request.POST, request.FILES, queryset=album.tracks.all())
             if edit_tracks_formset.is_valid():
                 edit_tracks_formset.save()
-                messages.success(request, f"Track have been updated for {album.name}")
+                messages.success(request, f"Track(s) have been updated for {album.name}")
                 return redirect("artist", name=artist.name, pk=artist.pk)
             else:
                 messages.success(request, ("There were some errors with some fields"))

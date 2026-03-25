@@ -71,6 +71,7 @@ Edit Album
 
                 {% if form.instance.pk %}
                 <div class="col-4">
+                    {{ form.id }}
                     <button class="btn btn-outline-warning mb-3 w-100" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#track_collapse-{{forloop.counter0}}">
                                 {{form.instance.name}}</button>
@@ -112,7 +113,8 @@ Edit Album
                 </div>
                 {% else %}
                     <div class="hidden">
-                        {{ form.as_p }}
+                            {{ form.id }}
+                            {{ form }}
                     </div>
                 {% endif %}
 
