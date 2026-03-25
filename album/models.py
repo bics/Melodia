@@ -32,7 +32,7 @@ class Album(models.Model):
 class Track(models.Model):
     name = models.CharField(max_length=255)    
     track = models.FileField(blank=True, null=True, upload_to=audioFileUpload, max_length=600)
-    position = models.IntegerField(blank=True, null=True)
+    position = models.PositiveIntegerField(blank=True, null=True)
     lyrics = models.TextField(blank=True, null=True)
     length = models.FloatField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True, related_name="tracks")

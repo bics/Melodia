@@ -44,6 +44,7 @@ def edit_album(request, name, pk, artistPK):
 
 def create_track(request, name, pk, artistPK):
     album = Album.objects.get(pk=pk)
+    current_tracks = album.tracks.count()
     artist = Artist.objects.get(pk=artistPK)
 
     if request.method == "POST":
@@ -58,6 +59,8 @@ def create_track(request, name, pk, artistPK):
                     track = form.save(commit=False)
                     track.artist = artist
                     track.album = album
+                    track.position = current_tracks + 1
+                    current_tracks += 1
 
                     # Audio upload and length retrieval generated using ChatGPT
                     mp3_file = form.cleaned_data.get("track")
