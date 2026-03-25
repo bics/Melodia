@@ -23,38 +23,106 @@ Edit Album
                 {{ edit_album_form.name.label_tag}}
                 {{ edit_album_form.name}}
             </p>
-            
+
             <p>
                 {{ edit_album_form.image.label_tag}}
                 {% if album.image %}
-                    <br>
-                    <img src="{{album.image.url}}" class="artist-image-update my-3" alt="">
-                    {% else %}
-                    <h5>No image uploaded yet.</h5>
-                    {% endif %}
-                {{ edit_album_form.image}}
-                {{edit_album_form.image.help_text}}
+                <br>
+                <img src="{{album.image.url}}" class="artist-image-update my-3" alt="">
+                {% else %}
+            <h5>No image uploaded yet.</h5>
+            {% endif %}
+            {{ edit_album_form.image}}
+            {{edit_album_form.image.help_text}}
             </p>
 
-            
+
             <p>
                 {{ edit_album_form.description.label_tag}}
                 {{ edit_album_form.description}}
             </p>
 
-            
+
             <p>
                 {{ edit_album_form.released.label_tag}}
                 {{ edit_album_form.released}}
             </p>
-            
+
 
             <div class="d-flex justify-content-around">
-                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3">Back</a>
-                <button class="btn btn-success mb-3">Update</button>
+                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3 navigation-button">Back</a>
+                <button type="submit" class="btn btn-success mb-3 navigation-button" name="album-update-submit">Update</button>
             </div>
         </form>
     </div>
+
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+
+    <div class="container">
+        <h3 class="mb-3">Edit Tracks</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_tracks_formset.management_form }}
+
+            <div class="row container">
+                {% for form in edit_tracks_formset %}
+
+                {% if form.instance.pk %}
+                <div class="col-4">
+                    <button class="btn btn-outline-warning mb-3 w-100" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#track_collapse-{{forloop.counter0}}">
+                                {{form.instance.name}}</button>
+                    <div class="collapse" id="track_collapse-{{forloop.counter0}}">
+                        <div class="card card-body mb-3 border-platinum graphite-background">
+                            <p>
+                                {{ form.name.label_tag}}
+                                {{ form.name}}
+                            </p>
+                            <p>
+                                {{ form.position.label_tag}}
+                                {{ form.position}}
+                            </p>
+                            <p>
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#featured_artist_collapse-{{forloop.counter0}}">
+                                    {{form.featured_artist.label_tag}}</button>
+                    
+                            <div class="collapse" id="featured_artist_collapse-{{forloop.counter0}}">
+                                {{ form.featured_artist}}
+                            </div>
+                            <div id="selected-artists-div-{{forloop.counter0}}">
+                                <ul class="list-group list-group-flush" id="selected-artists-list-{{forloop.counter0}}"></ul>
+                            </div>
+                            </p>
+                            <p>
+                                {{ form.lyrics.label_tag}}
+                                {{ form.lyrics}}
+                            </p>
+                            <p>
+                                {{ form.track.label_tag}}
+                                {{ form.track}}
+                            </p>
+                            <label>
+                                Delete: {{ form.DELETE }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="hidden">
+                        {{ form.as_p }}
+                    </div>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+
+    <button type="submit" class="btn btn-success mb-3 navigation-button" name="update-tracks-submit">Update</button>
+
 </div>
 
 {% endblock %}

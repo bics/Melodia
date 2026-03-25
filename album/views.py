@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from artist.models import Artist
 from .models import Album, Track
-from .forms import TrackCreationForm, TrackFormSet
+from .forms import TrackCreationForm, TrackFormSet, UpdateTrackFormSet
 from artist.forms import AlbumCreationForm
 import cloudinary.uploader
 from django.utils.text import slugify
@@ -14,18 +14,32 @@ def edit_album(request, name, pk, artistPK):
     artist = Artist.objects.get(pk=artistPK)
 
     edit_album_form = AlbumCreationForm(instance=album)
+    edit_tracks_formset = UpdateTrackFormSet(queryset=album.tracks.all())
 
     if request.method == "POST":
-        edit_album_form = AlbumCreationForm(request.POST, request.FILES, instance=album)
-        if edit_album_form.is_valid():
-            edit_album_form.save()
-            messages.success(request, f"Album edited successfully for {artist.name}")
-            return redirect("artist", name=artist.name, pk=artist.pk)
-        else:
-            messages.success(request, ("There were some errors with some fields"))
+        if "album-update-submit" in request.POST:
+            edit_album_form = AlbumCreationForm(request.POST, request.FILES, instance=album)
+            if edit_album_form.is_valid():
+                edit_album_form.save()
+                messages.success(request, f"Album edited successfully for {artist.name}")
+                return redirect("artist", name=artist.name, pk=artist.pk)
+            else:
+                messages.success(request, ("There were some errors with some fields"))
+
+        elif "update-tracks-submit" in request.POST:
+            edit_tracks_formset = UpdateTrackFormSet(request.POST, request.FILES, queryset=album.tracks.all())
+            if edit_tracks_formset.is_valid():
+                edit_tracks_formset.save()
+                messages.success(request, f"Track have been updated for {album.name}")
+                return redirect("artist", name=artist.name, pk=artist.pk)
+            else:
+                messages.success(request, ("There were some errors with some fields"))
 
 
-    return render(request, 'edit_album.html', {'edit_album_form' : edit_album_form, 'album': album, 'artist': artist})
+    return render(request, 'edit_album.html', {'edit_album_form' : edit_album_form, 
+                                               'edit_tracks_formset': edit_tracks_formset, 
+                                               'album': album, 
+                                               'artist': artist})
 
 
 def create_track(request, name, pk, artistPK):
