@@ -14,7 +14,7 @@ def edit_album(request, name, pk, artistPK):
     artist = Artist.objects.get(pk=artistPK)
 
     edit_album_form = AlbumCreationForm(instance=album)
-    edit_tracks_formset = UpdateTrackFormSet(queryset=album.tracks.all())
+    edit_tracks_formset = UpdateTrackFormSet(queryset=album.tracks.all().order_by("position"))
 
     if request.method == "POST":
         if "album-update-submit" in request.POST:
@@ -27,7 +27,7 @@ def edit_album(request, name, pk, artistPK):
                 messages.success(request, ("There were some errors with some fields"))
 
         elif "update-tracks-submit" in request.POST:
-            edit_tracks_formset = UpdateTrackFormSet(request.POST, request.FILES, queryset=album.tracks.all())
+            edit_tracks_formset = UpdateTrackFormSet(request.POST, request.FILES, queryset=album.tracks.all().order_by("position"))
             if edit_tracks_formset.is_valid():
                 edit_tracks_formset.save()
                 messages.success(request, f"Track(s) have been updated for {album.name}")

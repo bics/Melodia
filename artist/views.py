@@ -23,7 +23,7 @@ def artist(request, name, pk):
                     default=None,
                     output_field=FloatField()
                 )
-            )
+            ).order_by("position")
         )
     )
 
