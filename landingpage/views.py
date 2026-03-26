@@ -16,10 +16,8 @@ def index(request):
     artists = sorted(artists[:15], key=lambda x: x.avg_rating or 0, reverse=True)
 
     all_tracks = list(Track.objects.filter(artist__in=artists))
-    print("All: ", all_tracks)
     random.shuffle(all_tracks)
     random_tracks = all_tracks[:10]
-    print("Randoms: ", random_tracks)
 
 
     return render(request, 'index.html', {"artists": artists, "random_tracks": random_tracks})
