@@ -1,10 +1,10 @@
 
-const audioPlayer = document.getElementById("artist-audio-player");
+const audioPlayer = document.getElementById("audio-player");
 const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const currentlyPlayingHeader = document.getElementById("currently-playing-header");
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
-const audioPlayerDiv = document.getElementById("artist-audio-player-div");
+const audioPlayerDiv = document.getElementById("audio-player-div");
 
 let currentlyPlayingNode;
 let nextPlayingNode;

@@ -68,9 +68,9 @@
 </div>
 
 
-<div class="text-center hidden" id="artist-audio-player-div">
+<div class="text-center hidden" id="audio-player-div">
     <h5 id="currently-playing-header"></h5>
-    <audio id="artist-audio-player" controls>
+    <audio id="audio-player" controls>
         <source id="mp3-audio-source" src=""
             type="audio/mpeg">
     </audio>
@@ -186,6 +186,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'assets/album/js/artist_audio_player.js' %}"></script>
+<script src="{% static 'assets/album/js/audio_player.js' %}"></script>
 <script src="{% static 'assets/album/js/rating.js' %}"></script>
 {% endblock %}

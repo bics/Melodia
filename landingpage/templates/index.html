@@ -56,41 +56,82 @@ Melodia
     <hr class="color-platinum line-break">
 </div>
 
+<div class="text-center hidden" id="audio-player-div">
+    <h5 id="currently-playing-header"></h5>
+    <audio id="audio-player" controls>
+        <source id="mp3-audio-source" src=""
+            type="audio/mpeg">
+    </audio>
+    <h6 id="next-playing-header"></h6>
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+</div>
+
 <div class="container">
-    <table class="table suggestion-table">
+    <table class="table suggestion-table text-center">
         <thead>
             <tr>
-                <th>Artist</th>
-                <th>Album</th>
-                <th>Track</th>
-                <th>Length</th>
-                <th>Rating</th>
+                <th class="w-10"></th>
+                <th class="w-25">Track</th>
+                <th class="w-25">Album</th>
+                <th class="w-25">By</th>
+                <th class="w-20">Length</th>
+                <th class="w-25">Rating</th>
             </tr>
         </thead>
-        <!--TODO refactor to get data from DB-->
-        <!--TODO alternate background colors-->
         <tbody>
-            <tr class="slightly-darker-graphite-background">
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
+            {% for track in random_tracks %}
+            <tr class="{% cycle '' 'slightly-darker-graphite-background' %}">
+                <td>
+                    <img class="audio-control-button" id="audio-control-button-{{album.id}}-{{forloop.counter0}}"
+                        src="{% static 'assets/images/play_button_small.png' %}" alt="Play track button"
+                        data-track="{{ track.name }}" data-track-position="{{ track.position }}"
+                        data-track-url="{{ track.track.url }}">
+                </td>
+                <td>{{track.name}}</td>
+                <td>{{track.album.name}}</td>
+                <td>{{track.artist.name}}</td>
+                <td>{{track.getTrackLength}}</td>
+                <td>
+                    <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
+                        {% if user.is_authenticated %}
+                        <div class="rating-gold">
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="1"
+                                alt="">
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="2"
+                                alt="">
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="3"
+                                alt="">
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="4"
+                                alt="">
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="5"
+                                alt="">
+                        </div>
+                        {% endif %}
+                        <div class="rating-gray">
+                            {% if track.avg_rating %}
+                            {% for filled in track.stars %}
+                            {% if filled %}
+                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust"
+                                data-track-id="{{track.id}}" data-rating-value="2" alt="">
+                            {% else %}
+                            <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
+                            {% endif %}
+                            {% endfor %}
+                            {% else %}
+                            <p>Not enough rating yet!</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
             </tr>
-            <tr>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-            </tr>
-            <tr class="slightly-darker-graphite-background">
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-                <td>Place</td>
-            </tr>
+            {% endfor %}            
         </tbody>
     </table>
 </div>
@@ -123,4 +164,9 @@ Melodia
 </div>
 
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/album/js/audio_player.js' %}"></script>
+<script src="{% static 'assets/album/js/rating.js' %}"></script>
 {% endblock %}
