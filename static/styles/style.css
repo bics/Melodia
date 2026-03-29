@@ -168,6 +168,11 @@ label.required::after {
     z-index: -1;
 }
 
+.carousel-link{
+    text-decoration: none;
+    color: var(--platinum-white-color);
+}
+
 /* Screens lager than a mobile matching Bootstraps breakpoint*/
 @media (min-width: 576px) {
     .artist-image{       

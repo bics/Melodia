@@ -10,13 +10,13 @@ Melodia
 
 <div class="container">
 
-    <h1 class="text-center">Ready for some //random track from random artist</h1>
+    <h1 class="text-center mb-3">Have a look at what people like</h1>
 
     <!--Carousel code block taken from official bootstrap documentation-->
-    <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
+    <div id="landingpage-carousel" class="carousel slide carousel-fade">
         <div class="carousel-indicators">
             {% for artist in artists|slice:":5" %}
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
+            <button type="button" data-bs-target="#landingpage-carousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
                 aria-current="true" aria-label="Slide {{ forloop.counter0 }}"></button>
             {% endfor %}
         </div>
@@ -30,19 +30,18 @@ Melodia
                     <img src="{% static 'assets/images/vinyl_disc.jpg' %}" class="d-block w-100" alt="...">
                 {% endif %}
                 </div>
-                <div class="carousel-caption d-none d-md-block slider-front-element">
-                    <h5>{{artist.name}}</h5>
-                    <p>{{artist.description}}</p>
+                <div class="carousel-caption d-none d-md-block slider-front-element pb-4">
+                    <h5><a href="{% url 'artist' artist.name artist.id %}" class="carousel-link">{{artist.name}}</a></h5>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        <button class="carousel-control-prev" type="button" data-bs-target="#landingpage-carousel"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        <button class="carousel-control-next" type="button" data-bs-target="#landingpage-carousel"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
@@ -69,6 +68,10 @@ Melodia
 </div>
 
 <div class="container">
+
+    
+    <h2 class="text-center mb-3">Find your next favorite song</h2>
+
     <table class="table suggestion-table text-center">
         <thead>
             <tr>
@@ -140,7 +143,7 @@ Melodia
     <hr class="color-platinum line-break">
 </div>
 <div class="container">
-    <h1 class="text-center">Discover</h1>
+    <h2 class="text-center mb-3">Be sure to discover</h2>
     <div class="row justify-content-center">
         <!--Card code block copied from Bootsrap's official documentation-->
         {% for artist in artists %}
