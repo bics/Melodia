@@ -6,44 +6,98 @@
 
 <div class="container">
     {% if searched %}
-    
-        <h1 class="text-center">Best results for, {{searched}}</h1>
 
-        <div>
-            <h3>If you were looking for a song</h3>
-            {% if track_results %}
-                {% for track in track_results %}
-                    {{track}}
-                {% endfor %}
-            {% else %}
-            <h1 class="text-center">We couldn't find anything.</h1>
-            {% endif %}
-        </div>
+    <h1 class="text-center">Best results for: {{searched}}</h1>
 
-        <div>
-            <h3>If you were looking for an album</h3>
-            {% if album_results %}
-                {% for album in album_results %}
-                    {{album}}
-                {% endfor %}
-            {% else %}
-            <h1 class="text-center">We couldn't find anything.</h1>
-            {% endif %}
-        </div>
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
 
-        <div>
-            <h3>If you were looking for a band/artist</h3>
-            {% if artist_results %}
-                {% for artist in artist_results %}
-                    {{artist}}
-                {% endfor %}
-            {% else %}
-            <h1 class="text-center">We couldn't find anything.</h1>
-            {% endif %}
+    <div class="container">
+        <h3 class="text-center">If you were looking for a song</h3>
+        {% if track_results %}
+        <div class="row justify-content-center">
+            {% for track in track_results %}
+            <div class="mb-3 col-6 col-md-4 col-xl-2">
+                <div class="card small-artist-card ">
+                    <img src="{% static 'assets/images/single_note_tilted.png' %}" class="card-img-top small-img-cover" alt="...">
+                    <a href="{% url 'artist' track.artist.name track.artist.id %}">
+                        <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
+                            <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{track.name}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-    
+        {% else %}
+        <h5 class="text-center">We couldn't find anything.</h5>
+        {% endif %}
+    </div>
+
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+
+    <div class="container">
+        <h3 class="text-center">If you were looking for an album</h3>
+        {% if album_results %}
+        <div class="row justify-content-center">
+            {% for album in album_results %}
+            <div class="mb-3 col-6 col-md-4 col-xl-2">
+                <div class="card small-artist-card ">
+                    {% if album.image %}
+                    <img src="{{album.image.url}}" class="card-img-top small-img-cover" alt="...">
+                    {% else %}
+                    <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover" alt="...">
+                    {% endif %}
+                    <a href="{% url 'artist' album.artist.name album.artist.id %}">
+                        <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
+                            <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{album.name}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h5 class="text-center">We couldn't find anything.</h5>
+        {% endif %}
+    </div>
+
+    <div class="spacer m-3">
+        <hr class="color-platinum line-break">
+    </div>
+
+    <div class="container">
+        <h3 class="text-center">If you were looking for a band/artist</h3>
+        {% if artist_results %}
+        <div class="row justify-content-center">
+            {% for artist in artist_results %}
+            
+            <div class="mb-3 col-6 col-md-4 col-xl-2">
+                <div class="card small-artist-card ">
+                    {% if artist.image %}
+                    <img src="{{artist.image.url}}" class="card-img-top small-img-cover" alt="...">
+                    {% else %}
+                    <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top small-img-cover" alt="...">
+                    {% endif %}
+                    <a href="{% url 'artist' artist.name artist.id %}">
+                        <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
+                            <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{artist.name}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h5 class="text-center">We couldn't find anything.</h5>
+        {% endif %}
+    </div>
+
     {% else %}
-        <h1 class="text-center">Oops, we couldn't find anything.</h1>
+    <h1 class="text-center">Oops, we couldn't find anything.</h1>
     {% endif %}
 </div>
 
