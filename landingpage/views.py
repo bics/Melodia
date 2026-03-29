@@ -21,3 +21,6 @@ def index(request):
 
 
     return render(request, 'index.html', {"artists": artists, "random_tracks": random_tracks})
+
+def search_result(request):
+    return render(request, "search_result.html")
