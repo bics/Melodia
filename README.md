@@ -42,6 +42,10 @@ Code:
 * Rate track view generated using ChatGPT
 * Tooltip retrieval generated using ChatGPT
 * Rating retrieval partially generated using Claude
+* Input sanitation for search generated using ChatGPT
+
+
+* Search view inspired by tutorial from [John Elder](https://www.youtube.com/watch?v=AGtae4L5BbI&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=9)
 
 
 * music_note.jpg by [juicy_fish](https://www.freepik.com/free-vector/three-music-notes-floating-upwards_290240060.htm#fromView=search&page=1&position=1&uuid=44844498-6808-4a2e-b6c8-5bcb8592dcd7&query=music+note)
