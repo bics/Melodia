@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'members',
     "cloudinary",
     "cloudinary_storage",
+    "payment",
 ]
 
 MIDDLEWARE = [
