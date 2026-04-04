@@ -4,7 +4,6 @@ from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
 import stripe
 from django.conf import settings
-from django.http import JsonResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -45,7 +44,8 @@ def account(request):
                 messages.success(request, "Account has been linked to Stripe")
                 return redirect("account")
             except Exception as e:
-                return JsonResponse({'error': str(e)}, status=500)
+                messages.success(request, str(e))
+                return redirect("account")
     else:
         accountUpdateForm = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
