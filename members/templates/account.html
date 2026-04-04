@@ -39,10 +39,28 @@ Edit Account
                 </div>
 
                 <button type="button"  data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
-                    class="btn btn-success mb-2" >Request Manager Access</button>
+                    class="btn btn-success" >Request Manager Access</button>
                 <!--TODO implement emailing to above request-->
             </div>
         </form>
+        {% if user.isManager %}
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break full-length">
+        </div>
+        <div>
+            <!--Form block copied from official stripe marketplace implementation-->
+            <form id="create-account-form" class="form-group">
+                <div class="form-group mb-1">
+                    <label for="email" class="form-label">Email for Connected account:</label>
+                    <input type="email" class="form-control" id="email" required />
+                </div>
+                <button class="btn btn-success" type="submit">Create Connect Account</button>
+            </form>
+
+            <!--TODO copy js update/test-->
+            <div id="account-status"></div>
+        </div>
+        {% endif %}
     </div>
 </div>
 

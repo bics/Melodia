@@ -26,6 +26,8 @@ Whitenoise middleware addon copied from W3Schools
 
 Cloudinary settings copied from previous CoffeeHouse project
 
+Form block for members copied from official stripe marketplace implementation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
+
 Code:
 
 * Social urlization generated using ChatGPT for artists socials
