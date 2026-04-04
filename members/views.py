@@ -4,6 +4,8 @@ from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
 import stripe
 from django.conf import settings
+from django.http import JsonResponse
+import json
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -49,6 +51,38 @@ def account(request):
     else:
         accountUpdateForm = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
+
+# Below 2 views were generated using ChatGPT and Claude
+def account_status(request, account_id):
+    try:
+        account = stripe.Account.retrieve(account_id)
+        data = {
+            "id": account.id,
+            "chargesEnabled": account.charges_enabled,
+            "payoutsEnabled": account.payouts_enabled,
+            "detailsSubmitted": account.details_submitted,
+        }
+        return JsonResponse(data)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+def create_account_link(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+    
+    data = json.loads(request.body)
+    account_id = data.get("accountId")
+
+    print(str(settings.STRIPE_REFRESH_URL))
+    print(str(settings.STRIPE_RETURN_URL))
+
+    account_link = stripe.AccountLink.create(
+        account=account_id,
+        refresh_url= str(settings.STRIPE_REFRESH_URL),  # if link expires
+        return_url= str(settings.STRIPE_RETURN_URL),   # after onboarding
+        type="account_onboarding",
+    )
+    return JsonResponse({"url": account_link.url})
 
 def manage(request):
     managed_artists = Artist.objects.filter(manager=request.user).order_by('name')

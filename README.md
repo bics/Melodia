@@ -30,6 +30,12 @@ Form block for members copied from official stripe marketplace implementation ht
 
 Try block copied from official Stripe documentation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
 
+stripe_account_status.js was copied and modified from official Stripe documentation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
+
+startOnboarding and getCookie functions were generated using Claude
+
+account_status and create_account_link views were generated using ChatGPT and Claude
+
 Code:
 
 * Social urlization generated using ChatGPT for artists socials

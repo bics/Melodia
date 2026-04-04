@@ -59,7 +59,7 @@ Edit Account
             </form>
 
             <!--TODO copy js update/test-->
-            <div id="account-status"></div>
+            <div id="account-status" data-stripe-account-id="{{user.stripeUserId}}"></div>
         </div>
         {% endif %}
     </div>
@@ -108,4 +108,8 @@ Edit Account
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/stripe_account_status.js' %}"></script>
 {% endblock %}
