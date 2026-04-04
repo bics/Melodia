@@ -21,7 +21,6 @@ def favourites(request):
 
 def account(request):
     accountUpdateForm = AccountUpdateForm(instance=request.user)
-    #accountLinkForm = StripeLinkForm()
 
     if request.method == "POST":
         if "account-update-submit" in request.POST:
