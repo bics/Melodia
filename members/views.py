@@ -25,7 +25,7 @@ def account(request):
 
     if request.method == "POST":
         if "account-update-submit" in request.POST:
-            accountUpdateForm = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
+            accountUpdateForm = AccountUpdateForm(request.POST, instance=request.user)
             if accountUpdateForm.is_valid():
                 accountUpdateForm.save()
                 messages.success(request, "Your details have been updated.")
@@ -37,32 +37,14 @@ def account(request):
 
             # Try block copied from official Stripe documentation
             try:
-                account = stripe_client.v2.core.accounts.create({
-                    "display_name": email,
-                    "contact_email": email,
-                    "dashboard": "express",
-                    "defaults": {
-                        "responsibilities": {
-                            "fees_collector": "application",
-                            "losses_collector": "application",
-                        }
-                    },
-                    "identity": {
-                        "country": "GB",
-                        "entity_type": "company",
-                    },
-                    "configuration": {
-                        "recipient": {
-                            "capabilities": {
-                                "stripe_balance": {
-                                    "stripe_transfers": {"requested": True},
-                                }
-                            }
-                        },
-                    },
-                })
+                account = stripe.Account.create(
+                    type="express",
+                    email=email,
+                    country="GB",
+                )
 
-                request.user.stripe_account_id = account.id
+                request.user.stripeUserId = account.id
+                request.user.save()
                 messages.success(request, "Account has been linked to Stripe")
                 return redirect("account")
             except Exception as e:
