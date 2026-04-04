@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
+import stripe
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
 def members(request):
@@ -13,15 +17,18 @@ def favourites(request):
 
 
 def account(request):
+    accountUpdateForm = AccountUpdateForm(instance=request.user)
+    #accountLinkForm = StripeLinkForm()
+
     if request.method == "POST":
-        form = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
-            form.save()
+        accountUpdateForm = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
+        if accountUpdateForm.is_valid():
+            accountUpdateForm.save()
             messages.success(request, "Your details have been updated.")
             return redirect("account")
     else:
-        form = AccountUpdateForm(instance=request.user)
-    return render(request, "account.html", {"form": form})
+        accountUpdateForm = AccountUpdateForm(instance=request.user)
+    return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
 
 def manage(request):
     managed_artists = Artist.objects.filter(manager=request.user).order_by('name')

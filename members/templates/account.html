@@ -19,10 +19,10 @@ Edit Account
             {% csrf_token %}
             <div>
                 <!--Form fields partially generated with ChatGPT-->
-                {{form.username.label_tag}}
-                {{form.username}}
-                {{ form.email.label_tag }}
-                {{ form.email }}
+                {{accountUpdateForm.username.label_tag}}
+                {{accountUpdateForm.username}}
+                {{ accountUpdateForm.email.label_tag }}
+                {{ accountUpdateForm.email }}
 
                 <div class="spacer m-3">
                     <hr class="color-platinum line-break full-length">
