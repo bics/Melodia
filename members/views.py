@@ -4,11 +4,9 @@ from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
 import stripe
 from django.conf import settings
-from stripe import StripeClient
 from django.http import JsonResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-stripe_client = StripeClient(str(settings.STRIPE_SECRET_KEY))
 
 # Create your views here.
 def members(request):
