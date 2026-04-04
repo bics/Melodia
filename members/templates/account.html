@@ -39,7 +39,7 @@ Edit Account
                 </div>
 
                 <button type="button"  data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
-                    class="btn btn-success" >Request Manager Access</button>
+                    class="btn btn-success" name="account-update-submit">Request Manager Access</button>
                 <!--TODO implement emailing to above request-->
             </div>
         </form>
@@ -49,12 +49,13 @@ Edit Account
         </div>
         <div>
             <!--Form block copied from official stripe marketplace implementation-->
-            <form id="create-account-form" class="form-group">
+            <form id="create-account-form" method="POST">
+                {% csrf_token %}
                 <div class="form-group mb-1">
                     <label for="email" class="form-label">Email for Connected account:</label>
-                    <input type="email" class="form-control" id="email" required />
+                    <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" required />
                 </div>
-                <button class="btn btn-success" type="submit">Create Connect Account</button>
+                <button class="btn btn-success" type="submit" name="account-link-submit">Create Connect Account</button>
             </form>
 
             <!--TODO copy js update/test-->

@@ -4,8 +4,11 @@ from .forms import AccountUpdateForm, CreateArtistForm
 from artist.models import Artist
 import stripe
 from django.conf import settings
+from stripe import StripeClient
+from django.http import JsonResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+stripe_client = StripeClient(str(settings.STRIPE_SECRET_KEY))
 
 # Create your views here.
 def members(request):
@@ -21,11 +24,49 @@ def account(request):
     #accountLinkForm = StripeLinkForm()
 
     if request.method == "POST":
-        accountUpdateForm = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
-        if accountUpdateForm.is_valid():
-            accountUpdateForm.save()
-            messages.success(request, "Your details have been updated.")
-            return redirect("account")
+        if "account-update-submit" in request.POST:
+            accountUpdateForm = AccountUpdateForm(request.POST, request.FILES, instance=request.user)
+            if accountUpdateForm.is_valid():
+                accountUpdateForm.save()
+                messages.success(request, "Your details have been updated.")
+                return redirect("account")
+            else:
+                messages.success(request, ("There were some errors with some fields"))
+        elif "account-link-submit" in request.POST:
+            email = request.POST.get("email")
+
+            # Try block copied from official Stripe documentation
+            try:
+                account = stripe_client.v2.core.accounts.create({
+                    "display_name": email,
+                    "contact_email": email,
+                    "dashboard": "express",
+                    "defaults": {
+                        "responsibilities": {
+                            "fees_collector": "application",
+                            "losses_collector": "application",
+                        }
+                    },
+                    "identity": {
+                        "country": "GB",
+                        "entity_type": "company",
+                    },
+                    "configuration": {
+                        "recipient": {
+                            "capabilities": {
+                                "stripe_balance": {
+                                    "stripe_transfers": {"requested": True},
+                                }
+                            }
+                        },
+                    },
+                })
+
+                request.user.stripe_account_id = account.id
+                messages.success(request, "Account has been linked to Stripe")
+                return redirect("account")
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=500)
     else:
         accountUpdateForm = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
