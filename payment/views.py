@@ -3,6 +3,8 @@ from django.contrib import messages
 from artist.models import Artist
 import stripe
 from django.conf import settings
+from urllib.parse import quote
+from decimal import Decimal
 
 # Create your views here.
 def donate(request, name, pk):
@@ -13,10 +15,10 @@ def donate(request, name, pk):
         amount = request.POST.get("amount")
         custom = request.POST.get("custom-amount")
         if amount:
-            donation = amount * 100
+            donation = int(amount) * 100
         elif custom:
             try:
-                donation = custom * 100
+                donation = int(Decimal(custom) * 100)
             except:
                 messages.success(request, f"Invalid custom amount")
                 return render(request, "stripe_payment.html", { "artist" : artist })
@@ -26,6 +28,8 @@ def donate(request, name, pk):
         
         # Try-catch block was copied from official Stripe documentation
         try:
+            
+            safe_name = quote(artist.name)
             checkout_session = stripe.checkout.Session.create(
                 line_items=[{
                 'price_data': {
@@ -39,7 +43,7 @@ def donate(request, name, pk):
             }],
                 mode='payment',
                 success_url= str(settings.STRIPE_PAYMENT_SUCCESS_URL),
-                cancel_url= str(settings.STRIPE_CANCEL_SUCCESS_URL),
+                cancel_url= str(settings.STRIPE_PAYMENT_CANCEL_URL + f"{safe_name}/{artist.id}"),
             )
 
             return redirect(checkout_session.url)
@@ -49,3 +53,7 @@ def donate(request, name, pk):
             return redirect("donate", name=artist.name, pk=artist.pk)
 
     return render(request, "stripe_payment.html", { "artist" : artist })
+
+
+def payment_success(request):
+    return render(request, "payment_success.html")
