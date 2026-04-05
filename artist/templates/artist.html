@@ -40,7 +40,9 @@
                         {% if artist.manager == user %}
                         <a href="{% url 'edit_artist' artist.name artist.id %}" class="btn btn-warning mb-3 navigation-button">Edit</a>
                         {% endif %}
+                        {% if artist.manager.stripeUserId %}
                         <a href="{% url 'donate' artist.name artist.id %}" class="btn btn-primary mb-3 navigation-button">Donate</a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="spacer mb-3">
