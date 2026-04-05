@@ -27,8 +27,7 @@ def donate(request, name, pk):
             return render(request, "stripe_payment.html", { "artist" : artist })
         
         # Try-catch block was copied from official Stripe documentation
-        try:
-            
+        try:            
             safe_name = quote(artist.name)
             checkout_session = stripe.checkout.Session.create(
                 line_items=[{
@@ -42,6 +41,14 @@ def donate(request, name, pk):
                 'quantity': 1,
             }],
                 mode='payment',
+                
+                payment_intent_data={
+                    'application_fee_amount': int(donation * 0.1),
+                    'transfer_data': {
+                        'destination': artist.manager.stripeUserId,
+                    },
+                },
+
                 success_url= str(settings.STRIPE_PAYMENT_SUCCESS_URL),
                 cancel_url= str(settings.STRIPE_PAYMENT_CANCEL_URL + f"{safe_name}/{artist.id}"),
             )

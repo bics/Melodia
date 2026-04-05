@@ -36,7 +36,7 @@ startOnboarding and getCookie functions were generated using Claude
 
 account_status and create_account_link views were generated using ChatGPT and Claude
 
-Try-catch block for donation view was copied from official Stripe documentation https://docs.stripe.com/checkout/quickstart
+Try-catch block code for donation view was copied from official Stripe documentation https://docs.stripe.com/checkout/quickstart and https://docs.stripe.com/connect/marketplace/quickstart?lang=python
 
 
 
