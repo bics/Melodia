@@ -1,7 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from artist.models import Artist
+import stripe
+from django.conf import settings
 
 # Create your views here.
 def donate(request, name, pk):
     artist = Artist.objects.get(pk=pk)
+
+    # Statement block was partially generated using ChatGPT
+    if request.method == "POST":
+        amount = request.POST.get("amount")
+        custom = request.POST.get("custom-amount")
+        if amount:
+            donation = amount * 100
+        elif custom:
+            try:
+                donation = custom * 100
+            except:
+                messages.success(request, f"Invalid custom amount")
+                return render(request, "stripe_payment.html", { "artist" : artist })
+        else:
+            messages.success(request, f"No amount was selected")
+            return render(request, "stripe_payment.html", { "artist" : artist })
+        
+        # Try-catch block was copied from official Stripe documentation
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[{
+                'price_data': {
+                    'currency': 'gbp',
+                    'product_data': {
+                        'name': f'Donation to {artist.name}',
+                    },
+                    'unit_amount': donation,
+                },
+                'quantity': 1,
+            }],
+                mode='payment',
+                success_url= str(settings.STRIPE_PAYMENT_SUCCESS_URL),
+                cancel_url= str(settings.STRIPE_CANCEL_SUCCESS_URL),
+            )
+
+            return redirect(checkout_session.url)
+        
+        except Exception as e:
+            messages.success(request, str(e))
+            return redirect("donate", name=artist.name, pk=artist.pk)
+
     return render(request, "stripe_payment.html", { "artist" : artist })

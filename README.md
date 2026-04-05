@@ -36,6 +36,10 @@ startOnboarding and getCookie functions were generated using Claude
 
 account_status and create_account_link views were generated using ChatGPT and Claude
 
+Try-catch block for donation view was copied from official Stripe documentation https://docs.stripe.com/checkout/quickstart
+
+
+
 Code:
 
 * Social urlization generated using ChatGPT for artists socials
@@ -53,6 +57,7 @@ Code:
 * Tooltip retrieval generated using ChatGPT
 * Rating retrieval partially generated using Claude
 * Input sanitation for search generated using ChatGPT
+* Donation if statement block was partially generated using ChatGPT
 
 
 * Search view inspired by tutorial from [John Elder](https://www.youtube.com/watch?v=AGtae4L5BbI&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=9)
