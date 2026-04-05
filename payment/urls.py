@@ -4,5 +4,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.payment, name='payment'),
+    path('<str:name>/<int:pk>/donate', views.donate, name='donate'),
 ]
