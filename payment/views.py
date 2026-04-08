@@ -29,6 +29,14 @@ def donate(request, name, pk):
         # Try-catch block was copied from official Stripe documentation
         try:            
             safe_name = quote(artist.name)
+            
+            if (request.user.is_authenticated):
+                user_id = request.user.id
+                user_email = request.user.email or ""
+            else:
+                user_id = None
+                user_email = "not registered"
+
             checkout_session = stripe.checkout.Session.create(
                 line_items=[{
                 'price_data': {
@@ -47,6 +55,16 @@ def donate(request, name, pk):
                     'transfer_data': {
                         'destination': artist.manager.stripeUserId,
                     },
+                },                    
+
+                metadata={
+                    "artist_id": str(artist.id),
+                    "artist_name": str(artist.name),
+                    "amount": str(donation),
+                    "manager_name" : str(artist.manager.name),
+                    "manager_stripe_id" : str(artist.manager.stripeUserId),
+                    "donator" : str(user_id),
+                    "donator_email" : str(user_email),
                 },
 
                 success_url= str(settings.STRIPE_PAYMENT_SUCCESS_URL),
