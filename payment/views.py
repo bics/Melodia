@@ -7,6 +7,7 @@ from decimal import Decimal
 from .models import Donation
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from members.models import MelodiaUser
 
 import stripe
 
@@ -68,7 +69,7 @@ def donate(request, name, pk):
                     "artist_id": str(artist.id),
                     "artist_name": str(artist.name),
                     "amount": str(donation),
-                    "manager_name" : str(artist.manager.name),
+                    "manager_name" : str(artist.manager.username),
                     "manager_stripe_id" : str(artist.manager.stripeUserId),
                     "donator" : str(user_id),
                     "donator_email" : str(user_email),
@@ -107,15 +108,27 @@ def stripe_webhook(request):
         session = event['data']['object']
 
         if session['payment_status'] == 'paid':
-            artist_id = session['metadata'].get('artist_id')
-            artist_name = session['metadata'].get('artist_name')
-            amount = session['metadata'].get('amount')
+            metadata = session['metadata'].to_dict()
+            artist_id = metadata.get('artist_id')
+            artist_name = metadata.get('artist_name')
+            amount = metadata.get('amount')
+            manager_name = metadata.get("manager_name")
+            manager_stripe_id = metadata.get("manager_stripe_id")
+            donator_id = metadata.get("donator")
+            donator_email = metadata.get("donator_email")
 
             artist = None
             if artist_id:
                 try:
                     artist = Artist.objects.get(id=artist_id)
                 except Artist.DoesNotExist:
+                    pass
+
+            donator = None
+            if donator_id:
+                try:
+                    donator = MelodiaUser.objects.get(id=donator_id)
+                except MelodiaUser.DoesNotExist:
                     pass
 
             donation, created = Donation.objects.get_or_create(
@@ -125,6 +138,10 @@ def stripe_webhook(request):
                     "artist_name": artist_name,
                     "amount": int(amount),
                     "is_paid": True,
+                    "manager_name" : manager_name,
+                    "manager_stripe_id" : manager_stripe_id,
+                    "donator" : donator,
+                    "donator_email" : donator_email,
                 }
             )
 
