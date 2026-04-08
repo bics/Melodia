@@ -38,6 +38,7 @@ account_status and create_account_link views were generated using ChatGPT and Cl
 
 Try-catch block code for donation view was copied from official Stripe documentation https://docs.stripe.com/checkout/quickstart and https://docs.stripe.com/connect/marketplace/quickstart?lang=python
 
+Webhook handler view was copied from official Stripe documentation https://docs.stripe.com/webhooks/quickstart?lang=python and modified using ChatGPT
 
 
 Code:
