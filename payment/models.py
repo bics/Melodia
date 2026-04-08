@@ -18,4 +18,7 @@ class Donation(models.Model):
     is_paid = models.BooleanField(default=False)
     time = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Donation for {self.artist_name}"
+
 
