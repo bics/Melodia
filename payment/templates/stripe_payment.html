@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="spacer m-3"></div>
+
+<div class="container d-flex justify-content-center">
+    <div class="middle-form slightly-darker-graphite-background rounded text-center p-3">
+        <h3>Donate to: {{artist.name}}</h3>
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break full-length">
+        </div>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <button name="amount" class="btn btn-success navigation-button" value="1"><span>&#163;</span>1</button>
+                    <button name="amount" class="btn btn-success navigation-button" value="2"><span>&#163;</span>2</button>
+                    <button name="amount" class="btn btn-success navigation-button" value="5"><span>&#163;</span>5</button>
+                </div>
+                <div class="spacer m-3">
+                    <hr class="color-platinum line-break full-length">
+                </div>
+                <div>
+                    <label for="custom-amount" class="form-label">Custom</label>
+                    <input type="number" name="custom-amount" class="form-control" min="0">
+                    <button type="submit" class="btn btn-success mt-3">Donate Custom</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

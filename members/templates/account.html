@@ -19,10 +19,10 @@ Edit Account
             {% csrf_token %}
             <div>
                 <!--Form fields partially generated with ChatGPT-->
-                {{form.username.label_tag}}
-                {{form.username}}
-                {{ form.email.label_tag }}
-                {{ form.email }}
+                {{accountUpdateForm.username.label_tag}}
+                {{accountUpdateForm.username}}
+                {{ accountUpdateForm.email.label_tag }}
+                {{ accountUpdateForm.email }}
 
                 <div class="spacer m-3">
                     <hr class="color-platinum line-break full-length">
@@ -32,17 +32,36 @@ Edit Account
                     class="btn btn-warning mb-2">Reset
                     Password</button><br>
 
-                <button type="submit" class="btn btn-success mb-2">Update Details</button>
+                <button type="submit" class="btn btn-success mb-2" name="account-update-submit">Update Details</button>
 
                 <div class="spacer m-3">
                     <hr class="color-platinum line-break full-length">
                 </div>
 
                 <button type="button"  data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
-                    class="btn btn-success mb-2" >Request Manager Access</button>
+                    class="btn btn-success">Request Manager Access</button>
                 <!--TODO implement emailing to above request-->
             </div>
         </form>
+        {% if user.isManager %}
+        <div class="spacer m-3">
+            <hr class="color-platinum line-break full-length">
+        </div>
+        <div>
+            <!--Form block copied from official stripe marketplace implementation-->
+            <form id="create-account-form" method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-1">
+                    <label for="email" class="form-label">Email for Connected account:</label>
+                    <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" required />
+                </div>
+                <button class="btn btn-success" type="submit" name="account-link-submit">Create Connect Account</button>
+            </form>
+
+            <!--TODO copy js update/test-->
+            <div id="account-status" data-stripe-account-id="{{user.stripeUserId}}"></div>
+        </div>
+        {% endif %}
     </div>
 </div>
 
@@ -89,4 +108,8 @@ Edit Account
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/stripe_account_status.js' %}"></script>
 {% endblock %}
