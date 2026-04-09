@@ -41,7 +41,7 @@ Main colours used on the website\
 
 Typography
 
-* Corbel Light is used with a fallback to Calibri first and then to sans-serif.
+* Corbel is used with a fallback to Calibri first and then to sans-serif.
 
 ### Wireframes
 <details>
@@ -77,10 +77,40 @@ On top of the page users can interact with the navigation bar. These could help 
 for any data available about songs, albums and artists.\
 
 The first suggestion part is a huge banner with 5 random artists. They ranked by their accumulated rating of all songs.\
-The next part is 15 completely random songs.\
+
+![Landing page banner](static/assets/images/landingpage_banner.PNG)
+
+The next part is a hidden audio player. The player becomes visible, when the user start listening to one the songs.\
+Below the player is a table with 15 completely random songs.\
+
+![Landing page banner](static/assets/images/landigpage_table.PNG)
+
 The last part is showcasing 10 random artists.
 
 ### Account page
+
+On this page users can update their details or initiate password reset\
+Users can request manager access. This function does nothing at the moment, but future consideration should be made to include automated
+ticket creation for staff to enable manager features for an account.\
+Once manager access is granted, managers here can (and need to) link their stripe account. The account linking helps to ensure donation
+will be received correctly. The page renders the account onboarding status as well, making sure managers are aware if they need to update their stripe account.
+
+![Account page](static/assets/images/account.PNG)
+
+### Artist page
+
+The artist page is similar to the landing page, but only focuses on a single artist.\
+On top there is the banner image for the artist.\
+In the middle is the details of the band/artist. On the left side is the band's/artist's image, and on the right side their socials, description and name. In this part lies the donation button, where users can donate directly (or rather through their agent) to their favourite artist.\
+
+![Artist page top](static/assets/images/artist_page.PNG)
+
+If the artist's manager visits this page, this is were they are able to update their managed artist's details.\
+The last part is where all of the artist's albums is displayed. This part also has a hidden audio player, which will be visible once 
+one of the songs staring to play.\
+In this section manager can add or edit the albums itself.
+
+![Artist page albums](static/assets/images/artist_page_albums.PNG)
 
 ### Django Allauth's core features
 
