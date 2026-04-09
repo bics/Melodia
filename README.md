@@ -1,6 +1,6 @@
 # Melodia
 
-[Deployed site]()\
+[Deployed site](https://melodia-music-e57dab08c43e.herokuapp.com)\
 Use "Ctrl + click" or "CMD + click" to open in new tab
 
 # Table of contents    
@@ -20,45 +20,67 @@ Use "Ctrl + click" or "CMD + click" to open in new tab
 
 ### User stories
 * First Time Visitor Goals
+    * First time users should be able to understand the purpose of the site.
+    * They should be able to navigate the site without any issue.
+    * The site should encourage users to interact with it.
 
 * Returning Visitor Goals
+    * Returning visitors should be able to notice any changes on the website.
+    * Changes should be evident to returning visitors
 
 * Frequent User Goals
+    * Frequent users should be able to listen and enjoy to uploaded audio files.
+    * They should be able to rate uploaded audio files.
 
 ### Design
 
 Colour Scheme
 
 Main colours used on the website\
-![Color palette]()
+![Color palette](static/assets/images/color_palette.png)
 
 Typography
 
-* 
+* Corbel Light is used with a fallback to Calibri first and then to sans-serif.
 
 ### Wireframes
 <details>
 <summary>Mobile</summary>
 
-![Mobile wireframe](static/assets/images/Wireframe_Mobile.png)
+![Mobile wireframe landingpage](static/assets/wireframes/mobile_landingpage.png)
+![Mobile wireframe arist](static/assets/wireframes/mobile_artists.png)
 
 </details>
 <details>
 <summary>Tablet</summary>
 
-![Tablet wireframe](static/assets/images/Wireframe_Tablet.png)
+![Tablet wireframe landingpage](static/assets/wireframes/tablet_landingpage.png)
+![Tablet wireframe arist](static/assets/wireframes/tablet_artists.png)
 
 </details>
 <details>
 <summary>Desktop</summary>
 
-![Desktop wireframe](static/assets/images/Wireframe_Desktop.png)
+![Desktop wireframe landingpage](static/assets/wireframes/pc_landingpage.png)
+![Desktop wireframe arist](static/assets/wireframes/pc_artists.png)
 
 </details>
 
 # Features
 
 ## Existing features
+
+### Landing page
+
+The landing page is a mix of suggestions.\
+On top of the page users can interact with the navigation bar. These could help them locate the pages they wish to visit, or simply look
+for any data available about songs, albums and artists.\
+
+The first suggestion part is a huge banner with 5 random artists. They ranked by their accumulated rating of all songs.\
+The next part is 15 completely random songs.\
+The last part is showcasing 10 random artists.
+
+### Account page
 
 ### Django Allauth's core features
 
