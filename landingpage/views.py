@@ -14,6 +14,7 @@ def index(request):
         )
     )
     random.shuffle(artists)
+    random_artists = artists[:10]
     artists = sorted(artists[:15], key=lambda x: x.avg_rating or 0, reverse=True)
 
     all_tracks = list(
@@ -37,7 +38,7 @@ def index(request):
             track.stars = [False] * 5
 
 
-    return render(request, 'index.html', {"artists": artists, "random_tracks": random_tracks})
+    return render(request, 'index.html', {"artists": artists, "random_tracks": random_tracks, "random_artists" : random_artists})
 
 # View inspired by tutorial from Codemy
 def search_result(request):
