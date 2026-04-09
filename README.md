@@ -1,5 +1,185 @@
 # Melodia
 
+[Deployed site]()\
+Use "Ctrl + click" or "CMD + click" to open in new tab
+
+# Table of contents    
+
+1. [UX](#ux)
+2. [Features](#features)
+    1. [Existing Features](#existing-features)
+    2. [Future Features Consideration](#future-features-consideration)
+3. [Data](#data)
+4. [Technologies used](#technologies-used)
+5. [Testing](#testing)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
+8. [Acknowledgements](#acknowledgements)
+
+# UX
+
+### User stories
+* First Time Visitor Goals
+
+* Returning Visitor Goals
+
+* Frequent User Goals
+
+### Design
+
+Colour Scheme
+
+Main colours used on the website\
+![Color palette]()
+
+Typography
+
+* 
+
+### Wireframes
+<details>
+<summary>Mobile</summary>
+
+![Mobile wireframe](static/assets/images/Wireframe_Mobile.png)
+
+</details>
+<details>
+<summary>Tablet</summary>
+
+![Tablet wireframe](static/assets/images/Wireframe_Tablet.png)
+
+</details>
+<details>
+<summary>Desktop</summary>
+
+![Desktop wireframe](static/assets/images/Wireframe_Desktop.png)
+
+</details>
+
+# Features
+
+## Existing features
+
+### Django Allauth's core features
+
+The project is integrated with Django Allauth’s core features. This enables easy user management and provides essential security protections.\
+It is used for user creation, user login, user logout, and password management.\
+This ensures users have accurate details and enforces strong password usage.
+
+### Cloudinary
+
+This 3rd party media storage service is used to store user-uploaded images.
+
+![Cloudinary image](static/assets/images/cloudinary_image.PNG)
+
+## Future features consideration
+
+
+# Data
+
+![Database models](static/assets/images/DB_diagram.png)
+
+# Technologies used
+
+* The core project is written in HTML5, CSS3 and Python.
+* Used [Visual Studio Code](https://code.visualstudio.com) as IDE.
+* Used [Github](https://github.com) to store and deploy the repository.
+* Used [Sourcetree](https://www.sourcetreeapp.com) for version control.
+* Used [Opera](https://www.opera.com), [Mozilla](https://www.mozilla.org/en-GB/) and [Chrome](https://www.google.com/intl/en_uk/chrome/) browsers and their respective developer tools for testing.
+* Used [ChatGPT](https://chatgpt.com) for debugging, code and content generation.
+* Used [W3Schools](https://www.w3schools.com) to help to understand and write codes.
+* Frequently visited [Stack Overflow](https://stackoverflow.com/questions) to understand some behaviours.
+* Used [Bootstrap](https://getbootstrap.com) as css.
+* Used [Freepik](https://www.freepik.com) to acquire free images.
+* Used [Krita](https://krita.org/en/) and [Canva](https://www.canva.com) for modifying pictures.
+* Used [Coolors](https://coolors.co) to create color palette.
+* Used [Microsoft Windows](https://www.microsoft.com/en-gb/windows?r=1) in-built **Snippet** tool to capture images.
+* Used [Cloudinary](https://cloudinary.com) to store media images.
+* Used [PostgreSQL](https://www.postgresql.org) as database.
+* Used [Heroku](https://www.heroku.com) as hosting platform.
+* Used [Wordmark](https://wordmark.it) to select fonts.
+
+* Used the [Django web framework](https://www.djangoproject.com), with the following core technologies:
+
+| Name | Purpose |
+|------|---------|
+| Django | Core |
+| django-allauth | User management |
+| django-cloudinary-storage | Supports Cloudinary integration |
+| cloudinary | Supports Cloudinary integration |
+| pillow | Image processing helper |
+| whitenoise | Serves static files|
+| psycopg2 | PostgreSQL adapter|
+| gunicorn | Production WSGI server |
+| black | Python code formatter |
+| pycodestyle | Python code validator |
+| pydotplus | Graph and diagram generation |
+
+
+# Testing
+
+Testing is extracted to it's own document, [TESTING]()
+
+# Deployment
+
+### Heroku
+The project is deployed to [Heroku](https://www.heroku.com). In order to achieve this the following steps were taken:\
+1. Sign into [Heroku](https://www.heroku.com).
+2. Start creating a new app.
+3. Use Github as preferred deployment method. 
+4. Connect to your Github account, and connect the corresponding repository.
+5. Setup the reqiured environment variables.
+    
+6. Once it successfully connected select a branch to deploy and hit "Deploy branch".
+
+### Forking a repository
+
+1. Sign into [Github](https://github.com/) (can be done later).
+2. On [Github](https://github.com/) locate the [Melodia](https://github.com/bics/Melodia) repository.
+3. On the top right hand side click on the "Fork" option.
+4. Sign into [Github](https://github.com/) (not needed if step 1. was taken).
+5. The repository should be present under your account's repositories.
+
+### Download local repository
+
+1. Navigate to the [Melodia](https://github.com/bics/Melodia) repository.
+2. On the right side select the "Code" dropdown menu.
+3. Download the repository as a .zip file.
+4. Extract the downloaded file.
+5. Open up your preferred IDE and add the extracted folder as a project.
+
+### Clone a repository with Sourcetree
+
+1. Import SSH key. If SSH key already imported skip these steps
+    1. Acquire the SSH key, and password for this repository.
+    2. Locate the "Tools" menu, and select the "Create or import SSH keys" option.
+    3. In the dialog select "Load" and locate the acquired SSH key.
+    4. If prompted sign in to [Github](https://github.com/) account and enter the password.
+2. Click on the "+" icon to add a local repository.
+3. Select the "Remote" option on the top navigation bar.
+4. Search for the [Melodia](https://github.com/bics/Melodia) repository and hit clone.
+
+# Credits
+
+### Code
+
+### Content
+
+* Using core Django Allauth default messages.
+* All other content was written by me.
+
+### Media
+
+
+# Acknowledgements
+
+Thank you to Kevin Loughrey, our cohort leader, for his continuous support and feedback during development.
+
+
+
+
+
+
 gitgnore copied from previous CoffeeHouse project
 
 Allauth settings block taken from official doc
