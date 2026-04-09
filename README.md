@@ -74,14 +74,14 @@ Typography
 
 The landing page is a mix of suggestions.\
 On top of the page users can interact with the navigation bar. These could help them locate the pages they wish to visit, or simply look
-for any data available about songs, albums and artists.\
+for any data available about songs, albums and artists.
 
-The first suggestion part is a huge banner with 5 random artists. They ranked by their accumulated rating of all songs.\
+The first suggestion part is a huge banner with 5 random artists. They ranked by their accumulated rating of all songs.
 
 ![Landing page banner](static/assets/images/landingpage_banner.PNG)
 
 The next part is a hidden audio player. The player becomes visible, when the user start listening to one the songs.\
-Below the player is a table with 15 completely random songs.\
+Below the player is a table with 15 completely random songs.
 
 ![Landing page banner](static/assets/images/landigpage_table.PNG)
 
@@ -90,8 +90,10 @@ The last part is showcasing 10 random artists.
 ### Account page
 
 On this page users can update their details or initiate password reset\
+
 Users can request manager access. This function does nothing at the moment, but future consideration should be made to include automated
-ticket creation for staff to enable manager features for an account.\
+ticket creation for staff to enable manager features for an account.
+
 Once manager access is granted, managers here can (and need to) link their stripe account. The account linking helps to ensure donation
 will be received correctly. The page renders the account onboarding status as well, making sure managers are aware if they need to update their stripe account.
 
