@@ -114,6 +114,65 @@ In this section manager can add or edit the albums itself.
 
 ![Artist page albums](static/assets/images/artist_page_albums.PNG)
 
+### Edit artist page
+
+To edit the artists details, manager can navigate to the edit page. Here all the related details for the artists can be updated.
+
+![Edit artist](static/assets/images/edit_artist.PNG)
+
+### Album addition/edit
+
+Managers can easily add new albums to their artists. They need to locate the creation button, which navigates them to the creation page.
+Here after filling out the form an album is created for the artist.
+
+![Album creation](static/assets/images/album_creation.PNG)
+
+To edit the album, after navigating to the page, managers can update the albums details, and remove or edit any track details. This ensures all related data manipulation happens on one page.
+
+![Edit album](static/assets/images/edit_album.PNG)
+
+![Edit track](static/assets/images/edit_tracks.PNG)
+
+### Track addition
+
+To add tracks, managers first need to select an album, then after navigating to the addition page they are able to add up to a maximum 12 tracks at a time.\
+These achieved using a formset. Additional forms can be added/removed with the respective buttons. Removing a form also clears it so data
+will not be saved accidentally.
+
+![Add track](static/assets/images/track_addition.PNG)
+
+### Donation page
+
+The donation button is located on the artist page. It is hidden until the manager have managed to acquire their stripe user id.\
+The donation page is a very simple form for users to donate to their favourite artists. Here users can choose a small predifined amount or set a custom amount.
+
+![Donation](static/assets/images/donation.PNG)
+
+After clicking either a predefined or submitting a custom donation the user is redirected to stripe's payment window. Here stripe will validate the users details.
+
+If users decide to go back, they will be redirected to the artist page.\
+After the payment succeeded they are redirected to the success page.
+
+### Manage page
+
+On this page, managers can add new artists to the site. This page also allows them to navigate to their managed artists pages easily.
+
+![Manage page](static/assets/images/manage.PNG)
+
+### Rating system
+
+Within the album tables, and the landing page suggestion table, users can rate songs. These ratings are saved via AJAX solely to enable users to listen to the songs, and rate at the same time, as no reload needed.\
+Rating for each song in both tables will be shown after a minimum number of submissions. Currently, a rating is shown once at least three ratings have been received.
+
+![Ratings](static/assets/images/ratings.PNG)
+
+### Search function
+
+If a user uses the search function, they will be presented with all matching data found.\
+These results are categorized so the user should be able to select from each type if data they were looking for.
+
+![Search page](static/assets/images/search.PNG)
+
 ### Django Allauth's core features
 
 The project is integrated with Django Allauth’s core features. This enables easy user management and provides essential security protections.\
