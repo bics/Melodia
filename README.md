@@ -225,6 +225,7 @@ This 3rd party media storage service is used to store user-uploaded images.
 * Used [Wordmark](https://wordmark.it) to select fonts.
 * Used [Canva](https://www.canva.com) to create wireframes.
 * Used [Youtube](https://www.youtube.com) with [OnlyMP3 converter](https://en.onlymp3.io/A04/) to acquire audio tracks
+* Used [Graphviz](https://graphviz.org) to create DB visualisation.
 
 * Used the [Django web framework](https://www.djangoproject.com), with the following core technologies:
 
