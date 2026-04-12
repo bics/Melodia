@@ -103,6 +103,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_FORMS = {
     "login": "members.forms.AllauthLoginForm",
     "signup": "members.forms.AllauthSignupForm",
+    "reset_password": "members.forms.AllauthResetPasswordForm",
+    "reset_password_from_key": "members.forms.AllauthChangePasswordForm",
 }
 
 # Password validation

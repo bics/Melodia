@@ -28,6 +28,23 @@ class AllauthSignupForm(SignupForm):
                 field.widget.attrs.update({"class": "form-control"})
 
 # Form taken from previous CoffeeHouse project
+class AllauthResetPasswordForm(ResetPasswordForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["email"].widget.attrs.update({"class": "form-control"})
+
+# Form taken from previous CoffeeHouse project
+class AllauthChangePasswordForm(ResetPasswordKeyForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["password1"].widget.attrs.update({"class": "form-control"})
+        self.fields["password2"].widget.attrs.update({"class": "form-control"})
+
+# Form taken from previous CoffeeHouse project
 class AccountUpdateForm(forms.ModelForm):
     class Meta:
         model = MelodiaUser

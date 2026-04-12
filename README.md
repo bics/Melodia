@@ -365,14 +365,13 @@ The project is deployed to [Heroku](https://www.heroku.com). In order to achieve
 
 * gitgnore copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 * base.html copied and modified from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
-* Login/Signup form html and form from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* Allauth template htmls and forms from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 * Account details update modals was copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 * CreateArtistForm helptext update copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 * Cloudinary settings copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 * Whitenoise middleware addon copied from [W3Schools](https://www.w3schools.com)
 * Allauth settings block taken from [official allauth documentation](https://docs.allauth.org/en/latest/)
 * Search view inspired by tutorial from [John Elder](https://www.youtube.com/watch?v=AGtae4L5BbI&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=9)
-* Signup code block copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
 
 #### Bootstrap
 
