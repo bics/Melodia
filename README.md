@@ -284,6 +284,53 @@ The project is deployed to [Heroku](https://www.heroku.com). In order to achieve
 
 ### Code
 
+* gitgnore copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* base.html copied and modified from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* Login form html and form from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* Account details update modals was copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* CreateArtistForm helptext update copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* Cloudinary settings copied from previous [CoffeeHouse](https://github.com/bics/CoffeeHouse) project
+* Whitenoise middleware addon copied from [W3Schools](https://www.w3schools.com)
+* Allauth settings block taken from [official allauth documentation](https://docs.allauth.org/en/latest/)
+* Search view inspired by tutorial from [John Elder](https://www.youtube.com/watch?v=AGtae4L5BbI&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=9)
+
+#### Bootstrap
+
+* Navbar block taken from [Bootsrap's official documentation](https://getbootstrap.com/docs/5.3/components/navbar/)
+* Carousel code block taken from [Bootsrap's official documentation](https://getbootstrap.com/docs/5.3/components/carousel/)
+* Card code block copied from [Bootsrap's official documentation](https://getbootstrap.com/docs/5.3/components/card/)
+* Collapse code block copied from [Bootsrap's official documentation](https://getbootstrap.com/docs/5.3/components/collapse/)
+
+#### Stripe
+
+* Form block for members copied from [official stripe marketplace implementation](https://docs.stripe.com/connect/marketplace/quickstart?lang=python)
+* Try block copied from [official Stripe documentation](https://docs.stripe.com/connect/marketplace/quickstart?lang=python)
+* stripe_account_status.js was copied and modified from [official Stripe documentation](https://docs.stripe.com/connect/marketplace/quickstart?lang=python)
+* Try-catch block code for donation view was copied from [official Stripe documentation](https://docs.stripe.com/checkout/quickstart) and [official stripe marketplace implementation](https://docs.stripe.com/connect/marketplace/quickstart?lang=python)
+* Webhook handler view was copied from [official Stripe documentation](https://docs.stripe.com/webhooks/quickstart?lang=python) and modified using ChatGPT
+
+#### AI
+
+* Social urlization generated using [ChatGPT](https://chatgpt.com) for artists socials
+* GetSocial method partially generated using [ChatGPT](https://chatgpt.com)
+* Featured artist query selector generated using [ChatGPT](https://chatgpt.com)
+* Formset save partially generated using [ChatGPT](https://chatgpt.com)
+* Form reset logic generated using [ChatGPT](https://chatgpt.com)
+* Extracting selected option partially generated using [ChatGPT](https://chatgpt.com)
+* File upload path partially generated using [ChatGPT](https://chatgpt.com)
+* Landing page random object retrieval and sorting generated using [ChatGPT](https://chatgpt.com)
+* Audio upload and length retrieval generated using [ChatGPT](https://chatgpt.com)
+* Proper length return generated using [ChatGPT](https://chatgpt.com)
+* AJAX submission and helper method generated using [ChatGPT](https://chatgpt.com)
+* Rate track view generated using [ChatGPT](https://chatgpt.com)
+* Tooltip retrieval generated using [ChatGPT](https://chatgpt.com)
+* Rating retrieval partially generated using [Claude](https://claude.ai/new)
+* Input sanitation for search generated using [ChatGPT](https://chatgpt.com)
+* Donation if statement block was partially generated using [ChatGPT](https://chatgpt.com)
+* Artist update view decorator was generated using [ChatGPT](https://chatgpt.com)
+* startOnboarding and getCookie functions were generated using [Claude](https://claude.ai/new)
+* account_status and create_account_link views were generated using [ChatGPT](https://chatgpt.com) and [Claude](https://claude.ai/new)
+
 ### Content
 
 * Using core Django Allauth default messages.
@@ -327,74 +374,8 @@ The project is deployed to [Heroku](https://www.heroku.com). In order to achieve
 
 * rating_star_full_transbg modified using [removebg](https://www.remove.bg/hu/upload)
 
+* All tracks were downloaded from [Youtube](https://www.youtube.com) using [OnlyMP3 converter](https://en.onlymp3.io/A04/)
+
 # Acknowledgements
 
 Thank you to Kevin Loughrey, our cohort leader, for his continuous support and feedback during development.
-
-
-
-
-
-
-gitgnore copied from previous CoffeeHouse project
-
-Allauth settings block taken from official doc
-
-base.html copied and modified from previous CoffeeHouse project
-
-Navbar block taken from official bootstrap documentation https://getbootstrap.com/docs/5.3/components/navbar/
-
-Carousel code block taken from official bootstrap documentation https://getbootstrap.com/docs/5.3/components/carousel/
-
-Card code block copied from Bootsrap's official documentation https://getbootstrap.com/docs/5.3/components/card/
-
-Collapse code block copied from Bootsrap's official documentation https://getbootstrap.com/docs/5.3/components/collapse/
-
-Login form html and form from previous CoffeeHouse project
-
-Account details update modals was copied from previous CoffeeHouse project
-
-Artist update view decorator was generated using ChatGPT
-
-CreateArtistForm helptext update copied from previous CoffeeHouse project
-
-Whitenoise middleware addon copied from W3Schools
-
-Cloudinary settings copied from previous CoffeeHouse project
-
-Form block for members copied from official stripe marketplace implementation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
-
-Try block copied from official Stripe documentation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
-
-stripe_account_status.js was copied and modified from official Stripe documentation https://docs.stripe.com/connect/marketplace/quickstart?lang=python
-
-startOnboarding and getCookie functions were generated using Claude
-
-account_status and create_account_link views were generated using ChatGPT and Claude
-
-Try-catch block code for donation view was copied from official Stripe documentation https://docs.stripe.com/checkout/quickstart and https://docs.stripe.com/connect/marketplace/quickstart?lang=python
-
-Webhook handler view was copied from official Stripe documentation https://docs.stripe.com/webhooks/quickstart?lang=python and modified using ChatGPT
-
-
-Code:
-
-* Social urlization generated using ChatGPT for artists socials
-* GetSocial method partially generated using ChatGPT
-* Featured artist query selector generated using ChatGPT
-* Formset save partially generated using ChatGPT
-* Form reset logic generated using ChatGPT
-* Extracting selected option partially generated using ChatGPT
-* File upload path partially generated using ChatGPT
-* Landing page random object retrieval and sorting generated using ChatGPT
-* Audio upload and length retrieval generated using ChatGPT
-* Proper length return generated using ChatGPT
-* AJAX submission and helper method generated using ChatGPT
-* Rate track view generated using ChatGPT
-* Tooltip retrieval generated using ChatGPT
-* Rating retrieval partially generated using Claude
-* Input sanitation for search generated using ChatGPT
-* Donation if statement block was partially generated using ChatGPT
-
-
-* Search view inspired by tutorial from [John Elder](https://www.youtube.com/watch?v=AGtae4L5BbI&list=PLCC34OHNcOtqW9BJmgQPPzUpJ8hl49AGy&index=9)
