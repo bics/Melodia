@@ -197,7 +197,12 @@ This 3rd party media storage service is used to store user-uploaded images.
 
 # Data
 
-![Database models](static/assets/images/DB_diagram.png)
+<details>
+<summary>Models</summary>
+
+![Database models](static/assets/images/clean_models.svg)
+
+</details>
 
 # Technologies used
 
