@@ -185,6 +185,14 @@ This 3rd party media storage service is used to store user-uploaded images.
 
 ![Cloudinary image](static/assets/images/cloudinary_image.PNG)
 
+### Google SMTP service
+
+A dedicated Google account was created and modified to be the messaging client for the project.
+This email service was then integrated to support Django Allauth features.
+Currently the password reset workflow uses this service.
+
+![Reset email](static/assets/images/pw_reset_email.PNG)
+
 ## Future Feature Considerations
 
 * Global music player: Currently, each audio player is limited to its respective page. Leaving this page will stop the player.
