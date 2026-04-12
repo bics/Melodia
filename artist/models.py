@@ -8,7 +8,6 @@ class Artist(models.Model):
     description = models.TextField(blank=True, null=True)
     bornOn = models.DateField()
     socials = models.TextField(blank=True, null=True)
-    rating = models.FloatField(blank=True, null=True)
     manager = models.ForeignKey(MelodiaUser, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):

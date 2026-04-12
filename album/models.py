@@ -16,7 +16,6 @@ class Album(models.Model):
     description = models.TextField(blank=True, null=True)
     released = models.DateField()
     length = models.FloatField(blank=True, null=True)
-    rating = models.FloatField(blank=True, null=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="albums")
 
     def __str__(self):

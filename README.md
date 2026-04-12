@@ -204,6 +204,77 @@ This 3rd party media storage service is used to store user-uploaded images.
 
 </details>
 
+### Melodiauser
+
+The main custom user model.
+It includes the base fields inherited from AbstractUser.
+Custom fields added:
+
+* isManager: Used to determine whether a user has access to add artists and related objects to the site
+* stripeUserId: Used to store the user's Stripe ID for payments
+* stripeAccessToken: Currently unused. I followed a guide for the initial steps, abandoned the guide, and left it in case it might be useful
+
+### Artist
+
+The main model for the site. Only managers can add these objects.
+Fields are:
+
+* name: Name given by the manager
+* description: A custom description given by the manager
+* bornOn: Date when the artist/band was born or established, given by the manager
+* socials: Social links, given by the manager
+* manager: Foreign key of the manager who is maintaining the artist
+
+### Album
+
+Albums are used to contain tracks for artists.
+Fields are:
+
+* name: Name given by the manager
+* description: A custom description given by the manager
+* released: Date when the album was released, given by the manager
+* length: Length of all the tracks in the album. Currently unused.
+* artist: Foreign key of the artist the album belongs to.
+
+### Track
+
+Track is a model for audio files and their details.
+Fields are:
+
+* name: Name given by the manager
+* track: Audio file URL. Manages file uploads and references the file itself.
+* position: Position in the album given by the manager.
+* lyrics: Lyrics for the song given by the manager.
+* length: Length of the audio file. Populated on file upload with the help of mutagen.
+* album: Foreign key of the album the track is part of.
+* artist: Foreign key of the artist the track belongs to.
+* featured_artist: Many-to-many field indicating guest artists.
+
+### Rating
+
+Rating object used to store each rating for tracks.
+Fields are:
+
+* ratingTrack: Foreign key of the track the rating belongs to.
+* ratingUser: Foreign key of the user who rated.
+* ratingValue: The actual rating value.
+
+### Donation
+
+Donation is the model used to keep track of payments alongside Stripe.
+Fields are:
+
+* amount: Donation amount.
+* artist: Foreign key of the artist the donation goes to.
+* artist_name: Safekeeping name of the artist in case the artist is deleted.
+* manager_name: Name of the artist's current manager.
+* manager_stripe_id: Stripe ID of the manager.
+* donator: Foreign key of the user who donated.
+* donator_email: Safekeeping the email of the user who donated.
+* stripe_session_id: Session ID of the Stripe transaction.
+* is_paid: Boolean field indicating a successful payment.
+* time: Time of the donation, automatically generated.
+
 # Technologies used
 
 * The core project is written in HTML5, CSS3 and Python.
