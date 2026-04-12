@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+<div class="spacer m-3"></div>
+
+<!--Code block copied from previous CoffeeHouse project-->
+<div class="container d-flex justify-content-center">
+    <div class="slightly-darker-graphite-background rounded p-3">
+        <form id="register-form" method="POST" action="{% url 'account_signup' %}" class="w-100 text-center" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+    
+            <div class="w-100 text-center">
+                <hr>
+                <input class="btn btn-success" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

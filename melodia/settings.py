@@ -102,6 +102,7 @@ ACCOUNT_SESSION_REMEMBER = True
 
 ACCOUNT_FORMS = {
     "login": "members.forms.AllauthLoginForm",
+    "signup": "members.forms.AllauthSignupForm",
 }
 
 # Password validation
@@ -173,3 +174,14 @@ STRIPE_RETURN_URL = os.getenv('STRIPE_RETURN_URL')
 STRIPE_PAYMENT_CANCEL_URL = os.getenv('STRIPE_PAYMENT_CANCEL_URL')
 STRIPE_PAYMENT_SUCCESS_URL = os.getenv('STRIPE_PAYMENT_SUCCES_URL')
 STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
+
+#SMTP
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("env_email_host")
+EMAIL_HOST_PASSWORD = os.environ.get("env_email_password")
+DEFAULT_FROM_EMAIL = os.environ.get("env_email_default")
+
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "Melodia "
