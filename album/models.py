@@ -66,4 +66,7 @@ class Rating(models.Model):
         return self.ratingValue
 
     def __str__(self):
-        return f"{self.ratingTrack.name} rating by user, {self.ratingUser.username} is {self.ratingValue}"
+        return (
+            f"{self.ratingTrack.name} rating by user, "
+            f"{self.ratingUser.username} is {self.ratingValue}"
+        )

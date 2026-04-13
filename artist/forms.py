@@ -27,7 +27,10 @@ class AlbumCreationForm(forms.ModelForm):
         }
 
         help_texts = {
-            "image": "Optional. Your image will be stored securely using Cloudinary to display your image.",
+            "image": (
+                "Optional. Your image will be stored "
+                "securely using Cloudinary to display your image."
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -66,9 +69,15 @@ class EditArtistForm(forms.ModelForm):
 
         # Snippet taken from previous CoffeeHouse project
         help_texts = {
-            "image": "Optional. Your image will be stored securely using Cloudinary to display your image.",
+            "image": (
+                "Optional. Your image will be stored securely "
+                "using Cloudinary to display your image."
+            ),
             "socials": "Enter each social on a new line.",
-            "banner": "Optional. Your image will be stored securely using Cloudinary to display your image.",
+            "banner": (
+                "Optional. Your image will be stored securely "
+                "using Cloudinary to display your image."
+            ),
         }
 
     def __init__(self, *args, **kwargs):

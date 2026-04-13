@@ -28,7 +28,7 @@ def donate(request, name, pk):
         elif custom:
             try:
                 donation = int(Decimal(custom) * 100)
-            except:
+            except Exception as e:
                 messages.success(request, f"Invalid custom amount")
                 return render(request, "stripe_payment.html", {"artist": artist})
         else:

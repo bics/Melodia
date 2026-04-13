@@ -93,7 +93,10 @@ def create_track(request, name, pk, artistPK):
                         upload_result = cloudinary.uploader.upload(
                             mp3_file,
                             resource_type="raw",  # important!
-                            folder=f"melodia/artist_audios/{slugify(artist.name)}/{slugify(album.name)}",
+                            folder=(
+                                f"melodia/artist_audios/"
+                                f"{slugify(artist.name)}/{slugify(album.name)}"
+                            ),
                         )
                         # Save the Cloudinary URL in the model
                         track.track = upload_result["secure_url"]
