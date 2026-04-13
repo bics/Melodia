@@ -47,7 +47,7 @@
                 <div>
                     <form class="d-flex" role="search" method="POST" action="{% url 'search_result' %}">
                         {% csrf_token %}
-                        <input class="form-control me-2" type="search" name="search_input" placeholder="Search" aria-label="Search" />
+                        <input class="form-control me-2" type="search" name="search_input" placeholder="Search" aria-label="Search" required/>
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>

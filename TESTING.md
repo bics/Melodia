@@ -1,5 +1,26 @@
 # Testing
 
+Manual testing is focused on user interaction and feedback.\
+With both signed-in and unauthenticated user interactions should be tested.\
+Cases involve navigation, functionality, and interactivity.
+
+### Landingpage
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works even with empty search query.
+
+Content:
+* Banner and title placed correctly, buttons work, data rotates on reload for not rated artists (no rating yet for most artists), only rated artists keeps 1st place.
+* Table visually breathable. Buttons looks interactable, titles make sense. After interaction music plays, links work.\
+If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty place. On smaller screens table ramins rigid and cluttered.
+* Discover section displays properly. Only ten artists displayed. Linkage works.
+
+Steps taken:
+1. Search input field required attribute added, making sure empty query is not submitted.
+2. Table is made responsive. Overflow added to ratings.
+
+
 ## Manual testing
 
 ## Automated testing

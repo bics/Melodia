@@ -60,6 +60,10 @@ nav a{
     background-color: var(--lighter-graphite-background-color);
 }
 
+.overflow-auto{
+    overflow: auto;
+}
+
 .suggestion-table th,.suggestion-table td{
     background-color: transparent;
     color: var(--platinum-white-color);

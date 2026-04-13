@@ -67,12 +67,12 @@ Melodia
     </div>
 </div>
 
-<div class="container">
+<div class="container overflow-auto">
 
     
     <h2 class="text-center mb-3">Find your next favorite song</h2>
 
-    <div class="shadow p-2 mb-3 bg-dark bg-gradient rounded">
+    <div class="shadow p-2 mb-3 bg-dark bg-gradient rounded table-responsive">
         <table class="table suggestion-table text-center">
             <thead>
                 <tr>
@@ -97,7 +97,7 @@ Melodia
                     <td>{{track.album.name}}</td>
                     <td><a href="{% url 'artist' track.artist.name track.artist.id %}">{{track.artist.name}}</a></td>
                     <td>{{track.getTrackLength}}</td>
-                    <td>
+                    <td class="overflow-auto">
                         <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
                             {% if user.is_authenticated %}
                             <div class="rating-gold">
@@ -129,7 +129,7 @@ Melodia
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <p>Not enough rating yet!</p>
+                                Not enough rating yet!
                                 {% endif %}
                             </div>
                         </div>
