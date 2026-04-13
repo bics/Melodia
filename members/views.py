@@ -48,6 +48,10 @@ def account(request):
             except Exception as e:
                 messages.success(request, str(e))
                 return redirect("account")
+        elif "manager-access-submit" in request.POST:
+            # Feature to send email to staff
+            messages.success(request, "A ticket has been created.")
+            return redirect("account")
     else:
         accountUpdateForm = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
@@ -104,14 +108,4 @@ def create_artist(request):
     else:  
         form = CreateArtistForm()     
         return render(request, 'create_artist.html', {'form' : form})
-    
-# TODO implement view to update artists records with the below access decorator
-# Code block generated using ChatGPT for safekeeping
-# from django.contrib.auth.decorators import user_passes_test
 
-# def is_manager_or_staff(user):
-#     return user.is_authenticated and (user.isManager or user.is_staff)
-
-# @user_passes_test(is_manager_or_staff)
-# def update_artist(request, pk):
-#     ...

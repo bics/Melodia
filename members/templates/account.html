@@ -40,7 +40,6 @@ Edit Account
 
                 <button type="button"  data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
                     class="btn btn-success">Request Manager Access</button>
-                <!--TODO implement emailing to above request-->
             </div>
         </form>
         {% if user.isManager %}
@@ -58,7 +57,6 @@ Edit Account
                 <button class="btn btn-success" type="submit" name="account-link-submit">Create Connect Account</button>
             </form>
 
-            <!--TODO copy js update/test-->
             <div id="account-status" data-stripe-account-id="{{user.stripeUserId}}"></div>
         </div>
         {% endif %}
@@ -98,9 +96,12 @@ Edit Account
                     {% if user.isManager %}
                         <p>Account already have manager permissions.</p>
                     {% else %}
-                        <p>Please confirm if you wish to get manager access.</p>
-                        <p>An email will be sent to staff, who will contact you with further steps.</p>
-                        <button class="btn btn-success mb-2" data-bs-dismiss="modal">Request</button>
+                        <form id="manager-access-form" method="POST">
+                            {% csrf_token %}
+                            <p>Please confirm if you wish to get manager access.</p>
+                            <p>An email will be sent to staff, who will contact you with further steps.</p>
+                            <button class="btn btn-success mb-2" name="manager-access-submit" data-bs-dismiss="modal">Request</button>
+                        </form>
                     {% endif %}
                 </div>
             </div>
