@@ -2,6 +2,7 @@ from django.db import models
 from artist.models import Artist
 from members.models import MelodiaUser
 
+
 # Create your models here.
 class Donation(models.Model):
     amount = models.IntegerField()
@@ -11,7 +12,9 @@ class Donation(models.Model):
     manager_name = models.CharField(max_length=255)
     manager_stripe_id = models.CharField(max_length=255)
 
-    donator = models.ForeignKey(MelodiaUser, on_delete=models.SET_NULL, null=True, blank=True)
+    donator = models.ForeignKey(
+        MelodiaUser, on_delete=models.SET_NULL, null=True, blank=True
+    )
     donator_email = models.CharField(max_length=255)
 
     stripe_session_id = models.CharField(max_length=255, unique=True)
@@ -20,5 +23,3 @@ class Donation(models.Model):
 
     def __str__(self):
         return f"Donation for {self.artist_name}"
-
-

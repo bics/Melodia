@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.db.models import Avg, Prefetch, Count, Case, When, FloatField
 
+
 # Create your views here.
 def artist(request, name, pk):
     artist = Artist.objects.get(pk=pk)
@@ -21,9 +22,9 @@ def artist(request, name, pk):
                 avg_rating=Case(
                     When(rating_count__gte=3, then=Avg("rating__ratingValue")),
                     default=None,
-                    output_field=FloatField()
-                )
-            ).order_by("position")
+                    output_field=FloatField(),
+                ),
+            ).order_by("position"),
         )
     )
 
@@ -35,10 +36,11 @@ def artist(request, name, pk):
             else:
                 track.stars = [False] * 5
 
-    return render(request, 'artist.html', { "artist": artist, 'albums': albums})
+    return render(request, "artist.html", {"artist": artist, "albums": albums})
+
 
 def create_album(request, name, pk):
-    
+
     artist = Artist.objects.get(pk=pk)
     if request.method == "POST":
         form = AlbumCreationForm(request.POST, request.FILES)
@@ -52,10 +54,11 @@ def create_album(request, name, pk):
             return redirect("artist", name=artist.name, pk=artist.pk)
         else:
             messages.success(request, ("There were some errors with some fields"))
-    else:  
+    else:
         form = AlbumCreationForm()
 
-    return render(request, 'create_album.html', {'form' : form, 'artist': artist})
+    return render(request, "create_album.html", {"form": form, "artist": artist})
+
 
 def edit_artist(request, name, pk):
     artist = Artist.objects.get(pk=pk)
@@ -64,35 +67,33 @@ def edit_artist(request, name, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Details have been updated.")
-            return redirect("edit_artist", name= artist.name, pk=artist.pk)
+            return redirect("edit_artist", name=artist.name, pk=artist.pk)
         else:
             messages.success(request, ("There were some errors with some fields"))
-    else:  
-        form = EditArtistForm(instance=artist)      
-    
+    else:
+        form = EditArtistForm(instance=artist)
+
     form = EditArtistForm(instance=artist)
-    return render(request, "edit_artist.html", {"form" : form, 'artist': artist})
+    return render(request, "edit_artist.html", {"form": form, "artist": artist})
+
 
 # View generated using ChatGPT
 @require_POST
 def rate_track(request):
     data = json.loads(request.body)
 
-    track_id = data.get('track_id')
-    rating_value = data.get('rating')
+    track_id = data.get("track_id")
+    rating_value = data.get("rating")
 
     if not request.user.is_authenticated:
-        return JsonResponse({'error': 'Not logged in'}, status=403)
+        return JsonResponse({"error": "Not logged in"}, status=403)
 
     track = Track.objects.get(id=track_id)
 
     rating, created = Rating.objects.update_or_create(
         ratingTrack=track,
         ratingUser=request.user,
-        defaults={'ratingValue': rating_value}
+        defaults={"ratingValue": rating_value},
     )
 
-    return JsonResponse({
-        'success': True,
-        'rating': rating.ratingValue
-    })
+    return JsonResponse({"success": True, "rating": rating.ratingValue})

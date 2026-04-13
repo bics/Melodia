@@ -9,13 +9,14 @@ import json
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 # Create your views here.
 def members(request):
-    return render(request, 'artist.html')
+    return render(request, "artist.html")
 
 
 def favourites(request):
-    return render(request, 'favourites.html')
+    return render(request, "favourites.html")
 
 
 def account(request):
@@ -56,6 +57,7 @@ def account(request):
         accountUpdateForm = AccountUpdateForm(instance=request.user)
     return render(request, "account.html", {"accountUpdateForm": accountUpdateForm})
 
+
 # Below 2 views were generated using ChatGPT and Claude
 def account_status(request, account_id):
     try:
@@ -70,10 +72,11 @@ def account_status(request, account_id):
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=400)
 
+
 def create_account_link(request):
     if request.method != "POST":
         return JsonResponse({"error": "Method not allowed"}, status=405)
-    
+
     data = json.loads(request.body)
     account_id = data.get("accountId")
 
@@ -82,15 +85,17 @@ def create_account_link(request):
 
     account_link = stripe.AccountLink.create(
         account=account_id,
-        refresh_url= str(settings.STRIPE_REFRESH_URL),  # if link expires
-        return_url= str(settings.STRIPE_RETURN_URL),   # after onboarding
+        refresh_url=str(settings.STRIPE_REFRESH_URL),  # if link expires
+        return_url=str(settings.STRIPE_RETURN_URL),  # after onboarding
         type="account_onboarding",
     )
     return JsonResponse({"url": account_link.url})
 
+
 def manage(request):
-    managed_artists = Artist.objects.filter(manager=request.user).order_by('name')
-    return render(request, 'manage.html', {'managed_artists' : managed_artists})
+    managed_artists = Artist.objects.filter(manager=request.user).order_by("name")
+    return render(request, "manage.html", {"managed_artists": managed_artists})
+
 
 def create_artist(request):
 
@@ -105,7 +110,6 @@ def create_artist(request):
             return redirect("manage")
         else:
             messages.success(request, ("There were some errors with some fields"))
-    else:  
-        form = CreateArtistForm()     
-        return render(request, 'create_artist.html', {'form' : form})
-
+    else:
+        form = CreateArtistForm()
+        return render(request, "create_artist.html", {"form": form})
