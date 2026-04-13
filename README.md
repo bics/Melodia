@@ -202,6 +202,7 @@ Currently the password reset workflow uses this service.
 * Comment section: A section can be added for each artist, album, or song for users to interact.
 * Artists multiple art/image: Currently, only one banner and image can be used for an artist. These could be overhauled to enable multiple images, like an account on social media.
 * Multiple suggestions: Currently, suggestions are only filtered by ratings. A couple of new suggestion-based filters can be added for newly added songs/artists or any related data (e.g. similar users’ favourites).
+* Background video on artists page. 
 
 # Data
 
