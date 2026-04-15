@@ -9,7 +9,7 @@ Edit Artist
 <div class="spacer m-3"></div>
 
 <div class="container d-flex justify-content-center">
-    <div class="middle-form slightly-darker-graphite-background rounded text-center p-3">
+    <div class="container slightly-darker-graphite-background rounded text-center p-3 width-45">
         <h3>Edit Artist: {{artist.name}}</h3>
         <div class="spacer m-3">
             <hr class="color-platinum line-break full-length">
@@ -26,7 +26,7 @@ Edit Artist
                     {{ form.image.label_tag}}
                     {% if artist.image %}
                     <br>
-                    <img src="{{artist.image.url}}" class="artist-image-update my-3" alt="">
+                    <img src="{{artist.image.url}}" class="artist-image-update my-3 img-fluid" alt="">
                     {% else %}
                     <h5>No image uploaded yet.</h5>
                     {% endif %}
@@ -38,7 +38,7 @@ Edit Artist
                     {{ form.banner.label_tag}}
                     {% if artist.banner %}
                     <br>
-                    <img src="{{artist.banner.url}}" class="artist-image-update my-3" alt="">
+                    <img src="{{artist.banner.url}}" class="artist-image-update my-3 img-fluid" alt="">
                     {% else %}
                     <h5>No banner uploaded yet.</h5>
                     {% endif %}

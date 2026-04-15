@@ -112,6 +112,21 @@ Content:
 Steps taken:
 1. Columns made responsive.
 
+### Artist edit page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Form is not responsive. Artist banner image was overflowing.
+* Data is prefilled for artist object.
+* Navigation buttons work as expected.
+* Object creation/update works.
+
+Steps taken:
+1. Conatiner made responsive.
+2. Banner image made responsive.
 
 ## Automated testing
 
