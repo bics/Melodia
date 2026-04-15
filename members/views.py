@@ -11,14 +11,6 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Create your views here.
-def members(request):
-    return render(request, "artist.html")
-
-
-def favourites(request):
-    return render(request, "favourites.html")
-
-
 def account(request):
     accountUpdateForm = AccountUpdateForm(instance=request.user)
 
