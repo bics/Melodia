@@ -20,6 +20,38 @@ Steps taken:
 1. Search input field required attribute added, making sure empty query is not submitted.
 2. Table is made responsive. Overflow added to ratings.
 
+### Signup/Login page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Form is center with breathable place. Container is responsive.
+* All links working.
+* Feature works as expected.
+* Account related workflow works as expected (register/reset pw)
+
+### Artist page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Responsive.
+* Social links work.
+* Donation link works.
+* Payment workflow works as expected.
+* Album tables visually breathable. Buttons looks interactable, titles make sense. After interaction music plays, links work.\
+If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty place. On smaller screens table ramins rigid and cluttered.
+* Default/Empty album image had incorrect classes.
+* Donation/Edit buttons hidden for non-manager users, without users stripe connection.
+* "Empty" artist entries have default pictures on page.
+
+Steps taken:
+1. Made table responsive, added overflow to cluttering elements.
+2. Corrected classes on image element.
 
 ## Manual testing
 
