@@ -108,8 +108,8 @@
             {% for album in albums %}
             <!--Collapse code block copied from Bootsrap's official documentation-->
             <div class="collapse mb-3" id="collapse-{{album.id}}" data-bs-parent="#albumAccordion">
-                <div class="card card-body onyx-background border-platinum">
-                    <table class="table suggestion-table text-center">
+                <div class="card card-body onyx-background border-platinum overflow-auto">
+                    <table class="table suggestion-table text-center table-responsive">
                         <thead>
                             <tr>
                                 <th class="w-10"></th>
@@ -132,7 +132,7 @@
                                 <td>{{track.name}}</td>
                                 <td>{{album.name}}</td>
                                 <td>{{track.getTrackLength}}</td>
-                                <td>
+                                <td class="overflow-auto">
                                     <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
                                         {% if user.is_authenticated %}
                                         <div class="rating-gold">
