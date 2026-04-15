@@ -145,6 +145,16 @@ Content:
 Steps taken:
 1. Removed non-existent element manipulation in JS.
 
+### Notable issues during development
+
+During development, testing was carried out on each function as it was being implemented.
+
+Some notable issues:
+* Audio player were not playing files automatically even after reference has been updated: Needed to manually load and play files after updating file reference.
+* Cloudinary native upload expects images: To update audio files, had to use raw file data.
+* Length retriaval was incorrect for multiple tracks: As far as I understood, mutagen reads the file data, and without a reset, this pointer is left at the end of the file. If multiple files are submitted, this pointer starts at the end of the consecutive files and returns incorrect values. Had to manually reset pointer to each file.
+* Audio player stopped playing: When the last song was hit, the player's logic went out in bounds. Implemented replay from the first song when the last song started playing.
+
 ## Automated testing
 
 ### HTML validation
