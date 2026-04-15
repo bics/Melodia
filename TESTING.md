@@ -21,6 +21,7 @@ If there is no rating, hovering over the text causes it to disappear as expected
 Steps taken:
 1. Search input field required attribute added, making sure empty query is not submitted.
 2. Table is made responsive. Overflow added to ratings.
+3. Added prompt to log in before rating.
 
 ### Signup/Login page
 
@@ -54,6 +55,7 @@ If there is no rating, hovering over the text causes it to disappear as expected
 Steps taken:
 1. Made table responsive, added overflow to cluttering elements.
 2. Corrected classes on image element.
+3. Added prompt to log in before rating.
 
 ### Manage page
 

@@ -117,6 +117,10 @@ Melodia
                                     class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="5"
                                     alt="">
                             </div>
+                            {% else %}
+                            <div class="rating-gold">
+                                Please login to rate.
+                            </div>
                             {% endif %}
                             <div class="rating-gray">
                                 {% if track.avg_rating %}
