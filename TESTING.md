@@ -55,6 +55,50 @@ Steps taken:
 1. Made table responsive, added overflow to cluttering elements.
 2. Corrected classes on image element.
 
+### Manage page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Responsive. Columns work as expected.
+* Artists links work.
+* Artist creation workflow works as expected.
+
+### Album addition page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Form is responsive.
+* Album creation workflow works as expected.
+* Navigation buttons work.
+
+### Track creation page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Formset is responsive.
+* All buttons work as expected.
+
+During development there were a couple notable issues:
+* Formset was prefilled when visiting the page, creating already created tracks even in hidden forms.
+* Phanton forms were submitted (forms were still filled after hiding it).
+
+Steps taken during development:
+1. Specifically made the formset with empty object to ensure no pre filling.
+2. Function added to clear data on hiding forms.
+
+### Album edit page
+
+
+
 
 ## Automated testing
 
