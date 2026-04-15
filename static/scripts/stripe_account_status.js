@@ -18,13 +18,7 @@ async function fetchAccountStatus() {
     }
     accountStatus = await response.json();
     renderAccountStatus();
-
-    // Show product form if account is ready
-    if (accountStatus.chargesEnabled) {
-      addProductBtn.classList.remove("hidden");
-      productsSection.classList.remove('hidden');
-      createAccountForm.classList.add("hidden");
-    }
+    
   } catch (error) {
     console.error('Error fetching account status:', error);
   }

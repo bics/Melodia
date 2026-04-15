@@ -128,6 +128,21 @@ Steps taken:
 1. Conatiner made responsive.
 2. Banner image made responsive.
 
+### Account page
+
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
+
+Content:
+* Elements are in expected places. Form is responsive.
+* All buttons work as expected.
+* Password reset workflow work as expected.
+* Stripe connect acount visible after connecting. Error in console regarding a non-existing button.
+
+Steps taken:
+1. Removed non-existent element manipulation in JS.
+
 ## Automated testing
 
 ### HTML validation
