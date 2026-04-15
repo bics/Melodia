@@ -1,5 +1,7 @@
 # Testing
 
+## Manual testing
+
 Manual testing is focused on user interaction and feedback.\
 With both signed-in and unauthenticated user interactions should be tested.\
 Cases involve navigation, functionality, and interactivity.
@@ -53,7 +55,6 @@ Steps taken:
 1. Made table responsive, added overflow to cluttering elements.
 2. Corrected classes on image element.
 
-## Manual testing
 
 ## Automated testing
 
