@@ -71,6 +71,7 @@ Content:
 Navigation:
 * Navbar links work as expected. Takes to the indicated page.
 * Search option works.
+* Object creation works as expected.
 
 Content:
 * Elements are in expected places. Form is responsive.
@@ -86,6 +87,7 @@ Navigation:
 Content:
 * Elements are in expected places. Formset is responsive.
 * All buttons work as expected.
+* Object creation works as expected.
 
 During development there were a couple notable issues:
 * Formset was prefilled when visiting the page, creating already created tracks even in hidden forms.
@@ -97,7 +99,18 @@ Steps taken during development:
 
 ### Album edit page
 
+Navigation:
+* Navbar links work as expected. Takes to the indicated page.
+* Search option works.
 
+Content:
+* Elements are in expected places. Forms is responsive, fromset is cluttered on smaller screens. 
+* Data is prefilled for relative objects.
+* All buttons work as expected.
+* Object creation/update/deletion works.
+
+Steps taken:
+1. Columns made responsive.
 
 
 ## Automated testing

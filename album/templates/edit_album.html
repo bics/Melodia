@@ -67,7 +67,7 @@ Edit Album
                 {% for form in edit_tracks_formset %}
 
                 {% if form.instance.pk %}
-                <div class="col-4">
+                <div class="col-sm-4">
                     {{ form.id }}
                     <button class="btn btn-outline-warning mb-3 w-100" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#track_collapse-{{forloop.counter0}}">
