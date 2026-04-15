@@ -1,7 +1,5 @@
 # Testing
 
-Here it is exactly as markdown so your README won’t break:
-
 ## Manual testing
 
 Manual testing is focused on user interaction and feedback.\
@@ -162,6 +160,39 @@ Some notable issues:
 ### HTML validation
 
 Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.org) and [css](https://jigsaw.w3.org/css-validator/) validation.
+
+#### Album app templates
+
+1. Create track page
+
+    * During validation a couple of errors were flagged:
+    1. Multiple, the element label must not appear as a descendant of the button element.
+    2. Multiple, attribute rows not allowed on element select at this point.
+    3. Multiple, no p element in scope but a p end tag seen.
+
+    Steps taken:
+    1. Retrieving only label text not the whole label form element.
+    2. Removed rows attribute from selects.
+    3. Replaced "p" tags with "div".
+
+2. Edit album page
+
+    * During validation a couple of errors were flagged:
+        1. Multiple, the element label must not appear as a descendant of the button element.
+        2. Multiple, no p element in scope but a p end tag seen.
+        3. Multiple, duplicate ID id_form-*-id.
+        4. The aria-describedby attribute references id_image_helptext, which is not the ID of any element in this document.
+
+    Steps taken:
+    1. Retrieving only label text not the whole label form element.
+    2. Removed rows attribute from selects.
+    3. Replaced "p" tags with "div". 
+    4. Encased helptext in mathcing id element.
+
+#### Artist app templates
+
+
+
 
 ### CSS validation
 

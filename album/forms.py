@@ -17,7 +17,6 @@ class TrackCreationForm(forms.ModelForm):
             "featured_artist": forms.SelectMultiple(
                 attrs={
                     "class": "form-select featured-artist-select",
-                    "rows": "5",
                     "multiple": True,
                 }
             ),
@@ -51,7 +50,6 @@ class UpdateTrackForm(forms.ModelForm):
             "featured_artist": forms.SelectMultiple(
                 attrs={
                     "class": "form-select featured-artist-select",
-                    "rows": "5",
                     "multiple": True,
                 }
             ),
