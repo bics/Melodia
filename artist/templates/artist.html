@@ -94,7 +94,7 @@
                 {% if album.image %}
                 <img src="{{album.image.url }}" class="card-img-top small-img-cover" alt="...">
                 {% else %}
-                <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="artist-image" alt="">
+                <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover" alt="">
                 {% endif %}
                 <a data-bs-toggle="collapse" href="#collapse-{{album.id}}">
                     <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
