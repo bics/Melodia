@@ -166,14 +166,14 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
 1. Create track page
 
     * During validation a couple of errors were flagged:
-    1. Multiple, the element label must not appear as a descendant of the button element.
-    2. Multiple, attribute rows not allowed on element select at this point.
-    3. Multiple, no p element in scope but a p end tag seen.
+        1. Multiple, the element label must not appear as a descendant of the button element.
+        2. Multiple, attribute rows not allowed on element select at this point.
+        3. Multiple, no p element in scope but a p end tag seen.
 
-    Steps taken:
-    1. Retrieving only label text not the whole label form element.
-    2. Removed rows attribute from selects.
-    3. Replaced "p" tags with "div".
+    * Steps taken:
+        1. Retrieving only label text not the whole label form element.
+        2. Removed rows attribute from selects.
+        3. Replaced "p" tags with "div".
 
 2. Edit album page
 
@@ -183,15 +183,25 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
         3. Multiple, duplicate ID id_form-*-id.
         4. The aria-describedby attribute references id_image_helptext, which is not the ID of any element in this document.
 
-    Steps taken:
-    1. Retrieving only label text not the whole label form element.
-    2. Removed rows attribute from selects.
-    3. Replaced "p" tags with "div". 
-    4. Encased helptext in mathcing id element.
+    * Steps taken:
+        1. Retrieving only label text not the whole label form element.
+        2. Removed rows attribute from selects.
+        3. Replaced "p" tags with "div". 
+        4. Encased helptext in mathcing id element.
 
 #### Artist app templates
 
+1. Artist page
 
+    * During validation a couple of errors and warnings were flagged:
+        1. Bad value for attribute src on element source: Must be non-empty.
+        2. Warning: Empty heading.
+        3. The heading h5 (with computed level 5) follows the heading h2 (with computed level 2), skipping 2 heading levels.
+
+    * Steps taken:
+        1. Removed source -> It must be present -> Update audio element with source as at the moment multiple audio formats not supported.
+        2. Filled headings.
+        3. Added hidden heading to satisfy structure.
 
 
 ### CSS validation

@@ -1,6 +1,5 @@
 
 const audioPlayer = document.getElementById("audio-player");
-const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const currentlyPlayingHeader = document.getElementById("currently-playing-header");
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
@@ -32,7 +31,7 @@ function playTrack(event)
     currentlyPlayingNode = element;
     nextPlayingNode = getNextTrack(element.id);
     
-    mp3AudioPlayerSource.src = element.dataset.trackUrl;
+    audioPlayer.src = element.dataset.trackUrl;
     audioPlayer.load();    
     audioPlayer.play();
     updateUI(element.dataset.track, nextPlayingNode.dataset.track);
@@ -42,7 +41,7 @@ function playNextTrack()
 {
     if (nextPlayingNode)
     {
-        mp3AudioPlayerSource.src = nextPlayingNode.dataset.trackUrl;
+        audioPlayer.src = nextPlayingNode.dataset.trackUrl;
         audioPlayer.load();
         audioPlayer.play();
         currentlyPlayingNode = nextPlayingNode;
