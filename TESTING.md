@@ -1,25 +1,27 @@
 # Testing
 
+Here it is exactly as markdown so your README won’t break:
+
 ## Manual testing
 
 Manual testing is focused on user interaction and feedback.\
-With both signed-in and unauthenticated user interactions should be tested.\
+Both signed-in and unauthenticated user interactions should be tested.\
 Cases involve navigation, functionality, and interactivity.
 
 ### Landingpage
 
 Navigation:
 * Navbar links work as expected. Takes to the indicated page.
-* Search option works even with empty search query.
+* Search option works even with an empty search query.
 
 Content:
-* Banner and title placed correctly, buttons work, data rotates on reload for not rated artists (no rating yet for most artists), only rated artists keeps 1st place.
-* Table visually breathable. Buttons looks interactable, titles make sense. After interaction music plays, links work.\
-If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty place. On smaller screens table ramins rigid and cluttered.
+* Banner and title placed correctly, buttons work, data rotates on reload for non-rated artists (no rating yet for most artists), only rated artists keep 1st place.
+* Table visually breathable. Buttons look interactable, titles make sense. After interaction music plays, links work.\
+If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty space. On smaller screens table remains rigid and cluttered.
 * Discover section displays properly. Only ten artists displayed. Linkage works.
 
 Steps taken:
-1. Search input field required attribute added, making sure empty query is not submitted.
+1. Search input field required attribute added, ensuring empty query is not submitted.
 2. Table is made responsive. Overflow added to ratings.
 3. Added prompt to log in before rating.
 
@@ -30,10 +32,10 @@ Navigation:
 * Search option works.
 
 Content:
-* Form is center with breathable place. Container is responsive.
+* Form is center with breathable space. Container is responsive.
 * All links working.
 * Feature works as expected.
-* Account related workflow works as expected (register/reset pw)
+* Account-related workflow works as expected (register/reset pw)
 
 ### Artist page
 
@@ -46,10 +48,10 @@ Content:
 * Social links work.
 * Donation link works.
 * Payment workflow works as expected.
-* Album tables visually breathable. Buttons looks interactable, titles make sense. After interaction music plays, links work.\
-If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty place. On smaller screens table ramins rigid and cluttered.
-* Default/Empty album image had incorrect classes.
-* Donation/Edit buttons hidden for non-manager users, without users stripe connection.
+* Album tables visually breathable. Buttons look interactable, titles make sense. After interaction music plays, links work.\
+If there is no rating, hovering over the text causes it to disappear as expected, and leaves an unexpected empty space. On smaller screens table remains rigid and cluttered.
+* Default/empty album image had incorrect classes.
+* Donation/Edit buttons hidden for non-manager users, without user's Stripe connection.
 * "Empty" artist entries have default pictures on page.
 
 Steps taken:
@@ -91,12 +93,12 @@ Content:
 * All buttons work as expected.
 * Object creation works as expected.
 
-During development there were a couple notable issues:
+During development there were a couple of notable issues:
 * Formset was prefilled when visiting the page, creating already created tracks even in hidden forms.
-* Phanton forms were submitted (forms were still filled after hiding it).
+* Phantom forms were submitted (forms were still filled after hiding them).
 
 Steps taken during development:
-1. Specifically made the formset with empty object to ensure no pre filling.
+1. Specifically made the formset with empty objects to ensure no pre-filling.
 2. Function added to clear data on hiding forms.
 
 ### Album edit page
@@ -106,8 +108,8 @@ Navigation:
 * Search option works.
 
 Content:
-* Elements are in expected places. Forms is responsive, fromset is cluttered on smaller screens. 
-* Data is prefilled for relative objects.
+* Elements are in expected places. Form is responsive, formset is cluttered on smaller screens. 
+* Data is prefilled for relevant objects.
 * All buttons work as expected.
 * Object creation/update/deletion works.
 
@@ -127,7 +129,7 @@ Content:
 * Object creation/update works.
 
 Steps taken:
-1. Conatiner made responsive.
+1. Container made responsive.
 2. Banner image made responsive.
 
 ### Account page
@@ -139,21 +141,21 @@ Navigation:
 Content:
 * Elements are in expected places. Form is responsive.
 * All buttons work as expected.
-* Password reset workflow work as expected.
-* Stripe connect acount visible after connecting. Error in console regarding a non-existing button.
+* Password reset workflow works as expected.
+* Stripe connect account visible after connecting. Error in console regarding a non-existent button.
 
 Steps taken:
 1. Removed non-existent element manipulation in JS.
 
 ### Notable issues during development
 
-During development, testing was carried out on each function as it was being implemented.
+During development, testing was carried out on each function as it was implemented.
 
 Some notable issues:
-* Audio player were not playing files automatically even after reference has been updated: Needed to manually load and play files after updating file reference.
-* Cloudinary native upload expects images: To update audio files, had to use raw file data.
-* Length retriaval was incorrect for multiple tracks: As far as I understood, mutagen reads the file data, and without a reset, this pointer is left at the end of the file. If multiple files are submitted, this pointer starts at the end of the consecutive files and returns incorrect values. Had to manually reset pointer to each file.
-* Audio player stopped playing: When the last song was hit, the player's logic went out in bounds. Implemented replay from the first song when the last song started playing.
+* Audio player was not playing files automatically even after reference was updated: needed to manually load and play files after updating file reference.
+* Cloudinary native upload expects images: to upload audio files, raw file data had to be used.
+* Length retrieval was incorrect for multiple tracks: as far as I understood, Mutagen reads the file data and leaves the pointer at the end of the file. Without resetting it, subsequent reads return incorrect values. Had to manually reset pointer for each file.
+* Audio player stopped playing: when the last song was hit, the player's logic went out of bounds. Implemented replay from the first song when the last song started playing.
 
 ## Automated testing
 
