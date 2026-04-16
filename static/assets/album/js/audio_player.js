@@ -12,17 +12,10 @@ let nextPlayingNode;
 //Attach click function for each play button
 play_buttons.forEach(button =>
 {
-    button.addEventListener('click', playTrack)
+    button.addEventListener('click', playTrack);
 });
 
 audioPlayer.addEventListener("ended", playNextTrack);
-
-//<img class="audio-control-button" 
-// id="audio-control-button-{{album.id}}-{{forloop.counter0}}" 
-// src="{% static 'assets/images/play_button_small.png' %}" 
-// alt="Play track button"
-// data-track="{{ track.name }}" 
-// data-track-position="{{ track.position }}">
 
 function playTrack(event)
 {

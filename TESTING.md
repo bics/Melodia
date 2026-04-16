@@ -279,11 +279,45 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
         1. Added title.
         2. Added id to input element.
 
-
-
-
-
 ### CSS validation
+
+#### Style (style.css) testing:
+
+* During validation there were no errors present.
+
+### JS validation
+
+Used [Jshint](https://jshint.com) for javascript validation
+
+#### Audio player validation
+
+* During validation a couple warning were flagged:
+    1. 'const'/'let'/'arrow function syntax' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+    2. Missing semicolon.
+
+* Steps taken:
+    1. Placed semicolon.
+    2. Decided to ignore other warnings.
+
+#### Formeset checkbox validation
+
+* Warnings were present for newer technologies (ES6 syntax). Decided to ignore these warnings as the scripts working on all tested browsers including Mozilla.
+
+#### Formset jumper validation
+
+* Warnings were present for newer technologies (ES6 syntax). Decided to ignore these warnings as the scripts working on all tested browsers including Mozilla.
+* Other warnings were present for missing semicolons. Placed them were appropriate.
+
+#### Rating validation
+
+* Warnings were present for newer technologies (ES6 syntax). Decided to ignore these warnings as the scripts working on all tested browsers including Mozilla.
+* Other warnings were present for missing semicolons. Placed them were appropriate.
+* One undefined variable (bootstrap). Added global comment for dependency.
+
+#### Stripe account status validation
+
+* Warnings were present for newer technologies (ES6 syntax). Decided to ignore these warnings as the scripts working on all tested browsers including Mozilla.
+* Other warnings were present for missing semicolons. Placed them were appropriate.
 
 ### Python validation
 

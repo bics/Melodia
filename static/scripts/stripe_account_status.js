@@ -4,9 +4,10 @@ const accountStatusEl = document.getElementById('account-status');
 let accountStatus = null;
 let accountId = accountStatusEl.dataset.stripeAccountId;
 
-window.onload = () => {
-    fetchAccountStatus();
-}
+window.onload = () =>
+{
+  fetchAccountStatus();
+};
 
 async function fetchAccountStatus() {
   if (!accountId) return;
