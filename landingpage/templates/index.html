@@ -12,12 +12,19 @@ Melodia
 
     <h1 class="text-center mb-3">Have a look at what people like</h1>
 
+    <div class="hidden">
+        <h2>Hidden header</h2>
+        <h3>Hidden header</h3>
+        <h4>Hidden header</h4>
+    </div>
+
     <!--Carousel code block taken from official bootstrap documentation-->
     <div id="landingpage-carousel" class="carousel slide carousel-fade">
         <div class="carousel-indicators">
             {% for artist in artists|slice:":5" %}
-            <button type="button" data-bs-target="#landingpage-carousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"
-                aria-current="true" aria-label="Slide {{ forloop.counter0 }}"></button>
+            <button type="button" data-bs-target="#landingpage-carousel" data-bs-slide-to="{{ forloop.counter0 }}"
+                class="{% if forloop.first %}active{% endif %}" aria-current="true"
+                aria-label="Slide {{ forloop.counter0 }}"></button>
             {% endfor %}
         </div>
         <div class="carousel-inner">
@@ -26,23 +33,22 @@ Melodia
                 <div class="carousel-image-container">
                     {% if artist.banner %}
                     <img src="{{artist.banner.url}}" class="d-block w-100" alt="...">
-                {% else %}
+                    {% else %}
                     <img src="{% static 'assets/images/vinyl_disc.jpg' %}" class="d-block w-100" alt="...">
-                {% endif %}
+                    {% endif %}
                 </div>
                 <div class="carousel-caption d-none d-md-block slider-front-element pb-4">
-                    <h5><a href="{% url 'artist' artist.name artist.id %}" class="carousel-link">{{artist.name}}</a></h5>
+                    <h5><a href="{% url 'artist' artist.name artist.id %}" class="carousel-link">{{artist.name}}</a>
+                    </h5>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#landingpage-carousel"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#landingpage-carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#landingpage-carousel"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#landingpage-carousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -56,12 +62,9 @@ Melodia
 </div>
 
 <div class="text-center hidden" id="audio-player-div">
-    <h5 id="currently-playing-header"></h5>
-    <audio id="audio-player" controls>
-        <source id="mp3-audio-source" src=""
-            type="audio/mpeg">
-    </audio>
-    <h6 id="next-playing-header"></h6>
+    <h5 id="currently-playing-header">Initially hidden</h5>
+    <audio id="audio-player" controls></audio>
+    <h6 id="next-playing-header">Initially hidden</h6>
     <div class="spacer m-3">
         <hr class="color-platinum line-break">
     </div>
@@ -69,7 +72,7 @@ Melodia
 
 <div class="container overflow-auto">
 
-    
+
     <h2 class="text-center mb-3">Find your next favorite song</h2>
 
     <div class="shadow p-2 mb-3 bg-dark bg-gradient rounded table-responsive">
@@ -102,20 +105,20 @@ Melodia
                             {% if user.is_authenticated %}
                             <div class="rating-gold">
                                 <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
-                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="1"
-                                    alt="">
+                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}"
+                                    data-rating-value="1" alt="">
                                 <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
-                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="2"
-                                    alt="">
+                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}"
+                                    data-rating-value="2" alt="">
                                 <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
-                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="3"
-                                    alt="">
+                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}"
+                                    data-rating-value="3" alt="">
                                 <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
-                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="4"
-                                    alt="">
+                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}"
+                                    data-rating-value="4" alt="">
                                 <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
-                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}" data-rating-value="5"
-                                    alt="">
+                                    class="rating-star fill-adjust gold-star-rater" data-track-id="{{track.id}}"
+                                    data-rating-value="5" alt="">
                             </div>
                             {% else %}
                             <div class="rating-gold">
@@ -126,8 +129,9 @@ Melodia
                                 {% if track.avg_rating %}
                                 {% for filled in track.stars %}
                                 {% if filled %}
-                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust"
-                                    data-track-id="{{track.id}}" data-rating-value="2" alt="">
+                                <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                    class="rating-star fill-adjust" data-track-id="{{track.id}}" data-rating-value="2"
+                                    alt="">
                                 {% else %}
                                 <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
                                 {% endif %}
@@ -148,8 +152,14 @@ Melodia
 <div class="spacer m-3">
     <hr class="color-platinum line-break">
 </div>
+
 <div class="container">
     <h2 class="text-center mb-3">Be sure to discover</h2>
+    <div class="hidden">
+        <h3>Hidden header</h3>
+        <h4>Hidden header</h4>
+        <h5>Hidden header</h5>
+    </div>
     <div class="row justify-content-center">
         <!--Card code block copied from Bootsrap's official documentation-->
         {% for artist in random_artists %}
@@ -159,7 +169,8 @@ Melodia
                 {% if artist.image %}
                 <img src="{{artist.image.url}}" class="card-img-top small-img-cover" alt="...">
                 {% else %}
-                <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top small-img-cover" alt="...">
+                <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top small-img-cover"
+                    alt="...">
                 {% endif %}
                 <a href="{% url 'artist' artist.name artist.id %}">
                     <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">

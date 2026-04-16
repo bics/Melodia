@@ -219,6 +219,29 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
     * Steps taken:
         1. Encased helptexts in mathcing id element.
 
+#### Landingpage app templates
+
+1. Index page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. Bad value for attribute src on element source: Must be non-empty.
+        2. Warning: Empty heading.
+        3. The heading h5 (with computed level 5) follows the heading h2 (with computed level 2), skipping 2 heading levels.
+
+    * Steps taken:
+        1. Audio player matches artists one. Removed source child element. JS handles src update.
+        2. Filled headings.
+        3. Added hidden heading to satisfy structure.
+
+2. Search page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. Element title must not be empty.
+        2. Multiple, the heading h3 (with computed level 3) follows the heading h1 (with computed level 1), skipping 1 heading level.
+
+    * Steps taken:
+        1. Added title.
+        2. Added hidden heading to satisfy structure.
 
 ### CSS validation
 
