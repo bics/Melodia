@@ -1,0 +1,10 @@
+[pycodestyle]
+max-line-length = 88
+exclude =
+    migrations,
+    __pycache__,
+    .venv,
+    env.py,
+    static,
+    media,
+    node_modules

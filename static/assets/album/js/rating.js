@@ -1,3 +1,5 @@
+/* global bootstrap */
+
 const goldStars = document.querySelectorAll('.gold-star-rater');
 const starCount = 5;
 const emptyStarImage = "/static/assets/images/rating_star_gray.png";
@@ -17,7 +19,7 @@ function highlightRating(event)
     const element = event.currentTarget;
     const currentTrack = element.dataset.trackId;
     const currentIndex = parseInt(element.dataset.ratingValue);
-    const currentStars = getAllTrackStars(currentTrack)
+    const currentStars = getAllTrackStars(currentTrack);
     if (currentStars)
     {
         lightUpStars(currentStars, currentIndex);

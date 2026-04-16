@@ -9,6 +9,7 @@ from allauth.account.forms import (
 from .models import MelodiaUser
 from artist.models import Artist
 
+
 # Form taken from previous CoffeeHouse project
 class AllauthLoginForm(LoginForm):
 
@@ -18,14 +19,16 @@ class AllauthLoginForm(LoginForm):
         self.fields["login"].widget.attrs.update({"class": "form-control"})
         self.fields["password"].widget.attrs.update({"class": "form-control"})
 
+
 # Form taken from previous CoffeeHouse project
 class AllauthSignupForm(SignupForm):
-        
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
 
-            for field in self.fields.values():
-                field.widget.attrs.update({"class": "form-control"})
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            field.widget.attrs.update({"class": "form-control"})
+
 
 # Form taken from previous CoffeeHouse project
 class AllauthResetPasswordForm(ResetPasswordForm):
@@ -35,6 +38,7 @@ class AllauthResetPasswordForm(ResetPasswordForm):
 
         self.fields["email"].widget.attrs.update({"class": "form-control"})
 
+
 # Form taken from previous CoffeeHouse project
 class AllauthChangePasswordForm(ResetPasswordKeyForm):
 
@@ -43,6 +47,7 @@ class AllauthChangePasswordForm(ResetPasswordKeyForm):
 
         self.fields["password1"].widget.attrs.update({"class": "form-control"})
         self.fields["password2"].widget.attrs.update({"class": "form-control"})
+
 
 # Form taken from previous CoffeeHouse project
 class AccountUpdateForm(forms.ModelForm):
@@ -62,30 +67,38 @@ class AccountUpdateForm(forms.ModelForm):
         # Snippet taken from ChatGPT
         self.fields["username"].help_text = ""
 
+
 class CreateArtistForm(forms.ModelForm):
     required_css_class = "required"
+
     class Meta:
         model = Artist
         fields = ("name", "image", "description", "bornOn", "socials")
 
-        labels = {
-            "bornOn": "Formed/Born"
-        }
+        labels = {"bornOn": "Formed/Born"}
 
         widgets = {
-            "name" : forms.TextInput(attrs={"class": "form-control"}),
-            "image" : forms.FileInput(attrs={"class": "form-control", "accept": "image/png, image/jpeg, image/jpg"}),
-            "description" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
-            "socials" : forms.Textarea(attrs={"class": "form-control", "rows" : "5"}),
-            "bornOn": forms.DateInput(attrs={"class": "form-control","type": "date"}),
+            "name": forms.TextInput(attrs={"class": "form-control"}),
+            "image": forms.FileInput(
+                attrs={
+                    "class": "form-control",
+                    "accept": "image/png, image/jpeg, image/jpg",
+                }
+            ),
+            "description": forms.Textarea(attrs={"class": "form-control", "rows": "5"}),
+            "socials": forms.Textarea(attrs={"class": "form-control", "rows": "5"}),
+            "bornOn": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
         }
 
         # Snippet taken from previous CoffeeHouse project
         help_texts = {
-            "image": "Optional. Your image will be stored securely using Cloudinary to display your image.",
-            "socials" : "Enter each social on a new line."
+            "image": (
+                "Optional. Your image will be stored securely "
+                "using Cloudinary to display your image."
+            ),
+            "socials": "Enter each social on a new line.",
         }
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["name"].required = True

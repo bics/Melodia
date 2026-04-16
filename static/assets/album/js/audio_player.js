@@ -1,6 +1,5 @@
 
 const audioPlayer = document.getElementById("audio-player");
-const mp3AudioPlayerSource = document.getElementById("mp3-audio-source")
 const currentlyPlayingHeader = document.getElementById("currently-playing-header");
 const nextPlayingHeader = document.getElementById("next-playing-header");
 const play_buttons = document.querySelectorAll('.audio-control-button');
@@ -13,17 +12,10 @@ let nextPlayingNode;
 //Attach click function for each play button
 play_buttons.forEach(button =>
 {
-    button.addEventListener('click', playTrack)
+    button.addEventListener('click', playTrack);
 });
 
 audioPlayer.addEventListener("ended", playNextTrack);
-
-//<img class="audio-control-button" 
-// id="audio-control-button-{{album.id}}-{{forloop.counter0}}" 
-// src="{% static 'assets/images/play_button_small.png' %}" 
-// alt="Play track button"
-// data-track="{{ track.name }}" 
-// data-track-position="{{ track.position }}">
 
 function playTrack(event)
 {
@@ -32,7 +24,7 @@ function playTrack(event)
     currentlyPlayingNode = element;
     nextPlayingNode = getNextTrack(element.id);
     
-    mp3AudioPlayerSource.src = element.dataset.trackUrl;
+    audioPlayer.src = element.dataset.trackUrl;
     audioPlayer.load();    
     audioPlayer.play();
     updateUI(element.dataset.track, nextPlayingNode.dataset.track);
@@ -42,7 +34,7 @@ function playNextTrack()
 {
     if (nextPlayingNode)
     {
-        mp3AudioPlayerSource.src = nextPlayingNode.dataset.trackUrl;
+        audioPlayer.src = nextPlayingNode.dataset.trackUrl;
         audioPlayer.load();
         audioPlayer.play();
         currentlyPlayingNode = nextPlayingNode;

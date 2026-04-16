@@ -4,9 +4,10 @@ const accountStatusEl = document.getElementById('account-status');
 let accountStatus = null;
 let accountId = accountStatusEl.dataset.stripeAccountId;
 
-window.onload = () => {
-    fetchAccountStatus();
-}
+window.onload = () =>
+{
+  fetchAccountStatus();
+};
 
 async function fetchAccountStatus() {
   if (!accountId) return;
@@ -18,13 +19,7 @@ async function fetchAccountStatus() {
     }
     accountStatus = await response.json();
     renderAccountStatus();
-
-    // Show product form if account is ready
-    if (accountStatus.chargesEnabled) {
-      addProductBtn.classList.remove("hidden");
-      productsSection.classList.remove('hidden');
-      createAccountForm.classList.add("hidden");
-    }
+    
   } catch (error) {
     console.error('Error fetching account status:', error);
   }

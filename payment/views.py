@@ -14,6 +14,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
+
 # Create your views here.
 def donate(request, name, pk):
     artist = Artist.objects.get(pk=pk)
@@ -27,18 +28,18 @@ def donate(request, name, pk):
         elif custom:
             try:
                 donation = int(Decimal(custom) * 100)
-            except:
+            except Exception as e:
                 messages.success(request, f"Invalid custom amount")
-                return render(request, "stripe_payment.html", { "artist" : artist })
+                return render(request, "stripe_payment.html", {"artist": artist})
         else:
             messages.success(request, f"No amount was selected")
-            return render(request, "stripe_payment.html", { "artist" : artist })
-        
+            return render(request, "stripe_payment.html", {"artist": artist})
+
         # Try-catch block was copied from official Stripe documentation
-        try:            
+        try:
             safe_name = quote(artist.name)
-            
-            if (request.user.is_authenticated):
+
+            if request.user.is_authenticated:
                 user_id = request.user.id
                 user_email = request.user.email or ""
             else:
@@ -46,72 +47,72 @@ def donate(request, name, pk):
                 user_email = "not registered"
 
             checkout_session = stripe.checkout.Session.create(
-                line_items=[{
-                'price_data': {
-                    'currency': 'gbp',
-                    'product_data': {
-                        'name': f'Donation to {artist.name}',
-                    },
-                    'unit_amount': donation,
-                },
-                'quantity': 1,
-            }],
-                mode='payment',
-                
+                line_items=[
+                    {
+                        "price_data": {
+                            "currency": "gbp",
+                            "product_data": {
+                                "name": f"Donation to {artist.name}",
+                            },
+                            "unit_amount": donation,
+                        },
+                        "quantity": 1,
+                    }
+                ],
+                mode="payment",
                 payment_intent_data={
-                    'application_fee_amount': int(donation * 0.1),
-                    'transfer_data': {
-                        'destination': artist.manager.stripeUserId,
+                    "application_fee_amount": int(donation * 0.1),
+                    "transfer_data": {
+                        "destination": artist.manager.stripeUserId,
                     },
-                },                    
-
+                },
                 metadata={
                     "artist_id": str(artist.id),
                     "artist_name": str(artist.name),
                     "amount": str(donation),
-                    "manager_name" : str(artist.manager.username),
-                    "manager_stripe_id" : str(artist.manager.stripeUserId),
-                    "donator" : str(user_id),
-                    "donator_email" : str(user_email),
+                    "manager_name": str(artist.manager.username),
+                    "manager_stripe_id": str(artist.manager.stripeUserId),
+                    "donator": str(user_id),
+                    "donator_email": str(user_email),
                 },
-
-                success_url= str(settings.STRIPE_PAYMENT_SUCCESS_URL),
-                cancel_url= str(settings.STRIPE_PAYMENT_CANCEL_URL + f"{safe_name}/{artist.id}"),
+                success_url=str(settings.STRIPE_PAYMENT_SUCCESS_URL),
+                cancel_url=str(
+                    settings.STRIPE_PAYMENT_CANCEL_URL + f"{safe_name}/{artist.id}"
+                ),
             )
 
             return redirect(checkout_session.url)
-        
+
         except Exception as e:
             messages.success(request, str(e))
             return redirect("donate", name=artist.name, pk=artist.pk)
 
-    return render(request, "stripe_payment.html", { "artist" : artist })
+    return render(request, "stripe_payment.html", {"artist": artist})
 
 
 def payment_success(request):
     return render(request, "payment_success.html")
 
+
 # Webhook view was copied from official Stripe documentation and modified using ChatGPT
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
-    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    sig_header = request.META.get("HTTP_STRIPE_SIGNATURE")
 
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
     except Exception:
         return HttpResponse(status=400)
 
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
 
-        if session['payment_status'] == 'paid':
-            metadata = session['metadata'].to_dict()
-            artist_id = metadata.get('artist_id')
-            artist_name = metadata.get('artist_name')
-            amount = metadata.get('amount')
+        if session["payment_status"] == "paid":
+            metadata = session["metadata"].to_dict()
+            artist_id = metadata.get("artist_id")
+            artist_name = metadata.get("artist_name")
+            amount = metadata.get("amount")
             manager_name = metadata.get("manager_name")
             manager_stripe_id = metadata.get("manager_stripe_id")
             donator_id = metadata.get("donator")
@@ -132,17 +133,17 @@ def stripe_webhook(request):
                     pass
 
             donation, created = Donation.objects.get_or_create(
-                stripe_session_id=session['id'],
+                stripe_session_id=session["id"],
                 defaults={
                     "artist": artist,
                     "artist_name": artist_name,
                     "amount": int(amount),
                     "is_paid": True,
-                    "manager_name" : manager_name,
-                    "manager_stripe_id" : manager_stripe_id,
-                    "donator" : donator,
-                    "donator_email" : donator_email,
-                }
+                    "manager_name": manager_name,
+                    "manager_stripe_id": manager_stripe_id,
+                    "donator": donator,
+                    "donator_email": donator_email,
+                },
             )
 
             # idempotency safety

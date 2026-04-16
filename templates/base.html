@@ -31,7 +31,6 @@
                     <a class="navbar-brand" href="{% url 'home' %}">Home</a>
                     {% if user.is_authenticated %}    
                     <a href="{% url 'account' %}">Account</a>
-                    <a href="{% url 'favourites' %}">Favourites</a>
                     {% if user.isManager %}
                     <a href="{% url 'manage' %}">Manage</a>
                     {% endif %}
@@ -47,7 +46,7 @@
                 <div>
                     <form class="d-flex" role="search" method="POST" action="{% url 'search_result' %}">
                         {% csrf_token %}
-                        <input class="form-control me-2" type="search" name="search_input" placeholder="Search" aria-label="Search" />
+                        <input class="form-control me-2" type="search" name="search_input" placeholder="Search" aria-label="Search" required/>
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>

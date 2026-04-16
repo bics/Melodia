@@ -46,7 +46,7 @@ function updateTarget(isIncrease)
         {
             plusButton.classList.remove("disabled");
         }
-        plusButton.setAttribute("data-bs-target", "#track-" + currentTarget)
+        plusButton.setAttribute("data-bs-target", "#track-" + currentTarget);
 
         if ((currentTarget - 1) < startingIndex)
         {
@@ -56,7 +56,7 @@ function updateTarget(isIncrease)
         {
             minusButton.classList.remove("disabled");
         }
-        minusButton.setAttribute("data-bs-target", "#track-" + (currentTarget - 1))
+        minusButton.setAttribute("data-bs-target", "#track-" + (currentTarget - 1));
 
         if (removing)
         {
@@ -79,9 +79,9 @@ function isInBounds(targetCount)
 {
     if (targetCount <= startingIndex && targetCount > (finalIndex+1))
     {
-        return false
+        return false;
     }
-    return true
+    return true;
 }
 
 function updateSelectedList(index)

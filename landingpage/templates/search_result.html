@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+Serach results for {{searched}}
+{% endblock%}
+
 {% block main %}
 <div class="spacer m-3"></div>
 
@@ -13,14 +17,23 @@
         <hr class="color-platinum line-break">
     </div>
 
+    <div class="hidden">
+        <h2>Hidden header</h2>
+    </div>
+
     <div class="container">
         <h3 class="text-center">If you were looking for a song</h3>
+        <div class="hidden">
+            <h4>Hidden header</h4>
+            <h5>Hidden header</h5>
+        </div>
         {% if track_results %}
         <div class="row justify-content-center">
             {% for track in track_results %}
             <div class="mb-3 col-6 col-md-4 col-xl-2">
                 <div class="card small-artist-card ">
-                    <img src="{% static 'assets/images/single_note_tilted.png' %}" class="card-img-top small-img-cover" alt="...">
+                    <img src="{% static 'assets/images/single_note_tilted.png' %}" class="card-img-top small-img-cover"
+                        alt="...">
                     <a href="{% url 'artist' track.artist.name track.artist.id %}">
                         <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
                             <h6 class="card-title bg-dark bg-opacity-50 px-1 rounded">{{track.name}}</h6>
@@ -41,6 +54,10 @@
 
     <div class="container">
         <h3 class="text-center">If you were looking for an album</h3>
+        <div class="hidden">
+            <h4>Hidden header</h4>
+            <h5>Hidden header</h5>
+        </div>
         {% if album_results %}
         <div class="row justify-content-center">
             {% for album in album_results %}
@@ -49,7 +66,8 @@
                     {% if album.image %}
                     <img src="{{album.image.url}}" class="card-img-top small-img-cover" alt="...">
                     {% else %}
-                    <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover" alt="...">
+                    <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover"
+                        alt="...">
                     {% endif %}
                     <a href="{% url 'artist' album.artist.name album.artist.id %}">
                         <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
@@ -71,16 +89,21 @@
 
     <div class="container">
         <h3 class="text-center">If you were looking for a band/artist</h3>
+        <div class="hidden">
+            <h4>Hidden header</h4>
+            <h5>Hidden header</h5>
+        </div>
         {% if artist_results %}
         <div class="row justify-content-center">
             {% for artist in artist_results %}
-            
+
             <div class="mb-3 col-6 col-md-4 col-xl-2">
                 <div class="card small-artist-card ">
                     {% if artist.image %}
                     <img src="{{artist.image.url}}" class="card-img-top small-img-cover" alt="...">
                     {% else %}
-                    <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top small-img-cover" alt="...">
+                    <img src="{% static 'assets/images/single_empty_user_pfp.png' %}"
+                        class="card-img-top small-img-cover" alt="...">
                     {% endif %}
                     <a href="{% url 'artist' artist.name artist.id %}">
                         <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">

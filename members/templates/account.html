@@ -38,7 +38,7 @@ Edit Account
                     <hr class="color-platinum line-break full-length">
                 </div>
 
-                <button type="button"  data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
+                <button type="button" data-bs-toggle="modal" data-bs-target="#ManagerRequestModal"
                     class="btn btn-success">Request Manager Access</button>
             </div>
         </form>
@@ -67,6 +67,9 @@ Edit Account
 <!--Code block copied from previous CoffeeHouse project-->
 <!--Redirection to password reset page-->
 <div>
+    <div class="hidden">
+        <h4>Hidden header</h4>
+    </div>
     <div class="modal fade" id="PasswordResetModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content slightly-darker-graphite-background text-center">
@@ -94,14 +97,15 @@ Edit Account
                 </div>
                 <div class="modal-body">
                     {% if user.isManager %}
-                        <p>Account already have manager permissions.</p>
+                    <p>Account already have manager permissions.</p>
                     {% else %}
-                        <form id="manager-access-form" method="POST">
-                            {% csrf_token %}
-                            <p>Please confirm if you wish to get manager access.</p>
-                            <p>An email will be sent to staff, who will contact you with further steps.</p>
-                            <button class="btn btn-success mb-2" name="manager-access-submit" data-bs-dismiss="modal">Request</button>
-                        </form>
+                    <form id="manager-access-form" method="POST">
+                        {% csrf_token %}
+                        <p>Please confirm if you wish to get manager access.</p>
+                        <p>An email will be sent to staff, who will contact you with further steps.</p>
+                        <button class="btn btn-success mb-2" name="manager-access-submit"
+                            data-bs-dismiss="modal">Request</button>
+                    </form>
                     {% endif %}
                 </div>
             </div>

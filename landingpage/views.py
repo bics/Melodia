@@ -5,13 +5,12 @@ import random
 from django.db.models import Avg, Value, Count, Case, When, FloatField
 from django.db.models.functions import Replace
 
+
 # Create your views here.
 def index(request):
     # Random object retrieval, sorting and rating generated using ChatGPT
     artists = list(
-        Artist.objects.annotate(
-        avg_rating=Avg("tracks__rating__ratingValue")
-        )
+        Artist.objects.annotate(avg_rating=Avg("tracks__rating__ratingValue"))
     )
     random.shuffle(artists)
     random_artists = artists[:10]
@@ -23,8 +22,8 @@ def index(request):
             avg_rating=Case(
                 When(rating_count__gte=3, then=Avg("rating__ratingValue")),
                 default=None,
-                output_field=FloatField()
-            )
+                output_field=FloatField(),
+            ),
         )
     )
     random.shuffle(all_tracks)
@@ -37,24 +36,41 @@ def index(request):
         else:
             track.stars = [False] * 5
 
+    return render(
+        request,
+        "index.html",
+        {
+            "artists": artists,
+            "random_tracks": random_tracks,
+            "random_artists": random_artists,
+        },
+    )
 
-    return render(request, 'index.html', {"artists": artists, "random_tracks": random_tracks, "random_artists" : random_artists})
 
 # View inspired by tutorial from Codemy
 def search_result(request):
     if request.method == "POST":
         # Input sanitation generated using ChatGPT
-        searched = request.POST.get('search_input', '').strip().lower().replace(" ", "")
+        searched = request.POST.get("search_input", "").strip().lower().replace(" ", "")
         print("SEARCHED:", searched)
         track_results = Track.objects.annotate(
-        name_clean=Replace('name', Value(' '), Value(''))
-            ).filter(name_clean__icontains=searched)
+            name_clean=Replace("name", Value(" "), Value(""))
+        ).filter(name_clean__icontains=searched)
 
         album_results = Album.objects.annotate(
-            name_clean=Replace('name', Value(' '), Value(''))
-            ).filter(name_clean__icontains=searched)
+            name_clean=Replace("name", Value(" "), Value(""))
+        ).filter(name_clean__icontains=searched)
 
         artist_results = Artist.objects.annotate(
-            name_clean=Replace('name', Value(' '), Value(''))
-            ).filter(name_clean__icontains=searched)
-    return render(request, "search_result.html", {"searched" : searched, "track_results" : track_results, "album_results" : album_results, "artist_results": artist_results})
+            name_clean=Replace("name", Value(" "), Value(""))
+        ).filter(name_clean__icontains=searched)
+    return render(
+        request,
+        "search_result.html",
+        {
+            "searched": searched,
+            "track_results": track_results,
+            "album_results": album_results,
+            "artist_results": artist_results,
+        },
+    )

@@ -30,7 +30,9 @@ Edit Album
             <h5>No image uploaded yet.</h5>
             {% endif %}
             {{ edit_album_form.image}}
-            {{edit_album_form.image.help_text}}
+            <small id="id_image_helptext">
+                {{ edit_album_form.image.help_text }}
+            </small>
             </p>
 
 
@@ -47,8 +49,10 @@ Edit Album
 
 
             <div class="d-flex justify-content-around">
-                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3 navigation-button">Back</a>
-                <button type="submit" class="btn btn-success mb-3 navigation-button" name="album-update-submit">Update</button>
+                <a href="{% url 'artist' artist.name artist.id %}"
+                    class="btn btn-danger mb-3 navigation-button">Back</a>
+                <button type="submit" class="btn btn-success mb-3 navigation-button"
+                    name="album-update-submit">Update</button>
             </div>
         </form>
     </div>
@@ -67,11 +71,11 @@ Edit Album
                 {% for form in edit_tracks_formset %}
 
                 {% if form.instance.pk %}
-                <div class="col-4">
+                <div class="col-sm-4">
                     {{ form.id }}
                     <button class="btn btn-outline-warning mb-3 w-100" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#track_collapse-{{forloop.counter0}}">
-                                {{form.instance.name}}</button>
+                        data-bs-target="#track_collapse-{{forloop.counter0}}">
+                        {{form.instance.name}}</button>
                     <div class="collapse" id="track_collapse-{{forloop.counter0}}">
                         <div class="card card-body mb-3 border-platinum graphite-background">
                             <p>
@@ -82,18 +86,20 @@ Edit Album
                                 {{ form.position.label_tag}}
                                 {{ form.position}}
                             </p>
-                            <p>
-                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
+                            <div class="mb-1">
+                                <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#featured_artist_collapse-{{forloop.counter0}}">
-                                    {{form.featured_artist.label_tag}}</button>
-                    
-                            <div class="collapse" id="featured_artist_collapse-{{forloop.counter0}}">
-                                {{ form.featured_artist}}
+                                    {{form.featured_artist.label}}</button>
+
+                                <div class="collapse" id="featured_artist_collapse-{{forloop.counter0}}">
+                                    {{ form.featured_artist}}
+                                </div>
+                                <div id="selected-artists-div-{{forloop.counter0}}">
+                                    <ul class="list-group list-group-flush"
+                                        id="selected-artists-list-{{forloop.counter0}}">
+                                    </ul>
+                                </div>
                             </div>
-                            <div id="selected-artists-div-{{forloop.counter0}}">
-                                <ul class="list-group list-group-flush" id="selected-artists-list-{{forloop.counter0}}"></ul>
-                            </div>
-                            </p>
                             <p>
                                 {{ form.lyrics.label_tag}}
                                 {{ form.lyrics}}
@@ -108,17 +114,13 @@ Edit Album
                         </div>
                     </div>
                 </div>
-                {% else %}
-                    <div class="hidden">
-                            {{ form.id }}
-                            {{ form }}
-                    </div>
                 {% endif %}
 
                 {% endfor %}
             </div>
-            
-        <button type="submit" class="btn btn-success mb-3 navigation-button" name="update-tracks-submit">Save tracks</button>
+
+            <button type="submit" class="btn btn-success mb-3 navigation-button" name="update-tracks-submit">Save
+                tracks</button>
         </form>
     </div>
 

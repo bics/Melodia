@@ -27,24 +27,26 @@ Create Track(s)
                         {{ form.name.label_tag}}
                         {{ form.name}}
                     </p>
-            
+
                     <p>
                         {{ form.position.label_tag}}
                         {{ form.position}}
-                    </p>            
-            
-                    <p>
-                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#featured_artist_collapse-{{forloop.counter0}}">{{ form.featured_artist.label_tag}}</button>
-                    
+                    </p>
+
+                    <div class="mb-1">
+                        <button class="btn btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#featured_artist_collapse-{{forloop.counter0}}">{{
+                            form.featured_artist.label}}</button>
+
                         <div class="collapse" id="featured_artist_collapse-{{forloop.counter0}}">
                             {{ form.featured_artist}}
                         </div>
                         <div id="selected-artists-div-{{forloop.counter0}}">
-                            <ul class="list-group list-group-flush" id="selected-artists-list-{{forloop.counter0}}"></ul>
+                            <ul class="list-group list-group-flush" id="selected-artists-list-{{forloop.counter0}}">
+                            </ul>
                         </div>
-                    </p>
-            
+                    </div>
+
                     <p>
                         {{ form.lyrics.label_tag}}
                         {{ form.lyrics}}
@@ -58,11 +60,14 @@ Create Track(s)
             </div>
             {% endfor %}
 
-            <button type="button" id="remove-track-form" class="btn btn-danger mb-3 disabled rounded-circle" data-bs-toggle="collapse" data-bs-target="#track-1">-</button>
-            <button type="button" id="add-track-form" class="btn btn-success mb-3 rounded-circle" data-bs-toggle="collapse" data-bs-target="#track-2">+</button>
+            <button type="button" id="remove-track-form" class="btn btn-danger mb-3 disabled rounded-circle"
+                data-bs-toggle="collapse" data-bs-target="#track-1">-</button>
+            <button type="button" id="add-track-form" class="btn btn-success mb-3 rounded-circle"
+                data-bs-toggle="collapse" data-bs-target="#track-2">+</button>
 
             <div class="d-flex justify-content-around">
-                <a href="{% url 'artist' artist.name artist.id %}" class="btn btn-danger mb-3 navigation-button">Back</a>
+                <a href="{% url 'artist' artist.name artist.id %}"
+                    class="btn btn-danger mb-3 navigation-button">Back</a>
                 <button type="submit" class="btn btn-success mb-3 navigation-button">Create</button>
             </div>
         </form>
