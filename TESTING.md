@@ -259,6 +259,28 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
 
 #### Payment app templates
 
+1. Payment success page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. Element title must not be empty.
+        2. The heading h3 (with computed level 3) follows the heading h1 (with computed level 1), skipping 1 heading level.
+
+    * Steps taken:
+        1. Added title.
+        2. Added hidden heading to satisfy structure.
+
+2. Stripe payment page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. Element title must not be empty.
+        2. The value of the for attribute of the label element must be the ID of a non-hidden form control.
+
+    * Steps taken:
+        1. Added title.
+        2. Added id to input element.
+
+
+
 
 
 ### CSS validation
