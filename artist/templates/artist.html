@@ -37,10 +37,12 @@
                     <h2 class="ps-3">{{artist.name}}</h2>
                     <div>
                         {% if artist.manager == user %}
-                        <a href="{% url 'edit_artist' artist.name artist.id %}" class="btn btn-warning mb-3 navigation-button">Edit</a>
+                        <a href="{% url 'edit_artist' artist.name artist.id %}"
+                            class="btn btn-warning mb-3 navigation-button">Edit</a>
                         {% endif %}
                         {% if artist.manager.stripeUserId %}
-                        <a href="{% url 'donate' artist.name artist.id %}" class="btn btn-primary mb-3 navigation-button">Donate</a>
+                        <a href="{% url 'donate' artist.name artist.id %}"
+                            class="btn btn-primary mb-3 navigation-button">Donate</a>
                         {% endif %}
                     </div>
                 </div>
@@ -96,7 +98,8 @@
                 {% if album.image %}
                 <img src="{{album.image.url }}" class="card-img-top small-img-cover" alt="...">
                 {% else %}
-                <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover" alt="">
+                <img src="{% static 'assets/images/empty_album_cover.jpg' %}" class="card-img-top small-img-cover"
+                    alt="">
                 {% endif %}
                 <a data-bs-toggle="collapse" href="#collapse-{{album.id}}">
                     <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
@@ -138,15 +141,20 @@
                                     <div class="rating-row" data-bs-toggle="tooltip" data-bs-placement="top" title="">
                                         {% if user.is_authenticated %}
                                         <div class="rating-gold">
-                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater"
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust gold-star-rater"
                                                 data-track-id="{{track.id}}" data-rating-value="1" alt="">
-                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater"
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust gold-star-rater"
                                                 data-track-id="{{track.id}}" data-rating-value="2" alt="">
-                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater"
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust gold-star-rater"
                                                 data-track-id="{{track.id}}" data-rating-value="3" alt="">
-                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater"
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust gold-star-rater"
                                                 data-track-id="{{track.id}}" data-rating-value="4" alt="">
-                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust gold-star-rater"
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust gold-star-rater"
                                                 data-track-id="{{track.id}}" data-rating-value="5" alt="">
                                         </div>
                                         {% else %}
@@ -156,16 +164,18 @@
                                         {% endif %}
                                         <div class="rating-gray">
                                             {% if track.avg_rating %}
-                                                {% for filled in track.stars %}
-                                                    {% if filled %}
-                                                        <img src="{% static 'assets/images/rating_star_full_transbg.png' %}" class="rating-star fill-adjust"
-                                                            data-track-id="{{track.id}}" data-rating-value="2" alt="">
-                                                    {% else %}
-                                                        <img src="{% static 'assets/images/rating_star_gray.png' %}" class="rating-star" alt="">
-                                                    {% endif %}
-                                                {% endfor %}
+                                            {% for filled in track.stars %}
+                                            {% if filled %}
+                                            <img src="{% static 'assets/images/rating_star_full_transbg.png' %}"
+                                                class="rating-star fill-adjust" data-track-id="{{track.id}}"
+                                                data-rating-value="2" alt="">
                                             {% else %}
-                                                <p>Not enough rating yet!</p>
+                                            <img src="{% static 'assets/images/rating_star_gray.png' %}"
+                                                class="rating-star" alt="">
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% else %}
+                                            <p>Not enough rating yet!</p>
                                             {% endif %}
                                         </div>
                                     </div>

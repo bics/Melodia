@@ -203,6 +203,22 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
         2. Filled headings.
         3. Added hidden heading to satisfy structure.
 
+2. Album creation page
+
+    * During validation no errors or warnings were flagged.
+
+3. Artist creation page
+
+    * During validation no errors or warnings were flagged.
+
+4. Edit artist page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. Multiple, The aria-describedby attribute references id_image_helptext, which is not the ID of any element in this document.
+
+    * Steps taken:
+        1. Encased helptexts in mathcing id element.
+
 
 ### CSS validation
 
