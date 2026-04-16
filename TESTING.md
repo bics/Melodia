@@ -30,8 +30,8 @@ Navigation:
 * Search option works.
 
 Content:
-* Form is center with breathable space. Container is responsive.
-* All links working.
+* Form is centered with breathable space. Container is responsive.
+* All links works.
 * Feature works as expected.
 * Account-related workflow works as expected (register/reset pw)
 
