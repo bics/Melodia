@@ -243,6 +243,24 @@ Used [W3C](https://www.w3.org) validator for both [html](https://validator.w3.or
         1. Added title.
         2. Added hidden heading to satisfy structure.
 
+#### Members app templates
+
+1. Account page
+
+    * During validation a couple of errors and warnings were flagged:
+        1. The heading h5 (with computed level 5) follows the heading h3 (with computed level 3), skipping 1 heading level.
+
+    * Steps taken:
+        1. Added hidden heading to satisfy structure.
+
+2. Manage page
+
+    * During validation no errors or warnings were flagged.
+
+#### Payment app templates
+
+
+
 ### CSS validation
 
 ### Python validation

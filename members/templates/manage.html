@@ -11,7 +11,7 @@ Manage
 <div class=" container slightly-darker-graphite-background rounded">
     <div class="container text-center">
         <h4 class="pt-3">Welcome {{ user.username}}</h4>
-    
+
         <div class="spacer m-3">
             <hr class="color-platinum line-break">
         </div>
@@ -30,7 +30,8 @@ Manage
                         {% if artist.image %}
                         <img src="{{artist.image.url}}" class="card-img-top small-img-cover" alt="...">
                         {% else %}
-                        <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="card-img-top small-img-cover" alt="...">
+                        <img src="{% static 'assets/images/single_empty_user_pfp.png' %}"
+                            class="card-img-top small-img-cover" alt="...">
                         {% endif %}
                         <a href="{% url 'artist' artist.name artist.id %}">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center p-1">
@@ -43,11 +44,11 @@ Manage
             </div>
         </div>
         {% endif %}
-    
+
         <div class="spacer m-3">
             <hr class="color-platinum line-break">
         </div>
-    
+
         <a href="{% url 'create_artist' %}" class="btn btn-success mb-3">Add Artist</a>
     </div>
 </div>
