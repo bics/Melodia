@@ -6,6 +6,7 @@ import stripe
 from django.conf import settings
 from django.http import JsonResponse
 import json
+from allauth.account.models import EmailAddress
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -13,12 +14,23 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Create your views here.
 def account(request):
     accountUpdateForm = AccountUpdateForm(instance=request.user)
+    user_email = request.user.email
 
     if request.method == "POST":
         if "account-update-submit" in request.POST:
             accountUpdateForm = AccountUpdateForm(request.POST, instance=request.user)
             if accountUpdateForm.is_valid():
                 accountUpdateForm.save()
+                new_email = accountUpdateForm.cleaned_data.get("email")
+
+            # If block generated using ChatGPT
+            if new_email and new_email != user_email:
+                EmailAddress.objects.add_email(
+                    request,
+                    request.user,
+                    new_email,
+                    confirm=True
+                )
                 messages.success(request, "Your details have been updated.")
                 return redirect("account")
             else:

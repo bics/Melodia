@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+<div class="spacer m-3"></div>
+
+<div class="container d-flex justify-content-center">
+    <!--Confirmation was partially generated using ChatGPT-->
+    <div class="slightly-darker-graphite-background rounded p-3 text-center">
+        <h2>Confirm your email</h2>
+        <hr>
+        {% if confirmation %}
+        <p>Please confirm that <strong>{{ confirmation.email_address.email }}</strong> is your email address.</p>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <button class="btn btn-success" type="submit">Confirm</button>
+        </form>
+        {% else %}
+        <p>This confirmation link is invalid or has expired.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

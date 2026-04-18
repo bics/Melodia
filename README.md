@@ -420,6 +420,7 @@ The project is deployed to [Heroku](https://www.heroku.com). In order to achieve
 * Artist update view decorator was generated using [ChatGPT](https://chatgpt.com)
 * startOnboarding and getCookie functions were generated using [Claude](https://claude.ai/new)
 * account_status and create_account_link views were generated using [ChatGPT](https://chatgpt.com) and [Claude](https://claude.ai/new)
+* Email confirmation template and view update was partially generated using [ChatGPT](https://chatgpt.com)
 
 ### Content
 
