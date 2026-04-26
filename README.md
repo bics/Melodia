@@ -329,7 +329,7 @@ Fields are:
 
 # Testing
 
-Testing is extracted to it's own document, [TESTING]()
+Testing is extracted to it's own document, [TESTING](https://github.com/bics/Melodia/blob/main/TESTING.md)
 
 # Deployment
 
