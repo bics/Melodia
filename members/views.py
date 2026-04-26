@@ -7,11 +7,13 @@ from django.conf import settings
 from django.http import JsonResponse
 import json
 from allauth.account.models import EmailAddress
+from django.contrib.auth.decorators import login_required
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 # Create your views here.
+@login_required
 def account(request):
     accountUpdateForm = AccountUpdateForm(instance=request.user)
     user_email = request.user.email
@@ -23,14 +25,15 @@ def account(request):
                 accountUpdateForm.save()
                 new_email = accountUpdateForm.cleaned_data.get("email")
 
-            # If block generated using ChatGPT
-            if new_email and new_email != user_email:
-                EmailAddress.objects.add_email(
-                    request,
-                    request.user,
-                    new_email,
-                    confirm=True
-                )
+                # If block generated using ChatGPT
+                if new_email and new_email != user_email:
+                    EmailAddress.objects.add_email(
+                        request,
+                        request.user,
+                        new_email,
+                        confirm=True
+                    )
+
                 messages.success(request, "Your details have been updated.")
                 return redirect("account")
             else:
@@ -63,6 +66,7 @@ def account(request):
 
 
 # Below 2 views were generated using ChatGPT and Claude
+@login_required
 def account_status(request, account_id):
     try:
         account = stripe.Account.retrieve(account_id)
@@ -76,7 +80,7 @@ def account_status(request, account_id):
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=400)
 
-
+@login_required
 def create_account_link(request):
     if request.method != "POST":
         return JsonResponse({"error": "Method not allowed"}, status=405)
@@ -95,12 +99,12 @@ def create_account_link(request):
     )
     return JsonResponse({"url": account_link.url})
 
-
+@login_required
 def manage(request):
     managed_artists = Artist.objects.filter(manager=request.user).order_by("name")
     return render(request, "manage.html", {"managed_artists": managed_artists})
 
-
+@login_required
 def create_artist(request):
 
     if request.method == "POST":

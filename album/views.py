@@ -7,9 +7,11 @@ from artist.forms import AlbumCreationForm
 import cloudinary.uploader
 from django.utils.text import slugify
 from mutagen.mp3 import MP3
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def edit_album(request, name, pk, artistPK):
     album = Album.objects.get(pk=pk)
     artist = Artist.objects.get(pk=artistPK)
@@ -59,7 +61,7 @@ def edit_album(request, name, pk, artistPK):
         },
     )
 
-
+@login_required
 def create_track(request, name, pk, artistPK):
     album = Album.objects.get(pk=pk)
     current_tracks = album.tracks.count()

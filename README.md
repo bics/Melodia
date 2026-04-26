@@ -340,6 +340,19 @@ The project is deployed to [Heroku](https://www.heroku.com). In order to achieve
 3. Use Github as preferred deployment method. 
 4. Connect to your Github account, and connect the corresponding repository.
 5. Setup the reqiured environment variables.
+    * DATABASE_URL
+    * SECRET_KEY
+    * CLOUDINARY_URL
+    * STRIPE_SECRET_KEY
+    * STRIPE_PUBLISHABLE_KEY
+    * STRIPE_REFRESH_URL
+    * STRIPE_RETURN_URL
+    * STRIPE_PAYMENT_CANCEL_URL
+    * STRIPE_PAYMENT_SUCCESS_URL
+    * STRIPE_WEBHOOK_SECRET
+    * ENV_EMAIL_HOST
+    * ENV_EMAIL_PASSWORD
+    * ENV_EMAIL_DEFAULT
     
 6. Once it successfully connected select a branch to deploy and hit "Deploy branch".
 
