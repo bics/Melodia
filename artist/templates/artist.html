@@ -25,11 +25,13 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center align-items-center">
-            {% if artist.image %}
-            <img src="{{artist.image.url}}" class="artist-image" alt="">
-            {% else %}
-            <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="artist-image" alt="">
-            {% endif %}
+            <div class="artist-image-div py-2 m-0">
+                {% if artist.image %}
+                <img src="{{artist.image.url}}" class="artist-image" alt="">
+                {% else %}
+                <img src="{% static 'assets/images/single_empty_user_pfp.png' %}" class="artist-image" alt="">
+                {% endif %}
+            </div>
         </div>
         <div class="col-12 col-sm-8 col-lg-9">
             <div class="container">
